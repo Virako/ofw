@@ -38,6 +38,8 @@ int main()
     if (player_ani)
     {
         player_ani->setMaterialFlag(video::EMF_LIGHTING, false);
+        player_ani->setFrameLoop(0, 13);  // nº frame
+        player_ani->setAnimationSpeed(10); // fps
         player_ani->setMaterialTexture(0, driver->getTexture("../media/ninja.jpg"));
         player_ani->setScale(core::vector3df(1,1,1));
         player_ani->setPosition(core::vector3df(0,0,0));
