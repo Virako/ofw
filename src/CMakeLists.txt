@@ -2,7 +2,9 @@
 #set(rootDir ${CMAKE_HOME_DIRECTORY})
 
 set(SRC_files
-    main.cpp)
+    main.cpp
+    character.cpp
+    cte.hpp)
 
 # ADD THE EXECUTABLE
 ADD_EXECUTABLE (ofw ${SRC_files})

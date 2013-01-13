@@ -16,4 +16,6 @@ ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 # Use the own version of FindXXX.cmake scripts
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
+ENABLE_TESTING()
 add_subdirectory(src)
+add_subdirectory(tests)
