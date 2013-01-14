@@ -1,6 +1,3 @@
-# find the absolute ofw root directory
-#set(rootDir ${CMAKE_HOME_DIRECTORY})
-
 set(SRC_files
     main.cpp
     character.cpp
@@ -29,7 +26,5 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries (ofw ${IRRLICHT_LIBRARIES} GL Xrandr X11)
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
-
-###
 # Project executable output path
-#set(EXECUTABLE_OUTPUT_PATH ${rootDir}/bin)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_HOME_DIRECTORY}/bin)
