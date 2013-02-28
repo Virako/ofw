@@ -8,6 +8,11 @@ Open Fantasy World is a MMORPG where the players will live in community.
 * CMake, http://www.cmake.org/cmake/resources/software.html
 * Irrlicht 1.8, http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.zip
 * Boost 1.49, http://www.boost.org/users/download/
+* Doxygen 1.8, http://www.stack.nl/~dimitri/doxygen/download.html
+
+For install this requirements in Debian or distributions based on Debian, type:
+
+    sudo apt-get install cmake libirrlicht-dev libboost-all-dev doxygen
 
 
 ## Download:
@@ -32,6 +37,12 @@ World with the following commands run in the top-level directory of ofw:
     cd build
     cmake ..
     make
+
+### Generate documentation
+
+For you generate documentation, type:
+
+    make Docs
 
 ### Usage:
 

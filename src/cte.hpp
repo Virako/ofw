@@ -16,7 +16,6 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// Include guard
 #ifndef __CTE_H
 #define __CTE_H
 

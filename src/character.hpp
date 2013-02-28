@@ -29,17 +29,63 @@ class character {
         int width;
 
 	public:
+        /**
+         * @brief Default constructor creating character with height and width
+         * per default.
+         */
         character();
+
+        /**
+         * @brief Destructor default.
+         */
         ~character();
 
+        /**
+         * @brief Get the current character's height.
+         *
+         * @return current character's height.
+         */
         int get_height(void) {return this->height;}
+
+        /**
+         * @brief Get the current character's width.
+         *
+         * @return current character's width.
+         */
         int get_width(void) {return this->width;}
+
+        /**
+         * @brief Set character's height checking if value is correct.
+         *
+         * @param height character's height
+         */
         void set_height(int height);
+
+        /**
+         * @brief Set character's width checking if value is correct.
+         *
+         * @param width character's width
+         */
         void set_width(int width);
 
+        /**
+         * @brief Increment character's height in HEIGHT_INC
+         */
         void height_inc();
+
+        /**
+         * @brief Decrement character's height in HEIGHT_INC
+         */
         void height_dec();
+
+        /**
+         * @brief Increment character's width in WIDTH_INC
+         */
         void width_inc();
+
+        /**
+         * @brief Decrement character's width in WIDTH_INC
+         */
         void width_dec();
 };
 
