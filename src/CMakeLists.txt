@@ -17,6 +17,7 @@
 set(SRC_files
     main.cpp
     character.cpp
+    player.cpp
     cte.hpp)
 
 # ADD THE EXECUTABLE

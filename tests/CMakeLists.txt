@@ -22,11 +22,20 @@ IF (BOOST_FOUND)
     target_link_libraries(ofw ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 ENDIF (BOOST_FOUND)
 
-set(SRC_test
+set(SRC_test_character
     character_test.cpp
     ../src/character.cpp)
 
-add_executable(character_test ${SRC_test})
+set(SRC_test_player
+    player_test.cpp
+    ../src/character.cpp
+    ../src/player.cpp)
+
+add_executable(character_test ${SRC_test_character})
+add_executable(player_test ${SRC_test_player})
+
 target_link_libraries(character_test ${Boost_LIBRARIES})
+target_link_libraries(player_test ${Boost_LIBRARIES})
 
 ADD_TEST(character_test ${EXECUTABLE_OUTPUT_PATH}/character_test)
+ADD_TEST(player_test ${EXECUTABLE_OUTPUT_PATH}/player_test)

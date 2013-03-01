@@ -23,7 +23,7 @@
 using namespace std;
 
 
-class character {
+class Character {
 	private:
         int height;
         int width;
@@ -33,26 +33,26 @@ class character {
          * @brief Default constructor creating character with height and width
          * per default.
          */
-        character();
+        Character();
 
         /**
          * @brief Destructor default.
          */
-        ~character();
+        ~Character();
 
         /**
          * @brief Get the current character's height.
          *
          * @return current character's height.
          */
-        int get_height(void) {return this->height;}
+        int get_height(void);
 
         /**
          * @brief Get the current character's width.
          *
          * @return current character's width.
          */
-        int get_width(void) {return this->width;}
+        int get_width(void);
 
         /**
          * @brief Set character's height checking if value is correct.
@@ -68,25 +68,14 @@ class character {
          */
         void set_width(int width);
 
-        /**
-         * @brief Increment character's height in HEIGHT_INC
-         */
-        void height_inc();
-
-        /**
-         * @brief Decrement character's height in HEIGHT_INC
-         */
-        void height_dec();
-
-        /**
-         * @brief Increment character's width in WIDTH_INC
-         */
-        void width_inc();
-
-        /**
-         * @brief Decrement character's width in WIDTH_INC
-         */
-        void width_dec();
 };
+
+inline int Character::get_height(void) {
+    return this->height;
+}
+
+inline int Character::get_width(void) {
+    return this->width;
+}
 
 #endif

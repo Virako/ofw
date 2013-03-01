@@ -18,30 +18,34 @@
 
 #include <stdexcept>
 
-#include "character.hpp"
+#include "player.hpp"
 #include "cte.hpp"
 
 using namespace hw;
 
 
-Character::Character() {
-    this->height = HEIGHT_CTE;
-    this->width = WIDTH_CTE;
+Player::Player() {
+    this->total_life = 5;
 }
 
-Character::~Character() {
+Player::~Player() {
 }
 
-void Character::set_height(int height) {
-    if (height < HEIGHT_MIN || height > HEIGHT_MAX)
+void Player::set_life(int life) {
+    if (life < 0 || life > this->get_total_life())
         throw domain_error("");
     else
-        this->height = height;
+        this->life = life;
 }
 
-void Character::set_width(int width) {
-    if (width < WIDTH_MIN || width > WIDTH_MAX)
-        throw domain_error("");
-    else
-        this->width = width;
+void Player::set_rel_life(int rel_life) {
+    this->set_life(this->get_life() + rel_life);
+}
+
+void Player::set_rel_height(int rel_height) {
+    this->set_height(this->get_height() + rel_height);
+}
+
+void Player::set_rel_width(int rel_width) {
+    this->set_width(this->get_width() + rel_width);
 }
