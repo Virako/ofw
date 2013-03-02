@@ -23,20 +23,13 @@ IF (BOOST_FOUND)
             ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 ENDIF (BOOST_FOUND)
 
-set(SRC_test_character
-    character_test.cpp
-    ../src/character.cpp)
-
 set(SRC_test_player
     player_test.cpp
     ../src/character.cpp
     ../src/player.cpp)
 
-add_executable(character_test ${SRC_test_character})
 add_executable(player_test ${SRC_test_player})
 
-target_link_libraries(character_test ${Boost_LIBRARIES})
 target_link_libraries(player_test ${Boost_LIBRARIES})
 
-ADD_TEST(character_test ${EXECUTABLE_OUTPUT_PATH}/character_test)
 ADD_TEST(player_test ${EXECUTABLE_OUTPUT_PATH}/player_test)

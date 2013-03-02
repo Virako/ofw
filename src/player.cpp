@@ -23,7 +23,10 @@
 using namespace hw;
 
 
-Player::Player(unsigned int height, unsigned int width) : Character(height, width) {
+Player::Player(unsigned int height, unsigned int width) {
+     this->height = height;
+     this->width = width;
+     this->total_life = 5;
 }
 
 Player::~Player() {

@@ -20,13 +20,6 @@
 
 #include "character.hpp"
 
-
-Character::Character(unsigned int height, unsigned int width) {
-    this->height = height;
-    this->width = width;
-    this->total_life = 5;
-}
-
 Character::~Character() {
 }
 

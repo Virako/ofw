@@ -27,72 +27,66 @@ using namespace hw;
 
 
 class Character {
-	private:
+    protected:
         unsigned int height;
         unsigned int width;
         unsigned int life;
         unsigned int total_life;
 
-	public:
-        /**
-         * @brief Default constructor creating character with height and width
-         * per default.
-         */
-        Character(unsigned int height=HEIGHT_DEFAULT, unsigned int width=WIDTH_DEFAULT);
-
+    public:
         /**
          * @brief Destructor default.
          */
-        ~Character();
+        virtual ~Character() = 0;
 
         /**
          * @brief Get the current character's height.
          *
          * @return current character's height.
          */
-        unsigned int get_height(void);
+        virtual unsigned int get_height(void);
 
         /**
          * @brief Get the current character's width.
          *
          * @return current character's width.
          */
-        unsigned int get_width(void);
+        virtual unsigned int get_width(void);
 
         /**
          * @brief Set character's height checking if value is correct.
          *
          * @param height character's height
          */
-        void set_height(unsigned int height);
+        virtual void set_height(unsigned int height);
 
         /**
          * @brief Set character's width checking if value is correct.
          *
          * @param width character's width
          */
-        void set_width(unsigned int width);
+        virtual void set_width(unsigned int width);
 
         /**
          * @brief Get the current character's life.
          *
          * @return current character's life.
          */
-        unsigned int get_life(void);
+        virtual unsigned int get_life(void);
 
         /**
          * @brief Get the current character's life.
          *
          * @return current character's life.
          */
-        unsigned int get_total_life(void);
+        virtual unsigned int get_total_life(void);
 
         /**
          * @brief Set character's life checking if value is correct.
          *
          * @param life character's life
          */
-        void set_life(unsigned int life);
+        virtual void set_life(unsigned int life);
 
         /**
          * @brief Set character's life checking if value is correct.
@@ -100,7 +94,7 @@ class Character {
          * @param rel_life character's relative life. If negative sub life and if
          * positive add life.
          */
-        void set_rel_life(int rel_life);
+        virtual void set_rel_life(int rel_life);
 
 };
 

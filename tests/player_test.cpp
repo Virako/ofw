@@ -81,3 +81,93 @@ BOOST_AUTO_TEST_CASE (width_decrement_out_domain) {
 }
 
 BOOST_AUTO_TEST_SUITE_END( )
+
+
+/*  CHARACTER METHODS */
+
+// Height
+BOOST_FIXTURE_TEST_SUITE (character_height, StructPlayer)
+
+BOOST_AUTO_TEST_CASE (height_valid) {
+    // defaults values
+    BOOST_CHECK( p->get_height() >= HEIGHT_MIN );
+    BOOST_CHECK( p->get_height() <= HEIGHT_MAX );
+
+    p->set_height(HEIGHT_MAX);
+    BOOST_CHECK( p->get_height() >= HEIGHT_MIN );
+    BOOST_CHECK( p->get_height() <= HEIGHT_MAX );
+
+    p->set_height(HEIGHT_MIN);
+    BOOST_CHECK( p->get_height() >= HEIGHT_MIN );
+    BOOST_CHECK( p->get_height() <= HEIGHT_MAX );
+}
+
+BOOST_AUTO_TEST_CASE (height_set_out_domain) {
+    BOOST_CHECK_THROW( p->set_height(HEIGHT_MAX + 1), domain_error );
+}
+
+BOOST_AUTO_TEST_SUITE_END( )
+
+
+// Width
+BOOST_FIXTURE_TEST_SUITE (character_width, StructPlayer)
+
+BOOST_AUTO_TEST_CASE (width_valid) {
+    // defaults values
+    BOOST_CHECK( p->get_width() >= WIDTH_MIN );
+    BOOST_CHECK( p->get_width() <= WIDTH_MAX );
+
+    p->set_width(WIDTH_MAX);
+    BOOST_CHECK( p->get_width() >= WIDTH_MIN );
+    BOOST_CHECK( p->get_width() <= WIDTH_MAX );
+
+    p->set_width(WIDTH_MIN);
+    BOOST_CHECK( p->get_width() >= WIDTH_MIN );
+    BOOST_CHECK( p->get_width() <= WIDTH_MAX );
+}
+
+BOOST_AUTO_TEST_CASE (width_set_out_domain) {
+    BOOST_CHECK_THROW( p->set_width(WIDTH_MAX + 1), domain_error );
+}
+
+BOOST_AUTO_TEST_SUITE_END( )
+
+// Life
+BOOST_FIXTURE_TEST_SUITE (character_life, StructPlayer)
+
+BOOST_AUTO_TEST_CASE (valid_life) {
+    unsigned int zero = 0;
+    p->set_life(zero);
+    BOOST_REQUIRE( p->get_life() <= p->get_total_life() );
+    p->set_life( p->get_total_life() );
+    BOOST_REQUIRE( p->get_life() <= p->get_total_life() );
+}
+
+BOOST_AUTO_TEST_CASE (life_increment) {
+    int increment = 1;
+    unsigned int zero = 0;
+    p->set_life(zero);
+    p->set_rel_life(increment);
+    BOOST_CHECK( p->get_life() == zero + increment );
+}
+
+BOOST_AUTO_TEST_CASE (life_decrement) {
+    int decrement = 1;
+    p->set_life(p->get_total_life());
+    p->set_rel_life(-decrement);
+    BOOST_CHECK( p->get_life() == p->get_total_life() - decrement );
+}
+
+BOOST_AUTO_TEST_CASE (life_increment_out_domain) {
+    p->set_life(p->get_total_life());
+    BOOST_CHECK_THROW( p->set_rel_life(1), domain_error );
+}
+
+BOOST_AUTO_TEST_CASE (life_decrement_out_domain) {
+    unsigned int zero = 0;
+    p->set_life(zero);
+    BOOST_CHECK_THROW( p->set_rel_life(-1), domain_error );
+}
+
+BOOST_AUTO_TEST_SUITE_END( )
+
