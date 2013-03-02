@@ -68,4 +68,4 @@ or
 ## License
 
 Open Fantasy World is licensed under GPL v3.
-[![GPL v3](http://www.gnu.org/graphics/lgplv3-147x51.png)](http://www.gnu.org/licenses/gpl.html)
+[![GPL v3](http://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl.html)
