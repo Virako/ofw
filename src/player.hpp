@@ -23,50 +23,17 @@
 
 
 class Player : public Character {
-	private:
-        int life;
-        int total_life;
-
 	public:
         /**
          * @brief Default constructor creating player with height and
          * width per default.
          */
-        Player();
+        Player(unsigned int height=HEIGHT_DEFAULT, unsigned int width=HEIGHT_DEFAULT);
 
         /**
          * @brief Destructor default.
          */
         ~Player();
-
-        /**
-         * @brief Get the current player's life.
-         *
-         * @return current player's life.
-         */
-        int get_life(void);
-
-        /**
-         * @brief Get the current player's life.
-         *
-         * @return current player's life.
-         */
-        int get_total_life(void);
-
-        /**
-         * @brief Set player's life checking if value is correct.
-         *
-         * @param life player's life
-         */
-        void set_life(int life);
-
-        /**
-         * @brief Set player's life checking if value is correct.
-         *
-         * @param rel_life player's relative life. If negative sub life and if
-         * positive add life.
-         */
-        void set_rel_life(int rel_life);
 
         /**
          * @brief Set player's relative height.
@@ -85,13 +52,5 @@ class Player : public Character {
         void set_rel_width(int rel_width);
 
 };
-
-inline int Player::get_life() {
-    return this->life;
-}
-
-inline int Player::get_total_life() {
-    return this->total_life;
-}
 
 #endif

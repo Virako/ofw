@@ -35,15 +35,13 @@ struct StructPlayer {
 BOOST_FIXTURE_TEST_SUITE (player_height, StructPlayer)
 
 BOOST_AUTO_TEST_CASE (height_increment) {
-    p->set_height(HEIGHT_CTE);
     p->set_rel_height(1);
-    BOOST_CHECK( p->get_height() == HEIGHT_CTE + 1 );
+    BOOST_CHECK( p->get_height() == HEIGHT_DEFAULT + 1 );
 }
 
 BOOST_AUTO_TEST_CASE (height_decrement) {
-    p->set_height(HEIGHT_CTE);
     p->set_rel_height(-1);
-    BOOST_CHECK( p->get_height() == HEIGHT_CTE - 1 );
+    BOOST_CHECK( p->get_height() == HEIGHT_DEFAULT - 1 );
 }
 
 BOOST_AUTO_TEST_CASE (height_increment_out_domain) {
@@ -63,15 +61,13 @@ BOOST_AUTO_TEST_SUITE_END( )
 BOOST_FIXTURE_TEST_SUITE (player_width, StructPlayer)
 
 BOOST_AUTO_TEST_CASE (width_increment) {
-    p->set_width(WIDTH_CTE);
     p->set_rel_width(1);
-    BOOST_CHECK( p->get_width() == WIDTH_CTE + 1 );
+    BOOST_CHECK( p->get_width() == WIDTH_DEFAULT + 1 );
 }
 
 BOOST_AUTO_TEST_CASE (width_decrement) {
-    p->set_width(WIDTH_CTE);
     p->set_rel_width(-1);
-    BOOST_CHECK( p->get_width() == WIDTH_CTE - 1 );
+    BOOST_CHECK( p->get_width() == WIDTH_DEFAULT - 1 );
 }
 
 BOOST_AUTO_TEST_CASE (width_increment_out_domain) {
@@ -82,44 +78,6 @@ BOOST_AUTO_TEST_CASE (width_increment_out_domain) {
 BOOST_AUTO_TEST_CASE (width_decrement_out_domain) {
     p->set_width(WIDTH_MIN);
     BOOST_CHECK_THROW( p->set_rel_width(-1), domain_error );
-}
-
-BOOST_AUTO_TEST_SUITE_END( )
-
-// Life
-BOOST_FIXTURE_TEST_SUITE (player_life, StructPlayer)
-
-BOOST_AUTO_TEST_CASE (valid_life) {
-    p->set_life(0);
-    BOOST_REQUIRE( p->get_life() >= 0 );
-    BOOST_REQUIRE( p->get_life() <= p->get_total_life() );
-    p->set_life( p->get_total_life() );
-    BOOST_REQUIRE( p->get_life() >= 0 );
-    BOOST_REQUIRE( p->get_life() <= p->get_total_life() );
-}
-
-BOOST_AUTO_TEST_CASE (life_increment) {
-    int increment = 1;
-    p->set_life(0);
-    p->set_rel_life(increment);
-    BOOST_CHECK( p->get_life() == 0 + increment );
-}
-
-BOOST_AUTO_TEST_CASE (life_decrement) {
-    int decrement = 1;
-    p->set_life(p->get_total_life());
-    p->set_rel_life(-decrement);
-    BOOST_CHECK( p->get_life() == p->get_total_life() - decrement );
-}
-
-BOOST_AUTO_TEST_CASE (life_increment_out_domain) {
-    p->set_life(p->get_total_life());
-    BOOST_CHECK_THROW( p->set_rel_life(1), domain_error );
-}
-
-BOOST_AUTO_TEST_CASE (life_decrement_out_domain) {
-    p->set_life(0);
-    BOOST_CHECK_THROW( p->set_rel_life(-1), domain_error );
 }
 
 BOOST_AUTO_TEST_SUITE_END( )

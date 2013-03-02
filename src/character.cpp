@@ -19,29 +19,38 @@
 #include <stdexcept>
 
 #include "character.hpp"
-#include "cte.hpp"
-
-using namespace hw;
 
 
-Character::Character() {
-    this->height = HEIGHT_CTE;
-    this->width = WIDTH_CTE;
+Character::Character(unsigned int height, unsigned int width) {
+    this->height = height;
+    this->width = width;
+    this->total_life = 5;
 }
 
 Character::~Character() {
 }
 
-void Character::set_height(int height) {
+void Character::set_height(unsigned int height) {
     if (height < HEIGHT_MIN || height > HEIGHT_MAX)
         throw domain_error("");
     else
         this->height = height;
 }
 
-void Character::set_width(int width) {
+void Character::set_width(unsigned int width) {
     if (width < WIDTH_MIN || width > WIDTH_MAX)
         throw domain_error("");
     else
         this->width = width;
+}
+
+void Character::set_life(unsigned int life) {
+    if (life > this->get_total_life())
+        throw domain_error("");
+    else
+        this->life = life;
+}
+
+void Character::set_rel_life(int rel_life) {
+    this->set_life(this->get_life() + rel_life);
 }

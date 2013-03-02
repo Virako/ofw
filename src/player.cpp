@@ -20,26 +20,13 @@
 
 #include "player.hpp"
 #include "cte.hpp"
-
 using namespace hw;
 
 
-Player::Player() {
-    this->total_life = 5;
+Player::Player(unsigned int height, unsigned int width) : Character(height, width) {
 }
 
 Player::~Player() {
-}
-
-void Player::set_life(int life) {
-    if (life < 0 || life > this->get_total_life())
-        throw domain_error("");
-    else
-        this->life = life;
-}
-
-void Player::set_rel_life(int rel_life) {
-    this->set_life(this->get_life() + rel_life);
 }
 
 void Player::set_rel_height(int rel_height) {

@@ -22,18 +22,23 @@
 #include <string>
 using namespace std;
 
+#include "cte.hpp"
+using namespace hw;
+
 
 class Character {
 	private:
-        int height;
-        int width;
+        unsigned int height;
+        unsigned int width;
+        unsigned int life;
+        unsigned int total_life;
 
 	public:
         /**
          * @brief Default constructor creating character with height and width
          * per default.
          */
-        Character();
+        Character(unsigned int height=HEIGHT_DEFAULT, unsigned int width=WIDTH_DEFAULT);
 
         /**
          * @brief Destructor default.
@@ -45,37 +50,74 @@ class Character {
          *
          * @return current character's height.
          */
-        int get_height(void);
+        unsigned int get_height(void);
 
         /**
          * @brief Get the current character's width.
          *
          * @return current character's width.
          */
-        int get_width(void);
+        unsigned int get_width(void);
 
         /**
          * @brief Set character's height checking if value is correct.
          *
          * @param height character's height
          */
-        void set_height(int height);
+        void set_height(unsigned int height);
 
         /**
          * @brief Set character's width checking if value is correct.
          *
          * @param width character's width
          */
-        void set_width(int width);
+        void set_width(unsigned int width);
+
+        /**
+         * @brief Get the current character's life.
+         *
+         * @return current character's life.
+         */
+        unsigned int get_life(void);
+
+        /**
+         * @brief Get the current character's life.
+         *
+         * @return current character's life.
+         */
+        unsigned int get_total_life(void);
+
+        /**
+         * @brief Set character's life checking if value is correct.
+         *
+         * @param life character's life
+         */
+        void set_life(unsigned int life);
+
+        /**
+         * @brief Set character's life checking if value is correct.
+         *
+         * @param rel_life character's relative life. If negative sub life and if
+         * positive add life.
+         */
+        void set_rel_life(int rel_life);
 
 };
 
-inline int Character::get_height(void) {
+inline unsigned int Character::get_height(void) {
     return this->height;
 }
 
-inline int Character::get_width(void) {
+inline unsigned int Character::get_width(void) {
     return this->width;
+}
+
+inline unsigned int Character::get_life() {
+    return this->life;
+}
+
+inline unsigned int Character::get_total_life() {
+    return this->total_life;
 }
 
 #endif
