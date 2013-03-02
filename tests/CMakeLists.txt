@@ -17,9 +17,10 @@
 include_directories(../src)
 
 # Boost
-find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system filesystem unit_test_framework)
+find_package(Boost 1.36 REQUIRED COMPONENTS unit_test_framework)
 IF (BOOST_FOUND)
-    target_link_libraries(ofw ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+    target_link_libraries(ofw ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY}
+            ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 ENDIF (BOOST_FOUND)
 
 set(SRC_test_character
