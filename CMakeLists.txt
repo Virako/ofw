@@ -25,7 +25,7 @@ IF(CMAKE_COMPILER_IS_GNUCXX)
     # TARGETS. # Add -Wextra warning: unused parameter in irrlicht. ↓
     SET(CMAKE_CXX_FLAGS "-std=c++03 -pedantic -pthread -ggdb")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O0")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -Wextra")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
 ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 
