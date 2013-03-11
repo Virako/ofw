@@ -23,7 +23,7 @@ cmake_minimum_required(VERSION 2.6)
 IF(CMAKE_COMPILER_IS_GNUCXX)
     MESSAGE(STATUS "G++ detected - Adding compiler flags")
     # TARGETS. # Add -Wextra warning: unused parameter in irrlicht. ↓
-    SET(CMAKE_CXX_FLAGS "-std=c++03 -pedantic -pthread -ggdb")
+    SET(CMAKE_CXX_FLAGS "-std=c++03 -pedantic -ggdb")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O0")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -Wextra")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
