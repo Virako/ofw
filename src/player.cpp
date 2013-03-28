@@ -22,6 +22,11 @@
 #include "cte.hpp"
 using namespace hw;
 
+namespace ofw
+{
+
+namespace scene
+{
 
 Player::Player(unsigned int height, unsigned int width) {
      this->height = height;
@@ -38,4 +43,8 @@ void Player::set_rel_height(int rel_height) {
 
 void Player::set_rel_width(int rel_width) {
     this->set_width(this->get_width() + rel_width);
+}
+
+}
+
 }

@@ -21,6 +21,11 @@
 
 #include "character.hpp"
 
+namespace ofw
+{
+
+namespace scene
+{
 
 class Player : public Character {
 	public:
@@ -53,4 +58,7 @@ class Player : public Character {
 
 };
 
+}
+
+}
 #endif
