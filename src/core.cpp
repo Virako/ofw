@@ -17,10 +17,7 @@
  * * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-#ifndef __CORE_H
-#define __CORE_H
-
-#include "irrlicht.h"
+#include "core.hpp"
 
 namespace ofw
 {
@@ -28,21 +25,16 @@ namespace ofw
 namespace core
 {
 
-class Core {
-    private:
-        irr::video::E_DRIVER_TYPE prefered_driver;
-        irr::IrrlichtDevice* device;
+Core::Core(irr::video::E_DRIVER_TYPE prefered_driver, irr::IrrlichtDevice* device) {
+    this->prefered_driver = prefered_driver;
+    this->device = device;
+}
 
-        Core(irr::video::E_DRIVER_TYPE prefered_driver, irr::IrrlichtDevice* device);
-        Core(const Core&);
-        void operator=(const Core&);
-
-    public:
-        static Core& get_instance(irr::video::E_DRIVER_TYPE prefered_driver, irr::IrrlichtDevice* device);
-};
-
+Core& Core::get_instance(irr::video::E_DRIVER_TYPE prefered_driver, irr::IrrlichtDevice* device) {
+    static Core core(prefered_driver, device);
+    return core;
 }
 
 }
 
-#endif
+}
