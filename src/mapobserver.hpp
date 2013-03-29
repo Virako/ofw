@@ -21,7 +21,8 @@
 #define __MAPOBSERVER_H
 
 //OFW dependences.
-#include "SectorObserver.hpp"
+#include "sectorobserver.hpp"
+#include "sector.hpp"
 
 namespace ofw
 {
@@ -31,10 +32,16 @@ namespace scene
 
 class MapObserver : public OFWObserver {
     private:
-        list<SectorObserver> sectors_observers;
+        std::list<SectorObserver> sectors_observers;
 
     public:
         void update();
+        template<class T>
+        std::list<T> get_all_elements(ElementType type);
+        template<class T>
+        std::list<T> get_sector_elements(ElementType type, Sector sector);
+        template<class T>
+        void set_element(T element);
 };
 
 }

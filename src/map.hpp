@@ -22,6 +22,8 @@
 
 #include <string>
 #include "mapobserver.hpp"
+#include "sector.hpp"
+#include "core.hpp"
 
 namespace irr
 {
@@ -66,16 +68,18 @@ class Map {
          *
          * @return current scene frame.
          */
-        IAnimatedMesh* get_animated_mesh();
+        irr::scene::IAnimatedMesh* get_animated_mesh();
 
         /**
-         * @brief Adds a character to a especific sector in the map.
+         * @brief Add a new element to a map sector.
          *
-         * @param character Character to be added to the map.
+         * @param element The element to be added.
          *
-         * @param sector Sector in which the character is going to be added.
+         * @param sector The sector in which the new element is going to be
+         * added.
          */
-        void add_character(Character character, Sector sector);
+        template <class T>
+        void add_element(T element, Sector sector);
 
         /**
          * @brief Remove a character from the map.
@@ -90,36 +94,26 @@ class Map {
         void remove_character(Sector sector);
 
         /**
-         * @brief Gives a list with all the characters in the map.
+         * @brief Returns all the elements of an specific type present on the
+         * map.
          *
-         * @return List of characters, contains all the characters that are in the map.
+         *
+         * @return A list with the elements.
          */
-        list<Character> get_all_characters();
+        template <class T>
+        std::list<T> get_all_elements(ElementType type);
 
         /**
-         * @brief Looks for all the characters present in a specific sector.
+         * @brief Returns all the elements of an specific type present in one
+         * specific sector of the map.
          *
-         * @param sector Sector from which the characters will be retrieved.
+         * @param sector Sector from which the elements are going to be
+         * retrieved.
          *
-         * @return List of characters.
+         * @return A list with the elements.
          */
-       list<Character> get_sector_characters(Sector sector);
-
-        /**
-         * @brief Gives a list with all the objects in the map.
-         *
-         * @return List of objects, contains all the objects that are in the map.
-         */
-        list<Object> get_all_objects();
-
-        /**
-         * @brief Looks for all the objects present in a specific sector.
-         *
-         * @param sector Sector from which the objects will be retrieved.
-         *
-         * @return List of objects.
-         */
-       list<Character> get_sector_objects(Sector sector);
+        template <class T>
+        std::list<T> get_sector_elements(Sector sector);
 
        /**
         * @brief This method assigns sectors to the map.
@@ -132,4 +126,3 @@ class Map {
 }
 
 #endif
-

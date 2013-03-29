@@ -17,40 +17,25 @@
  * * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-
-#ifndef __SectorObserver_H
-#define __SectorObserver_H
-
-//External libraries.
-#include <list>
-
-//OFW dependences.
-#include "characterobserver.hpp"
-#include "objectobserver.hpp"
+#include "map.hpp"
 
 namespace ofw
 {
 
 namespace scene
-
 {
 
-enum ElementType {
-    CHARACTER, PLAYER, NPC, CRACKER, HACKER, HUNTERBUG,
-    DESIGNER, PICACODE, ENVIROMENT_OBJECT, GENERAL_ITEM
-};
+Map::Map(irr::scene::ISceneManager* smgr, std::string model_path, MapObserver observer) {
+    this->smgr = smgr;
+    this->model_path = model_path;
+    this->observer = observer;
+}
 
-class SectorObserver : public OFWObserver {
-    private:
-        std::list<CharacterObserver> characters_observers;
-        std::list<ObjectObserver> objects_observers;
-
-    public:
-        void update();
-};
-
+template <class T>
+std::list<T> Map::get_all_elements(ElementType type) {
+    this->observer;
 }
 
 }
 
-#endif
+}

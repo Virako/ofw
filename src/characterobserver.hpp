@@ -17,34 +17,18 @@
  * * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+#ifndef __CHARACTEROBSERVER_H
+#define __CHARACTEROBSERVER_H
 
-#ifndef __SectorObserver_H
-#define __SectorObserver_H
-
-//External libraries.
-#include <list>
-
-//OFW dependences.
-#include "characterobserver.hpp"
-#include "objectobserver.hpp"
+#include "ofwobserver.hpp"
 
 namespace ofw
 {
 
 namespace scene
-
 {
 
-enum ElementType {
-    CHARACTER, PLAYER, NPC, CRACKER, HACKER, HUNTERBUG,
-    DESIGNER, PICACODE, ENVIROMENT_OBJECT, GENERAL_ITEM
-};
-
-class SectorObserver : public OFWObserver {
-    private:
-        std::list<CharacterObserver> characters_observers;
-        std::list<ObjectObserver> objects_observers;
-
+class CharacterObserver : public OFWObserver {
     public:
         void update();
 };
