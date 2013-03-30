@@ -25,6 +25,11 @@ using namespace std;
 #include "cte.hpp"
 using namespace hw;
 
+namespace ofw
+{
+
+namespace scene
+{
 
 class Character {
     protected:
@@ -112,6 +117,10 @@ inline unsigned int Character::get_life() {
 
 inline unsigned int Character::get_total_life() {
     return this->total_life;
+}
+
+}
+
 }
 
 #endif

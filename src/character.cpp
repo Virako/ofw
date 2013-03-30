@@ -20,6 +20,12 @@
 
 #include "character.hpp"
 
+namespace ofw
+{
+
+namespace scene
+{
+
 Character::~Character() {
 }
 
@@ -46,4 +52,8 @@ void Character::set_life(unsigned int life) {
 
 void Character::set_rel_life(int rel_life) {
     this->set_life(this->get_life() + rel_life);
+}
+
+}
+
 }

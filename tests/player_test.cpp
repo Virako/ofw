@@ -26,8 +26,8 @@
 using namespace hw;
 
 struct StructPlayer {
-    Player *p;
-    StructPlayer() { p = new Player(); } // setUp
+    ofw::scene::Player *p;
+    StructPlayer() { p = new ofw::scene::Player(); } // setUp
     ~StructPlayer() { delete(p); }  // tearDown
 };
 
