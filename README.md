@@ -65,6 +65,16 @@ or
 
 ..in the build directory.
 
+## FAQ
+
+__Error__: I get error when I run ofw:
+
+    pure virtual method called
+    terminate called without an active exception
+    Aborted (core dumped)
+
+__Solve__: You need install irrlicht version 1.8. This problem happens in kernel 3.8.5
+
 ## License
 
 Open Fantasy World is licensed under GPL v3.

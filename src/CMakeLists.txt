@@ -40,7 +40,7 @@ IF (WIN32)
 ENDIF (WIN32)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # GL Xrand and X11 are required to compile in Linux
-    target_link_libraries (ofw ${IRRLICHT_LIBRARIES} GL Xrandr X11)
+    target_link_libraries (ofw ${IRRLICHT_LIBRARIES} GL Xrandr X11 Xxf86vm)
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 # Project executable output path
