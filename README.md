@@ -9,10 +9,11 @@ Open Fantasy World is a MMORPG where the players will live in community.
 * Irrlicht 1.8, http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.zip
 * Boost 1.49, http://www.boost.org/users/download/
 * Doxygen 1.8, http://www.stack.nl/~dimitri/doxygen/download.html
+* Qt 4.8, http://qt-project.org/downloads
 
 For install this requirements in Debian or distributions based on Debian, type:
 
-    sudo apt-get install cmake libirrlicht-dev libboost-all-dev doxygen libxxf86vm-dev
+    sudo apt-get install cmake libirrlicht-dev libboost-all-dev doxygen libqt4-dev libqtcore4 libxxf86vm-dev
 
 
 ## Download:

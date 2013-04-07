@@ -14,16 +14,26 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
-set(SRC_files
-    main.cpp
-    character.cpp
-    player.cpp
-    cte.hpp)
-
-# ADD THE EXECUTABLE
-ADD_EXECUTABLE (ofw ${SRC_files})
-
 ########### COMMON LIBS ###########
+
+# Qt
+find_package(Qt4 REQUIRED)
+
+INCLUDE(${QT_USE_FILE})
+
+SET(HWQ_Qt4_UI
+    gui/select_player.ui)
+SET(HWQ_Qt4_SRC
+    gui/select_player.hpp)
+SET(HWQ_Qt4_RES)
+SET(HWQ_LIB ${QT_LIBRARIES})
+
+QT4_WRAP_CPP(HWQ_MOC_CPP ${HWQ_Qt4_SRC})
+QT4_WRAP_UI(HWQ_UI_CPP ${HWQ_Qt4_UI})
+QT4_ADD_RESOURCES(HWQ_RES_H ${HWQ_Qt4_RES})
+
+include_directories(../build/src)
+
 
 # Irrlicht
 find_package(Irrlicht REQUIRED)
@@ -36,12 +46,24 @@ endif (${IRRLICHT_VERSION} MATCHES "1.8")
 include_directories(${IRRLICHT_INCLUDE_DIRS})
 IF (WIN32)
     # TODO: check
-    target_link_libraries (ofw ${IRRLICHT_LIBRARIES})
+    SET(IRR_LIB ${IRRLICHT_LIBRARIES})
 ENDIF (WIN32)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # GL Xrand and X11 are required to compile in Linux
-    target_link_libraries (ofw ${IRRLICHT_LIBRARIES} GL Xrandr X11 Xxf86vm)
+    SET(IRR_LIB ${IRRLICHT_LIBRARIES} GL Xrandr X11 Xxf86vm)
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
-# Project executable output path
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_HOME_DIRECTORY}/bin)
+
+SET(HWQ_SRC
+    main.cpp
+    character.cpp
+    player.cpp
+    cte.hpp
+    gui/select_player.cpp
+    ${HWQ_MOC_CPP}
+    ${HWQ_UI_CPP}
+    ${HWQ_RES_H})
+
+ADD_EXECUTABLE (ofw ${HWQ_SRC})
+TARGET_LINK_LIBRARIES(ofw ${HWQ_LIB} ${IRR_LIB})
+INSTALL_TARGETS (${CMAKE_HOME_DIRECTORY}/bin ofw)

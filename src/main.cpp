@@ -18,13 +18,23 @@
 
 #include <irrlicht.h>
 #include "driverChoice.h"
+#include <QApplication>
 
 #ifdef _IRR_WINDOWS_
 #pragma comment(lib, "Irrlicht.lib")
 #pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
 #endif
 
-int main() {
+#include "gui/select_player.hpp"
+
+
+int main(int argc, char *argv[]) {
+
+    QApplication app(argc, argv);
+    SelectPlayer sp;
+    sp.show();
+    app.exec();
+
     // ask user for driver
     irr::video::E_DRIVER_TYPE driverType = irr::driverChoiceConsole();
     if (driverType == irr::video::EDT_COUNT)
