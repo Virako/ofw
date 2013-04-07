@@ -12,7 +12,7 @@ Open Fantasy World is a MMORPG where the players will live in community.
 
 For install this requirements in Debian or distributions based on Debian, type:
 
-    sudo apt-get install cmake libirrlicht-dev libboost-all-dev doxygen
+    sudo apt-get install cmake libirrlicht-dev libboost-all-dev doxygen libxxf86vm-dev
 
 
 ## Download:
