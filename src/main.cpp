@@ -18,7 +18,7 @@
 
 #include <irrlicht.h>
 #include "driverChoice.h"
-#include <QApplication>
+#include <QtGui/QApplication>
 
 #ifdef _IRR_WINDOWS_
 #pragma comment(lib, "Irrlicht.lib")
@@ -27,14 +27,36 @@
 
 #include "gui/select_player.hpp"
 
+#include <GL/glx.h>
 
 int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
     SelectPlayer sp;
     sp.show();
-    app.exec();
+    sp.getIrrlichtWidget()->init();
+    if (sp.getIrrlichtWidget()->getIrrlichtDevice()) {
+        irr::video::IVideoDriver* driver = sp.getIrrlichtWidget()->getIrrlichtDevice()->getVideoDriver();
+        irr::scene::ISceneManager* smgr = sp.getIrrlichtWidget()->getIrrlichtDevice()->getSceneManager();
+        irr::scene::IAnimatedMesh* player = smgr->getMesh("../media/ninja.b3d");
+        if (!player) {
+            sp.getIrrlichtWidget()->getIrrlichtDevice()->drop();
+            return 1;
+        }
+        irr::scene::IAnimatedMeshSceneNode* player_ani = smgr->addAnimatedMeshSceneNode(player);
+        if (player_ani) {
+            player_ani->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+            player_ani->setFrameLoop(0, 13);  // nº frame
+            player_ani->setAnimationSpeed(10); // fps
+            player_ani->setMaterialTexture(0, driver->getTexture("../media/ninja.jpg"));
+            player_ani->setScale(irr::core::vector3df(1,1,1));
+            player_ani->setPosition(irr::core::vector3df(0,0,0));
+            player_ani->setRotation(irr::core::vector3df(0,0,0));
+        }
+    }
+    return app.exec();
 
+    /* ///////////////
     // ask user for driver
     irr::video::E_DRIVER_TYPE driverType = irr::driverChoiceConsole();
     if (driverType == irr::video::EDT_COUNT)
@@ -83,4 +105,5 @@ int main(int argc, char *argv[]) {
     }
     device->drop();
     return 0;
+    */ //////////////
 }

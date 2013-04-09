@@ -24,7 +24,8 @@ INCLUDE(${QT_USE_FILE})
 SET(HWQ_Qt4_UI
     gui/select_player.ui)
 SET(HWQ_Qt4_SRC
-    gui/select_player.hpp)
+    gui/select_player.hpp
+    gui/irrlicht_widget.hpp)
 SET(HWQ_Qt4_RES)
 SET(HWQ_LIB ${QT_LIBRARIES})
 
@@ -32,7 +33,7 @@ QT4_WRAP_CPP(HWQ_MOC_CPP ${HWQ_Qt4_SRC})
 QT4_WRAP_UI(HWQ_UI_CPP ${HWQ_Qt4_UI})
 QT4_ADD_RESOURCES(HWQ_RES_H ${HWQ_Qt4_RES})
 
-include_directories(../build/src)
+include_directories(../build/src ../build/src/gui)
 
 
 # Irrlicht
@@ -60,10 +61,12 @@ SET(HWQ_SRC
     player.cpp
     cte.hpp
     gui/select_player.cpp
+    gui/irrlicht_widget.cpp
     ${HWQ_MOC_CPP}
     ${HWQ_UI_CPP}
     ${HWQ_RES_H})
 
 ADD_EXECUTABLE (ofw ${HWQ_SRC})
 TARGET_LINK_LIBRARIES(ofw ${HWQ_LIB} ${IRR_LIB})
-INSTALL_TARGETS (${CMAKE_HOME_DIRECTORY}/bin ofw)
+#INSTALL_TARGETS (${CMAKE_HOME_DIRECTORY}/bin ofw)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_HOME_DIRECTORY}/bin)

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>659</width>
-    <height>580</height>
+    <width>660</width>
+    <height>579</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,6 +31,9 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
@@ -108,7 +111,7 @@
           <x>0</x>
           <y>0</y>
           <width>212</width>
-          <height>509</height>
+          <height>519</height>
          </rect>
         </property>
         <widget class="QTextBrowser" name="textBrowser">
@@ -210,4 +213,3 @@ p, li { white-space: pre-wrap; }
   </connection>
  </connections>
 </ui>
-

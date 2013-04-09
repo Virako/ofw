@@ -20,6 +20,9 @@
 #define SELECT_PLAYER_HPP
 
 #include <QMainWindow>
+#include <QResizeEvent>
+
+#include "irrlicht_widget.hpp"
 
 namespace Ui {
     class SelectPlayer;
@@ -31,12 +34,11 @@ class SelectPlayer : public QMainWindow {
     public:
         explicit SelectPlayer(QWidget *parent=0);
         ~SelectPlayer();
+        QIrrlichtWidget* getIrrlichtWidget(){return &irrWidget;}
 
     private:
         Ui::SelectPlayer *ui;
-
-    private slots:
-        void on_b_create_clicked();
+        QIrrlichtWidget irrWidget;
 };
 
 #endif

@@ -18,16 +18,11 @@
 
 #include "select_player.hpp"
 #include "ui_select_player.h"
-#include <QMessageBox>
 
 SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::SelectPlayer) {
     ui->setupUi(this);
-}
-
-void SelectPlayer::on_b_create_clicked() {
-    QMessageBox messageBox;
-    messageBox.critical(0,"Error","Not Yet implemented!");
-    messageBox.setFixedSize(500,200);
+    irrWidget.setParent(ui->centralWidget);
+    //irrWidget.setGeometry(0, 0, 369, 577);
 }
 
 SelectPlayer::~SelectPlayer() {
