@@ -24,47 +24,28 @@
 #include <QResizeEvent>
 #include <irrlicht.h>
 
-using namespace irr;
-using namespace core;
-using namespace scene;
-using namespace video;
-using namespace io;
 
-// Our Irrlicht rendering widget
-// To have everything compile, we need to run MOC on this file
 class QIrrlichtWidget : public QWidget {
-    // Macro for the meta-object compiler MOC
     Q_OBJECT
 
     public:
         explicit QIrrlichtWidget(QWidget *parent = 0);
         ~QIrrlichtWidget();
-
-        // Returns a pointer to the Irrlicht Device
-        IrrlichtDevice* getIrrlichtDevice();
-
-        // Create the Irrlicht device and connect the signals and slots
+        irr::IrrlichtDevice* getIrrlichtDevice();
         void init();
 
     signals:
-        // Signal that its time to update the frame
-        void updateIrrlichtQuery(IrrlichtDevice* device);
-
-    private slots:
-        void on_b_create_clicked();
+        void updateIrrlichtQuery(irr::IrrlichtDevice* device);
 
     public slots:
-        // Function called in response to updateIrrlichtQuery. Renders the scene in the widget
-        void updateIrrlicht(IrrlichtDevice* device);
+        void updateIrrlicht(irr::IrrlichtDevice* device);
 
     protected:
         virtual void paintEvent(QPaintEvent* event);
         virtual void timerEvent(QTimerEvent* event);
         virtual void resizeEvent(QResizeEvent* event);
-
-        IrrlichtDevice *device;
-        // We keep the camera inside this widget so we can resize the window dynamically
-        ICameraSceneNode* camera;
+        irr::IrrlichtDevice *device;
+        irr::scene::ICameraSceneNode* camera;
 };
 
 #endif

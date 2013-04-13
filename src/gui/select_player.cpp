@@ -16,15 +16,42 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QMessageBox>
 #include "select_player.hpp"
 #include "ui_select_player.h"
 
 SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::SelectPlayer) {
     ui->setupUi(this);
     irrWidget.setParent(ui->centralWidget);
-    //irrWidget.setGeometry(0, 0, 369, 577);
+    irrWidget.setGeometry(0, 0, 800, 600);
+    this->resize(800, 600);
+
+    //ui->height->rangeChanged(80,100);
+
+    connect(ui->b_create, SIGNAL(clicked()), this, SLOT(on_b_create_clicked()));
+    connect(ui->height, SIGNAL(valueChanged()), this,
+            SLOT(changed_height(ui->height->value())));
+    //connect(ui->width, SIGNAL(valueChanged()), this, SLOT(changed_width(ui->height->value())));
 }
 
 SelectPlayer::~SelectPlayer() {
     delete ui;
+}
+
+void SelectPlayer::on_b_create_clicked() {
+    QMessageBox messageBox;
+    messageBox.critical(0,"Error","Not Yet implemented!");
+    messageBox.setFixedSize(500,200);
+}
+
+void SelectPlayer::changed_height(int value) {
+    QMessageBox messageBox;
+    messageBox.critical(0,"Error","Tssss, CRACK");
+    messageBox.setFixedSize(500,200);
+}
+
+void SelectPlayer::changed_width(int value) {
+    QMessageBox messageBox;
+    messageBox.critical(0,"Error","Tssss, CRACK");
+    messageBox.setFixedSize(500,200);
 }

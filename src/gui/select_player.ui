@@ -6,193 +6,259 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
-    <height>579</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="font">
-   <font>
-    <family>Monospace</family>
-   </font>
-  </property>
-  <property name="mouseTracking">
-   <bool>false</bool>
   </property>
   <property name="windowTitle">
    <string>Open Fantasy World</string>
   </property>
-  <property name="autoFillBackground">
-   <bool>true</bool>
-  </property>
-  <widget class="QWidget" name="centralWidget">
-   <property name="autoFillBackground">
-    <bool>true</bool>
-   </property>
-   <widget class="QWidget" name="gridLayoutWidget">
+  <widget class="QWidget" name="widget">
+   <widget class="QPushButton" name="b_quit">
     <property name="geometry">
      <rect>
-      <x>-1</x>
-      <y>-1</y>
-      <width>661</width>
-      <height>581</height>
+      <x>60</x>
+      <y>340</y>
+      <width>75</width>
+      <height>24</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="2">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="l_height">
-         <property name="text">
-          <string>height</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSlider" name="height">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="l_width">
-         <property name="text">
-          <string>width</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSlider" name="width">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="l_other_1">
-         <property name="text">
-          <string>color</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSlider" name="other_1">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="b_quit">
-       <property name="text">
-        <string>Quit</string>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QScrollArea" name="scrollArea">
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>212</width>
-          <height>519</height>
-         </rect>
-        </property>
-        <widget class="QTextBrowser" name="textBrowser">
-         <property name="geometry">
-          <rect>
-           <x>-5</x>
-           <y>-9</y>
-           <width>221</width>
-           <height>521</height>
-          </rect>
-         </property>
-         <property name="html">
-          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+    <property name="text">
+     <string>Quit</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>30</y>
+      <width>99</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Picacode</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hacker</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cracker</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Designer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hunterbug</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Virako</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QSlider" name="height">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>50</y>
+      <width>84</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="l_height">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>32</y>
+      <width>40</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>height</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="l_other">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>112</y>
+      <width>35</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>other</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="l_width">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>70</y>
+      <width>33</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>width</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="name">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>340</y>
+      <width>110</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string>nombre</string>
+    </property>
+    <property name="maxLength">
+     <number>50</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="other">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>130</y>
+      <width>84</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>191</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Monospace'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas &amp;quot;Letraset&amp;quot;, las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QPushButton" name="b_create">
-       <property name="text">
-        <string>Create</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="name">
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="text">
-        <string>nombre</string>
-       </property>
-       <property name="maxLength">
-        <number>50</number>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox">
-       <item>
-        <property name="text">
-         <string>Picacode</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Hacker</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Cracker</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Designer</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Hunterbug</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Virako</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-    </layout>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Monospace';&quot;&gt;Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas &amp;quot;Letraset&amp;quot;, las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
    </widget>
+   <widget class="QSlider" name="width">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>90</y>
+      <width>84</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="b_create">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>340</y>
+      <width>86</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>Create</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="centralWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <zorder>b_create</zorder>
+   </widget>
+   <zorder>centralWidget</zorder>
+   <zorder>b_quit</zorder>
+   <zorder>comboBox</zorder>
+   <zorder>height</zorder>
+   <zorder>l_height</zorder>
+   <zorder>l_other</zorder>
+   <zorder>l_width</zorder>
+   <zorder>name</zorder>
+   <zorder>other</zorder>
+   <zorder>textBrowser</zorder>
+   <zorder>width</zorder>
+   <zorder>b_create</zorder>
   </widget>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>comboBox</tabstop>
+  <tabstop>b_create</tabstop>
+  <tabstop>height</tabstop>
+  <tabstop>other</tabstop>
+  <tabstop>b_quit</tabstop>
+  <tabstop>width</tabstop>
+  <tabstop>textBrowser</tabstop>
+  <tabstop>name</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -202,12 +268,12 @@ p, li { white-space: pre-wrap; }
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>107</x>
-     <y>565</y>
+     <x>97</x>
+     <y>351</y>
     </hint>
     <hint type="destinationlabel">
-     <x>329</x>
-     <y>289</y>
+     <x>399</x>
+     <y>299</y>
     </hint>
    </hints>
   </connection>

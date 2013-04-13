@@ -34,7 +34,12 @@ class SelectPlayer : public QMainWindow {
     public:
         explicit SelectPlayer(QWidget *parent=0);
         ~SelectPlayer();
-        QIrrlichtWidget* getIrrlichtWidget(){return &irrWidget;}
+        QIrrlichtWidget* getIrrlichtWidget() {return &irrWidget;}
+
+    private slots:
+        void on_b_create_clicked();
+        void changed_height(int value);
+        void changed_width(int value);
 
     private:
         Ui::SelectPlayer *ui;

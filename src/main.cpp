@@ -17,7 +17,6 @@
 */
 
 #include <irrlicht.h>
-#include "driverChoice.h"
 #include <QtGui/QApplication>
 
 #ifdef _IRR_WINDOWS_

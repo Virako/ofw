@@ -17,18 +17,17 @@
 */
 
 
-#include "driverChoice.h"
-#include "irrlicht_widget.hpp"
 #include <QtCore/QDebug>
 #include <QMessageBox>
-#include "ui_select_player.h"
+#include "driverChoice.h"
+
+#include "irrlicht_widget.hpp"
 
 
 QIrrlichtWidget::QIrrlichtWidget(QWidget *parent) : QWidget(parent) {
-    setAttribute(Qt::WA_PaintOnScreen);
-    setAttribute(Qt::WA_OpaquePaintEvent);
-    setFocusPolicy(Qt::StrongFocus);
-    setAutoFillBackground(false);
+    this->setFocusPolicy(Qt::StrongFocus);
+    this->setAttribute(Qt::WA_PaintOnScreen, true);
+    this->setAttribute(Qt::WA_TranslucentBackground, true);
     device = 0;
 }
 
@@ -39,64 +38,49 @@ QIrrlichtWidget::~QIrrlichtWidget() {
     }
 }
 
-// Create the Irrlicht device and connect the signals and slots
 void QIrrlichtWidget::init() {
-    // Make sure we can't create the device twice
     if(device != 0)
         return;
-
     irr::video::E_DRIVER_TYPE driverType = irr::driverChoiceConsole();
     if (driverType == irr::video::EDT_COUNT)
         return;
 
-    // Set all the device creation parameters
-    SIrrlichtCreationParameters params;
+    irr::SIrrlichtCreationParameters params;
     params.AntiAlias = 0;
     params.Bits = 32;
-    params.DeviceType = EIDT_X11;
-    params.Doublebuffer = true;
+    params.DeviceType = irr::EIDT_X11;
+    params.DriverMultithreaded = true;
     params.DriverType = driverType;
     params.EventReceiver = 0;
     params.Fullscreen = false;
     params.HighPrecisionFPU = false;
     params.IgnoreInput = false;
-    params.LoggingLevel = ELL_INFORMATION;
+    params.LoggingLevel = irr::ELL_DEBUG;
     params.Stencilbuffer = true;
     params.Stereobuffer = false;
     params.Vsync = false;
-    // Specify which window/widget to render to
-    params.WindowId = reinterpret_cast<void*>(this->winId());
-    std::cout << params.WindowId << std::endl;
-    //params.WindowId = (void*)ui->centralWidget->winId();
+    //params.WindowId = reinterpret_cast<void*>(this->winId());
     params.WindowId = (void*)((QWidget *)this)->winId();
-    std::cout << params.WindowId << std::endl;
-    //params.WindowSize.Width = width();
-    //params.WindowSize.Height = height();
-    params.WithAlphaChannel = false;
-    params.ZBufferBits = 16;
+    params.WindowSize.Width = width();
+    params.WindowSize.Height = height();
+    params.WithAlphaChannel = true;
 
-    // Create the Irrlicht Device with the previously specified parameters
-    device = createDeviceEx(params);
+    device = irr::createDeviceEx(params);
 
-    if(device) { // Create a camera so we can view the scene
-        camera = device->getSceneManager()->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
+    if(device) {
+        camera = device->getSceneManager()->addCameraSceneNode(0,
+                irr::core::vector3df(0,30,-40), irr::core::vector3df(0,5,0));
     }
 
-    // Connect the update signal (updateIrrlichtQuery) to the update slot (updateIrrlicht)
-    connect(this, SIGNAL(updateIrrlichtQuery(IrrlichtDevice*)), this, SLOT(updateIrrlicht(IrrlichtDevice*)));
+    connect(this, SIGNAL(updateIrrlichtQuery(irr::IrrlichtDevice*)), this,
+            SLOT(updateIrrlicht(irr::IrrlichtDevice*)));
 
     // Start a timer. A timer with setting 0 will update as often as possible.
     startTimer(0);
 }
 
-IrrlichtDevice* QIrrlichtWidget::getIrrlichtDevice() {
+irr::IrrlichtDevice* QIrrlichtWidget::getIrrlichtDevice() {
     return device;
-}
-
-void QIrrlichtWidget::on_b_create_clicked() {
-    QMessageBox messageBox;
-    messageBox.critical(0,"Error","Not Yet implemented!");
-    messageBox.setFixedSize(500,200);
 }
 
 void QIrrlichtWidget::paintEvent(QPaintEvent* event) {
@@ -106,7 +90,6 @@ void QIrrlichtWidget::paintEvent(QPaintEvent* event) {
 }
 
 void QIrrlichtWidget::timerEvent(QTimerEvent* event) {
-    // Emit the render signal each time the timer goes off
     if (device != 0) {
         emit updateIrrlichtQuery(device);
     }
@@ -115,13 +98,13 @@ void QIrrlichtWidget::timerEvent(QTimerEvent* event) {
 
 void QIrrlichtWidget::resizeEvent(QResizeEvent* event) {
     if(device != 0) {
-        dimension2d<u32> widgetSize;
+        irr::core::dimension2d<irr::u32> widgetSize;
         widgetSize.Width = event->size().width();
         widgetSize.Height = event->size().height();
         device->getVideoDriver()->OnResize(widgetSize);
-        ICameraSceneNode *cam = device->getSceneManager()->getActiveCamera();
+        irr::scene::ICameraSceneNode *cam = device->getSceneManager()->getActiveCamera();
         if (cam != 0) {
-            cam->setAspectRatio((f32)widgetSize.Height / (f32)widgetSize.Width);
+            cam->setAspectRatio((irr::f32)widgetSize.Height / (irr::f32)widgetSize.Width);
         }
     }
     QWidget::resizeEvent(event);
@@ -130,7 +113,7 @@ void QIrrlichtWidget::resizeEvent(QResizeEvent* event) {
 void QIrrlichtWidget::updateIrrlicht( irr::IrrlichtDevice* device ) {
     if(device != 0) {
         device->getTimer()->tick();
-        SColor color (255,100,100,140);
+        irr::video::SColor color (255,128,128,128);
         device->getVideoDriver()->beginScene(true, true, color);
         device->getSceneManager()->drawAll();
         device->getVideoDriver()->endScene();
