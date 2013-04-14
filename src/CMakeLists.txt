@@ -60,6 +60,7 @@ SET(HWQ_SRC
     character.cpp
     player.cpp
     cte.hpp
+    core.cpp
     gui/select_player.cpp
     gui/irrlicht_widget.cpp
     ${HWQ_MOC_CPP}

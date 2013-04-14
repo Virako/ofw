@@ -16,26 +16,26 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QMessageBox>
+#include <iostream>
+using namespace std;
+#include <QtGui/QMessageBox>
+
 #include "select_player.hpp"
 #include "ui_select_player.h"
 
 SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::SelectPlayer) {
     ui->setupUi(this);
-    irrWidget.setParent(ui->centralWidget);
-    irrWidget.setGeometry(0, 0, 800, 600);
+    irr_widget.setParent(ui->centralWidget);
+    irr_widget.setGeometry(0, 0, 800, 600);
     this->resize(800, 600);
-
-    //ui->height->rangeChanged(80,100);
-
-    connect(ui->b_create, SIGNAL(clicked()), this, SLOT(on_b_create_clicked()));
-    connect(ui->height, SIGNAL(valueChanged()), this,
-            SLOT(changed_height(ui->height->value())));
-    //connect(ui->width, SIGNAL(valueChanged()), this, SLOT(changed_width(ui->height->value())));
 }
 
 SelectPlayer::~SelectPlayer() {
     delete ui;
+}
+
+QIrrlichtWidget* SelectPlayer::get_irr_widget() {
+    return &irr_widget;
 }
 
 void SelectPlayer::on_b_create_clicked() {
@@ -44,14 +44,46 @@ void SelectPlayer::on_b_create_clicked() {
     messageBox.setFixedSize(500,200);
 }
 
-void SelectPlayer::changed_height(int value) {
-    QMessageBox messageBox;
-    messageBox.critical(0,"Error","Tssss, CRACK");
-    messageBox.setFixedSize(500,200);
+void SelectPlayer::on_height_valueChanged() {
+    cout << "aro" << endl;
 }
 
-void SelectPlayer::changed_width(int value) {
-    QMessageBox messageBox;
-    messageBox.critical(0,"Error","Tssss, CRACK");
-    messageBox.setFixedSize(500,200);
+void SelectPlayer::on_width_valueChanged() {
+    cout << "no aro" << endl;
+}
+
+void SelectPlayer::on_height_sliderMoved(int value) {
+    cout << "V: " << value << endl;
+}
+
+void SelectPlayer::on_width_sliderMoved(int value) {
+    cout << "V2: " << value << endl;
+}
+
+void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
+    cout << "index = " << index << endl;
+    if (index == 0) {
+        ui->height->setMinimum(80);
+        ui->height->setMaximum(120);
+    }
+    else if (index == 1) {
+        ui->height->setMinimum(80);
+        ui->height->setMaximum(120);
+    }
+    else if (index == 2) {
+        ui->height->setMinimum(80);
+        ui->height->setMaximum(120);
+    }
+    else if (index == 3) {
+        ui->height->setMinimum(80);
+        ui->height->setMaximum(120);
+    }
+    else if (index == 4) {
+        ui->height->setMinimum(80);
+        ui->height->setMaximum(120);
+    }
+    else {
+        cout << "Indice en: " << index << endl;
+    }
+
 }

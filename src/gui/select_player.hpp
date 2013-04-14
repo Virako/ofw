@@ -19,8 +19,8 @@
 #ifndef SELECT_PLAYER_HPP
 #define SELECT_PLAYER_HPP
 
-#include <QMainWindow>
-#include <QResizeEvent>
+#include <QtGui/QMainWindow>
+#include <QtGui/QResizeEvent>
 
 #include "irrlicht_widget.hpp"
 
@@ -34,16 +34,19 @@ class SelectPlayer : public QMainWindow {
     public:
         explicit SelectPlayer(QWidget *parent=0);
         ~SelectPlayer();
-        QIrrlichtWidget* getIrrlichtWidget() {return &irrWidget;}
+        QIrrlichtWidget* get_irr_widget();
 
     private slots:
         void on_b_create_clicked();
-        void changed_height(int value);
-        void changed_width(int value);
+        void on_height_valueChanged();
+        void on_width_valueChanged();
+        void on_height_sliderMoved(int value);
+        void on_width_sliderMoved(int value);
+        void on_comboBox_currentIndexChanged(int index);
 
     private:
         Ui::SelectPlayer *ui;
-        QIrrlichtWidget irrWidget;
+        QIrrlichtWidget irr_widget;
 };
 
 #endif

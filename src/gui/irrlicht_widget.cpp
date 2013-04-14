@@ -16,82 +16,60 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #include <QtCore/QDebug>
-#include <QMessageBox>
-#include "driverChoice.h"
+#include <QtGui/QMessageBox>
+//#include "driverChoice.h"
 
 #include "irrlicht_widget.hpp"
+#include "../core.hpp"
 
 
 QIrrlichtWidget::QIrrlichtWidget(QWidget *parent) : QWidget(parent) {
     this->setFocusPolicy(Qt::StrongFocus);
     this->setAttribute(Qt::WA_PaintOnScreen, true);
-    this->setAttribute(Qt::WA_TranslucentBackground, true);
+    //this->setAttribute(Qt::WA_TranslucentBackground, true);
     device = 0;
 }
 
 QIrrlichtWidget::~QIrrlichtWidget() {
-    if(device != 0) {
+    if (device != 0) {
         device->closeDevice();
         device->drop();
     }
 }
 
 void QIrrlichtWidget::init() {
-    if(device != 0)
-        return;
-    irr::video::E_DRIVER_TYPE driverType = irr::driverChoiceConsole();
-    if (driverType == irr::video::EDT_COUNT)
+    if (device != 0)
         return;
 
-    irr::SIrrlichtCreationParameters params;
-    params.AntiAlias = 0;
-    params.Bits = 32;
-    params.DeviceType = irr::EIDT_X11;
-    params.DriverMultithreaded = true;
-    params.DriverType = driverType;
-    params.EventReceiver = 0;
-    params.Fullscreen = false;
-    params.HighPrecisionFPU = false;
-    params.IgnoreInput = false;
-    params.LoggingLevel = irr::ELL_DEBUG;
-    params.Stencilbuffer = true;
-    params.Stereobuffer = false;
-    params.Vsync = false;
-    //params.WindowId = reinterpret_cast<void*>(this->winId());
-    params.WindowId = (void*)((QWidget *)this)->winId();
-    params.WindowSize.Width = width();
-    params.WindowSize.Height = height();
-    params.WithAlphaChannel = true;
+    irr::video::E_DRIVER_TYPE driver = ofw::core::init_driver();
+    if (driver == irr::video::EDT_COUNT)
+        return;
 
-    device = irr::createDeviceEx(params);
-
+    device = ofw::core::init_device( irr::core::dimension2d<irr::u32>(height(), width()),
+            driver, (void*)((QWidget *)this)->winId() );
     if(device) {
         camera = device->getSceneManager()->addCameraSceneNode(0,
-                irr::core::vector3df(0,30,-40), irr::core::vector3df(0,5,0));
+                irr::core::vector3df(0,15,20), irr::core::vector3df(0,5,0));
     }
-
-    connect(this, SIGNAL(updateIrrlichtQuery(irr::IrrlichtDevice*)), this,
-            SLOT(updateIrrlicht(irr::IrrlichtDevice*)));
-
-    // Start a timer. A timer with setting 0 will update as often as possible.
+    connect(this, SIGNAL(update_irrlicht_query(irr::IrrlichtDevice*)), this,
+            SLOT(update_irrlicht(irr::IrrlichtDevice*)));
     startTimer(0);
 }
 
-irr::IrrlichtDevice* QIrrlichtWidget::getIrrlichtDevice() {
+irr::IrrlichtDevice* QIrrlichtWidget::get_device() {
     return device;
 }
 
 void QIrrlichtWidget::paintEvent(QPaintEvent* event) {
     if(device != 0) {
-        emit updateIrrlichtQuery(device);
+        emit update_irrlicht_query(device);
     }
 }
 
 void QIrrlichtWidget::timerEvent(QTimerEvent* event) {
     if (device != 0) {
-        emit updateIrrlichtQuery(device);
+        emit update_irrlicht_query(device);
     }
     event->accept();
 }
@@ -110,7 +88,7 @@ void QIrrlichtWidget::resizeEvent(QResizeEvent* event) {
     QWidget::resizeEvent(event);
 }
 
-void QIrrlichtWidget::updateIrrlicht( irr::IrrlichtDevice* device ) {
+void QIrrlichtWidget::update_irrlicht( irr::IrrlichtDevice* device ) {
     if(device != 0) {
         device->getTimer()->tick();
         irr::video::SColor color (255,128,128,128);

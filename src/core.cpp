@@ -17,24 +17,49 @@
  * * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+#include "driverChoice.h"
+#include <iostream>
+
 #include "core.hpp"
 
-namespace ofw
-{
 
-namespace core
-{
+namespace ofw {
 
-Core::Core(irr::video::E_DRIVER_TYPE prefered_driver, irr::IrrlichtDevice* device) {
-    this->prefered_driver = prefered_driver;
-    this->device = device;
-}
+namespace core {
 
-Core& Core::get_instance(irr::video::E_DRIVER_TYPE prefered_driver, irr::IrrlichtDevice* device) {
-    static Core core(prefered_driver, device);
-    return core;
-}
+    irr::video::E_DRIVER_TYPE init_driver(bool gui) {
+        if (!gui) {
+            return irr::driverChoiceConsole();
+        }
+        else {
+            std::cout << "Yet not implemented" << std::endl;
+            return irr::video::EDT_COUNT;
+        }
+    }
 
-}
+    irr::IrrlichtDevice* init_device(irr::core::dimension2d<irr::u32> window_size,
+            irr::video::E_DRIVER_TYPE driver, void* window_id) {
+        irr::SIrrlichtCreationParameters params;
+        params.AntiAlias = 0;
+        params.Bits = 32;
+        params.DeviceType = irr::EIDT_BEST;
+        params.DriverMultithreaded = true;
+        params.DriverType = driver;
+        params.EventReceiver = 0;
+        params.Fullscreen = false;
+        params.HighPrecisionFPU = false;
+        params.IgnoreInput = false;
+        params.LoggingLevel = irr::ELL_DEBUG;
+        params.Stencilbuffer = true;
+        params.Stereobuffer = false;
+        params.Vsync = false;
+        //params.WindowId = reinterpret_cast<void*>(this->winId());
+        params.WindowId = window_id;
+        params.WindowSize = window_size;
+        params.WithAlphaChannel = true;
+        return irr::createDeviceEx(params);
+    }
 
-}
+} //end namespace core
+
+} //end namespace ofw

@@ -16,29 +16,31 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef IRRLICHT_WIDGET_HPP
+#define IRRLICHT_WIDGET_HPP
 
-#ifndef QIRRLICHTWIDGET_HPP
-#define QIRRLICHTWIDGET_HPP
-
-#include <QWidget>
-#include <QResizeEvent>
+#include <QtGui/QWidget>
+#include <QtGui/QResizeEvent>
 #include <irrlicht.h>
 
 
+/**
+ * @brief QWidget for integrate Irrlicht
+ */
 class QIrrlichtWidget : public QWidget {
     Q_OBJECT
 
     public:
-        explicit QIrrlichtWidget(QWidget *parent = 0);
+        QIrrlichtWidget(QWidget *parent = 0);
         ~QIrrlichtWidget();
-        irr::IrrlichtDevice* getIrrlichtDevice();
+        irr::IrrlichtDevice* get_device();
         void init();
 
     signals:
-        void updateIrrlichtQuery(irr::IrrlichtDevice* device);
+        void update_irrlicht_query(irr::IrrlichtDevice* device);
 
     public slots:
-        void updateIrrlicht(irr::IrrlichtDevice* device);
+        void update_irrlicht(irr::IrrlichtDevice* device);
 
     protected:
         virtual void paintEvent(QPaintEvent* event);

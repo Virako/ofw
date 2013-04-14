@@ -17,29 +17,26 @@
 */
 
 #include <irrlicht.h>
-#include <QtGui/QApplication>
-
 #ifdef _IRR_WINDOWS_
 #pragma comment(lib, "Irrlicht.lib")
 #pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
 #endif
+#include <QtGui/QApplication>
 
 #include "gui/select_player.hpp"
 
-#include <GL/glx.h>
 
 int main(int argc, char *argv[]) {
-
     QApplication app(argc, argv);
     SelectPlayer sp;
     sp.show();
-    sp.getIrrlichtWidget()->init();
-    if (sp.getIrrlichtWidget()->getIrrlichtDevice()) {
-        irr::video::IVideoDriver* driver = sp.getIrrlichtWidget()->getIrrlichtDevice()->getVideoDriver();
-        irr::scene::ISceneManager* smgr = sp.getIrrlichtWidget()->getIrrlichtDevice()->getSceneManager();
+    sp.get_irr_widget()->init();
+    if (sp.get_irr_widget()->get_device()) {
+        irr::video::IVideoDriver* driver = sp.get_irr_widget()->get_device()->getVideoDriver();
+        irr::scene::ISceneManager* smgr = sp.get_irr_widget()->get_device()->getSceneManager();
         irr::scene::IAnimatedMesh* player = smgr->getMesh("../media/ninja.b3d");
         if (!player) {
-            sp.getIrrlichtWidget()->getIrrlichtDevice()->drop();
+            sp.get_irr_widget()->get_device()->drop();
             return 1;
         }
         irr::scene::IAnimatedMeshSceneNode* player_ani = smgr->addAnimatedMeshSceneNode(player);
@@ -55,54 +52,9 @@ int main(int argc, char *argv[]) {
     }
     return app.exec();
 
-    /* ///////////////
-    // ask user for driver
-    irr::video::E_DRIVER_TYPE driverType = irr::driverChoiceConsole();
-    if (driverType == irr::video::EDT_COUNT)
-        return 1;
-
-    // Create device
-    irr::IrrlichtDevice* device =  irr::createDevice(driverType,
-            irr::core::dimension2d<irr::u32>(640, 480), 16, false, false, false, NULL);
-    if (device == 0)
-        return 1; // could not create selected driver.
-    device->setWindowCaption(L"OFW");
-
-    // Load video, scene and gui
-    irr::video::IVideoDriver* driver = device->getVideoDriver();
-    irr::scene::ISceneManager* smgr = device->getSceneManager();
-    irr::gui::IGUIEnvironment* guienv = device->getGUIEnvironment();
-
-    // SCENE: insert player
-    irr::scene::IAnimatedMesh* player = smgr->getMesh("../media/ninja.b3d");
-    if (!player) {
-        device->drop();
-        return 1;
-    }
-    irr::scene::IAnimatedMeshSceneNode* player_ani = smgr->addAnimatedMeshSceneNode(player);
-    if (player_ani) {
-        player_ani->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-        player_ani->setFrameLoop(0, 13);  // nº frame
-        player_ani->setAnimationSpeed(10); // fps
-        player_ani->setMaterialTexture(0, driver->getTexture("../media/ninja.jpg"));
-        player_ani->setScale(irr::core::vector3df(1,1,1));
-        player_ani->setPosition(irr::core::vector3df(0,0,0));
-        player_ani->setRotation(irr::core::vector3df(0,0,0));
-    }
-
     // SCENE: insert camera
-    irr::scene::ICameraSceneNode* camera = smgr->addCameraSceneNode(player_ani);
-    camera->setPosition(irr::core::vector3df(0, 15, 20));
-    camera->setTarget(player_ani->getPosition());
+    //irr::scene::ICameraSceneNode* camera = smgr->addCameraSceneNode(player_ani);
+    //camera->setPosition(irr::core::vector3df(0, 15, 20));
+    //camera->setTarget(player_ani->getPosition());
 
-    // BUCLE
-    while(device->run()) {
-        driver->beginScene(true, true, irr::video::SColor(255,113,113,133));
-        smgr->drawAll();
-        guienv->drawAll(); // draw the gui environment
-        driver->endScene();
-    }
-    device->drop();
-    return 0;
-    */ //////////////
 }

@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>340</y>
+      <y>540</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -33,7 +33,7 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>370</x>
       <y>30</y>
       <width>99</width>
       <height>20</height>
@@ -73,8 +73,8 @@
    <widget class="QSlider" name="height">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>50</y>
+      <x>640</x>
+      <y>180</y>
       <width>84</width>
       <height>16</height>
      </rect>
@@ -89,8 +89,8 @@
    <widget class="QLabel" name="l_height">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>32</y>
+      <x>640</x>
+      <y>162</y>
       <width>40</width>
       <height>14</height>
      </rect>
@@ -105,8 +105,8 @@
    <widget class="QLabel" name="l_other">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>112</y>
+      <x>640</x>
+      <y>242</y>
       <width>35</width>
       <height>14</height>
      </rect>
@@ -121,8 +121,8 @@
    <widget class="QLabel" name="l_width">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>70</y>
+      <x>640</x>
+      <y>200</y>
       <width>33</width>
       <height>14</height>
      </rect>
@@ -137,9 +137,9 @@
    <widget class="QLineEdit" name="name">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>340</y>
-      <width>110</width>
+      <x>290</x>
+      <y>540</y>
+      <width>231</width>
       <height>20</height>
      </rect>
     </property>
@@ -156,8 +156,8 @@
    <widget class="QSlider" name="other">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>130</y>
+      <x>640</x>
+      <y>260</y>
       <width>84</width>
       <height>16</height>
      </rect>
@@ -174,8 +174,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>191</width>
-      <height>301</height>
+      <width>211</width>
+      <height>491</height>
      </rect>
     </property>
     <property name="html">
@@ -189,8 +189,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QSlider" name="width">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>90</y>
+      <x>640</x>
+      <y>220</y>
       <width>84</width>
       <height>16</height>
      </rect>
@@ -205,8 +205,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="b_create">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>340</y>
+      <x>650</x>
+      <y>540</y>
       <width>86</width>
       <height>24</height>
      </rect>
@@ -233,7 +233,6 @@ p, li { white-space: pre-wrap; }
       <height>600</height>
      </rect>
     </property>
-    <zorder>b_create</zorder>
    </widget>
    <zorder>centralWidget</zorder>
    <zorder>b_quit</zorder>
