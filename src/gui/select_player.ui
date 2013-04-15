@@ -70,7 +70,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QSlider" name="height">
+   <widget class="QSlider" name="slider_height">
     <property name="geometry">
      <rect>
       <x>640</x>
@@ -84,6 +84,9 @@
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBothSides</enum>
     </property>
    </widget>
    <widget class="QLabel" name="l_height">
@@ -152,8 +155,11 @@
     <property name="maxLength">
      <number>50</number>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
-   <widget class="QSlider" name="other">
+   <widget class="QSlider" name="slider_other">
     <property name="geometry">
      <rect>
       <x>640</x>
@@ -186,7 +192,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Monospace';&quot;&gt;Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas &amp;quot;Letraset&amp;quot;, las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QSlider" name="width">
+   <widget class="QSlider" name="slider_width">
     <property name="geometry">
      <rect>
       <x>640</x>
@@ -237,24 +243,24 @@ p, li { white-space: pre-wrap; }
    <zorder>centralWidget</zorder>
    <zorder>b_quit</zorder>
    <zorder>comboBox</zorder>
-   <zorder>height</zorder>
+   <zorder>slider_height</zorder>
    <zorder>l_height</zorder>
    <zorder>l_other</zorder>
    <zorder>l_width</zorder>
    <zorder>name</zorder>
-   <zorder>other</zorder>
+   <zorder>slider_other</zorder>
    <zorder>textBrowser</zorder>
-   <zorder>width</zorder>
+   <zorder>slider_width</zorder>
    <zorder>b_create</zorder>
   </widget>
  </widget>
  <tabstops>
   <tabstop>comboBox</tabstop>
   <tabstop>b_create</tabstop>
-  <tabstop>height</tabstop>
-  <tabstop>other</tabstop>
+  <tabstop>slider_height</tabstop>
+  <tabstop>slider_other</tabstop>
   <tabstop>b_quit</tabstop>
-  <tabstop>width</tabstop>
+  <tabstop>slider_width</tabstop>
   <tabstop>textBrowser</tabstop>
   <tabstop>name</tabstop>
  </tabstops>

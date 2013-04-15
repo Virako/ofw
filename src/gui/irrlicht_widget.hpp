@@ -30,9 +30,50 @@
 class QIrrlichtWidget : public QWidget {
     Q_OBJECT
 
+    protected:
+        /**
+         * @brief Device
+         */
+        irr::IrrlichtDevice *device;
+        /**
+         * @brief Camera
+         */
+        irr::scene::ICameraSceneNode* camera;
+
+        /**
+         * @brief Update the QIrrlichtWidget
+         *
+         * @param event
+         */
+        virtual void paintEvent(QPaintEvent* event);
+
+        /**
+         * @brief Update the QIrrlichtWidget
+         *
+         * @param event
+         */
+        virtual void timerEvent(QTimerEvent* event);
+
+        /**
+         * @brief Resize the widget with the window
+         *
+         * @param event
+         */
+        virtual void resizeEvent(QResizeEvent* event);
+
     public:
+        /**
+         * @brief Constructor QIrrlichtWidget. Select way of painting.
+         *
+         * @param parent
+         */
         QIrrlichtWidget(QWidget *parent = 0);
+
+        /**
+         * @brief Destructor
+         */
         ~QIrrlichtWidget();
+
         irr::IrrlichtDevice* get_device();
         void init();
 
@@ -42,12 +83,6 @@ class QIrrlichtWidget : public QWidget {
     public slots:
         void update_irrlicht(irr::IrrlichtDevice* device);
 
-    protected:
-        virtual void paintEvent(QPaintEvent* event);
-        virtual void timerEvent(QTimerEvent* event);
-        virtual void resizeEvent(QResizeEvent* event);
-        irr::IrrlichtDevice *device;
-        irr::scene::ICameraSceneNode* camera;
 };
 
 #endif

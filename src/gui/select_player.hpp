@@ -16,11 +16,12 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SELECT_PLAYER_HPP
-#define SELECT_PLAYER_HPP
+#ifndef __SELECT_PLAYER_HPP
+#define __SELECT_PLAYER_HPP
 
 #include <QtGui/QMainWindow>
 #include <QtGui/QResizeEvent>
+#include <QtCore/QString>
 
 #include "irrlicht_widget.hpp"
 
@@ -28,25 +29,73 @@ namespace Ui {
     class SelectPlayer;
 }
 
+/**
+ * @brief Handler SelectPlayer gui
+ */
 class SelectPlayer : public QMainWindow {
     Q_OBJECT
-
-    public:
-        explicit SelectPlayer(QWidget *parent=0);
-        ~SelectPlayer();
-        QIrrlichtWidget* get_irr_widget();
-
-    private slots:
-        void on_b_create_clicked();
-        void on_height_valueChanged();
-        void on_width_valueChanged();
-        void on_height_sliderMoved(int value);
-        void on_width_sliderMoved(int value);
-        void on_comboBox_currentIndexChanged(int index);
 
     private:
         Ui::SelectPlayer *ui;
         QIrrlichtWidget irr_widget;
+        int height = 100;
+        int width = 100;
+        int type = 0;
+        std::string name = "";
+        irr::scene::IAnimatedMesh *mesh;
+        irr::scene::IAnimatedMeshSceneNode *player;
+
+    public:
+        /**
+         * @brief Create default values in the gui.
+         *
+         * @param parent
+         */
+        SelectPlayer(QWidget *parent=0);
+
+        /**
+         * @brief Desctructor
+         */
+        ~SelectPlayer();
+
+        /**
+         * @brief Get irr_widget
+         *
+         * @return irr_widget
+         */
+        QIrrlichtWidget* get_irr_widget();
+
+        void update_mesh_player(irr::scene::IAnimatedMesh *mesh);
+        void update_scale_player(irr::scene::IAnimatedMeshSceneNode *player);
+
+    private slots:
+        /**
+         * @brief Button b_create is pressed
+         */
+        void on_b_create_clicked();
+
+        /**
+         * @brief Value of QSlider slider_height has changed
+         *
+         * @param value value of height
+         */
+        void on_slider_height_valueChanged(int value);
+
+        /**
+         * @brief Value of QSlider slider_width has changed
+         *
+         * @param value value of width
+         */
+        void on_slider_width_valueChanged(int value);
+
+        /**
+         * @brief Value ofcomboBox has changed
+         *
+         * @param index index of combobox
+         */
+        void on_comboBox_currentIndexChanged(int index);
+
+        void on_name_textEdited(QString text);
 };
 
 #endif

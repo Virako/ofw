@@ -22,6 +22,7 @@
 #pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
 #endif
 #include <QtGui/QApplication>
+#include <iostream>
 
 #include "gui/select_player.hpp"
 
@@ -35,11 +36,12 @@ int main(int argc, char *argv[]) {
         irr::video::IVideoDriver* driver = sp.get_irr_widget()->get_device()->getVideoDriver();
         irr::scene::ISceneManager* smgr = sp.get_irr_widget()->get_device()->getSceneManager();
         irr::scene::IAnimatedMesh* player = smgr->getMesh("../media/ninja.b3d");
+        sp.update_mesh_player(player);
         if (!player) {
             sp.get_irr_widget()->get_device()->drop();
             return 1;
         }
-        irr::scene::IAnimatedMeshSceneNode* player_ani = smgr->addAnimatedMeshSceneNode(player);
+        irr::scene::IAnimatedMeshSceneNode *player_ani = smgr->addAnimatedMeshSceneNode(player);
         if (player_ani) {
             player_ani->setMaterialFlag(irr::video::EMF_LIGHTING, false);
             player_ani->setFrameLoop(0, 13);  // nº frame
@@ -48,6 +50,7 @@ int main(int argc, char *argv[]) {
             player_ani->setScale(irr::core::vector3df(1,1,1));
             player_ani->setPosition(irr::core::vector3df(0,0,0));
             player_ani->setRotation(irr::core::vector3df(0,0,0));
+            sp.update_scale_player(player_ani);
         }
     }
     return app.exec();

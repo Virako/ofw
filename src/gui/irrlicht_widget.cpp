@@ -18,7 +18,7 @@
 
 #include <QtCore/QDebug>
 #include <QtGui/QMessageBox>
-//#include "driverChoice.h"
+#include <iostream>
 
 #include "irrlicht_widget.hpp"
 #include "../core.hpp"

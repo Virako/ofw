@@ -28,6 +28,7 @@ SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::Se
     irr_widget.setParent(ui->centralWidget);
     irr_widget.setGeometry(0, 0, 800, 600);
     this->resize(800, 600);
+    //emit on_comboBox_currentIndexChanged(0);
 }
 
 SelectPlayer::~SelectPlayer() {
@@ -39,51 +40,71 @@ QIrrlichtWidget* SelectPlayer::get_irr_widget() {
 }
 
 void SelectPlayer::on_b_create_clicked() {
+    cout << "H: " << height << " W:" << width << " type: " << type << " Name: " << name << endl;
     QMessageBox messageBox;
     messageBox.critical(0,"Error","Not Yet implemented!");
     messageBox.setFixedSize(500,200);
 }
 
-void SelectPlayer::on_height_valueChanged() {
-    cout << "aro" << endl;
+void SelectPlayer::on_slider_height_valueChanged(int value) {
+    cout << "H: " << value << endl;
+    height = value;
+    player->setScale(irr::core::vector3df(height/100.0,width/100.0,width/100.0));
 }
 
-void SelectPlayer::on_width_valueChanged() {
-    cout << "no aro" << endl;
-}
-
-void SelectPlayer::on_height_sliderMoved(int value) {
-    cout << "V: " << value << endl;
-}
-
-void SelectPlayer::on_width_sliderMoved(int value) {
-    cout << "V2: " << value << endl;
+void SelectPlayer::on_slider_width_valueChanged(int value) {
+    cout << "W: " << value << endl;
+    width = value;
+    player->setScale(irr::core::vector3df(height/100.0,width/100.0,width/100.0));
 }
 
 void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
     cout << "index = " << index << endl;
     if (index == 0) {
-        ui->height->setMinimum(80);
-        ui->height->setMaximum(120);
+        ui->slider_height->setMinimum(80);
+        ui->slider_height->setMaximum(1200);
+        ui->slider_width->setMinimum(50);
+        ui->slider_width->setMaximum(510);
+        //TODO cambiar mesh
     }
     else if (index == 1) {
-        ui->height->setMinimum(80);
-        ui->height->setMaximum(120);
+        ui->slider_height->setMinimum(90);
+        ui->slider_height->setMaximum(120);
+        ui->slider_width->setMinimum(90);
+        ui->slider_width->setMaximum(110);
     }
     else if (index == 2) {
-        ui->height->setMinimum(80);
-        ui->height->setMaximum(120);
+        ui->slider_height->setMinimum(80);
+        ui->slider_height->setMaximum(120);
+        ui->slider_width->setMinimum(90);
+        ui->slider_width->setMaximum(110);
     }
     else if (index == 3) {
-        ui->height->setMinimum(80);
-        ui->height->setMaximum(120);
+        ui->slider_height->setMinimum(80);
+        ui->slider_height->setMaximum(120);
+        ui->slider_width->setMinimum(90);
+        ui->slider_width->setMaximum(110);
     }
     else if (index == 4) {
-        ui->height->setMinimum(80);
-        ui->height->setMaximum(120);
+        ui->slider_height->setMinimum(80);
+        ui->slider_height->setMaximum(120);
+        ui->slider_width->setMinimum(90);
+        ui->slider_width->setMaximum(110);
     }
     else {
         cout << "Indice en: " << index << endl;
     }
+    type = index;
+}
 
+void SelectPlayer::on_name_textEdited(QString text) {
+    name = text.toStdString();
+}
+
+void SelectPlayer::update_mesh_player(irr::scene::IAnimatedMesh *mesh) {
+    this->mesh = mesh;
+}
+
+void SelectPlayer::update_scale_player(irr::scene::IAnimatedMeshSceneNode* player) {
+    this->player = player;
 }
