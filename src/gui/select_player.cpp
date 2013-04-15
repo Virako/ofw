@@ -49,22 +49,22 @@ void SelectPlayer::on_b_create_clicked() {
 void SelectPlayer::on_slider_height_valueChanged(int value) {
     cout << "H: " << value << endl;
     height = value;
-    player->setScale(irr::core::vector3df(height/100.0,width/100.0,width/100.0));
+    player->setScale(irr::core::vector3df(width/100.0, height/100.0, width/100.0));
 }
 
 void SelectPlayer::on_slider_width_valueChanged(int value) {
     cout << "W: " << value << endl;
     width = value;
-    player->setScale(irr::core::vector3df(height/100.0,width/100.0,width/100.0));
+    player->setScale(irr::core::vector3df(width/100.0, height/100.0, width/100.0));
 }
 
 void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
     cout << "index = " << index << endl;
     if (index == 0) {
         ui->slider_height->setMinimum(80);
-        ui->slider_height->setMaximum(1200);
-        ui->slider_width->setMinimum(50);
-        ui->slider_width->setMaximum(510);
+        ui->slider_height->setMaximum(150);
+        ui->slider_width->setMinimum(80);
+        ui->slider_width->setMaximum(110);
         //TODO cambiar mesh
     }
     else if (index == 1) {
