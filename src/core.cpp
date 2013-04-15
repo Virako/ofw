@@ -60,6 +60,16 @@ namespace core {
         return irr::createDeviceEx(params);
     }
 
+    Core::Core(irr::video::E_DRIVER_TYPE driver, irr::IrrlichtDevice* device) {
+        this->driver = driver;
+        this->device = device;
+    }
+
+    Core& Core::get_instance(irr::video::E_DRIVER_TYPE driver, irr::IrrlichtDevice* device) {
+        static Core core(driver, device);
+        return core;
+    }
+
 } //end namespace core
 
 } //end namespace ofw
