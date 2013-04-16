@@ -38,10 +38,10 @@ class SelectPlayer : public QMainWindow {
     private:
         Ui::SelectPlayer *ui;
         QIrrlichtWidget irr_widget;
-        int height = 100;
-        int width = 100;
-        int type = 0;
-        std::string name = "";
+        int height;
+        int width;
+        int type;
+        std::string name;
         irr::scene::IAnimatedMesh *mesh;
         irr::scene::IAnimatedMeshSceneNode *player;
 

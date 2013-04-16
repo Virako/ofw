@@ -1,3 +1,6 @@
+# Precompiled headers
+*.gch
+
 # Compiled Object files
 *.slo
 *.lo
