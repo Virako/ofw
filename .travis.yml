@@ -17,4 +17,8 @@ notifications:
     on_failure: always
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install cmake libboost-all-dev libirrlicht-dev doxygen libqt4-dev libqtcore4 libxxf86vm-dev
+  - sudo apt-get install cmake libboost-all-dev doxygen libqt4-dev libqtcore4 libxxf86vm-dev unzip x11proto-xf86vidmode-dev
+  - wget http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.zip
+  - unzip irrlicht-1.8.zip
+  - cd irrlicht-1.8/source/Irrlicht
+  - make && make sharedlib && sudo make install
