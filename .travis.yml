@@ -21,4 +21,4 @@ before_install:
   - wget http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.zip
   - unzip irrlicht-1.8.zip
   - cd irrlicht-1.8/source/Irrlicht
-  - make && make sharedlib && sudo make install
+  - make -fPIC && make -fPIC sharedlib && sudo make install
