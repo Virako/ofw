@@ -45,6 +45,12 @@ For you generate documentation, type:
 
     make Docs
 
+### Generate package DEB and RPM
+
+For you generate package DEB and RPM, you need execute:
+
+    make package
+
 ### Usage:
 
 Open Fantsay World is easy to use, the executable is in the bin folder. Just
@@ -75,6 +81,12 @@ __Error__: I get error when I run ofw:
     Aborted (core dumped)
 
 __Solve__: You need install irrlicht version 1.8. This problem happens in kernel 3.8.5
+
+__Error__: If I install the generate package(DEB or RPM), When I execute ofw, I get error: "Could
+not load mesh, because file could not be opened: : ../media/ninja.b3d"
+
+__Solve__: You can execute the program in the directory CMAKE\_PREFIX/media. This feature will be
+performance in the future ;)
 
 ## License
 

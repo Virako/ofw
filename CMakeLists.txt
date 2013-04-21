@@ -50,6 +50,38 @@ if(BUILD_DOCUMENTATION)
   # then leave out the 'ALL' keyword from the above command.
 endif()
 
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_HOME_DIRECTORY}/bin)
+
+
+# CPack
+SET(CPACK_GENERATOR "DEB;RPM") # TODO NSIS for WIN
+#SET(CPACK_PACKAGE_NAME "OpenFantasyWorld")
+SET(CPACK_PACKAGE_VERSION_MAJOR "1")
+SET(CPACK_PACKAGE_VERSION_MINOR "0")
+SET(CPACK_PACKAGE_VERSION_PATCH "0")
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Open Fantasy Wordl is a MMORPG where the players will live in community.")
+SET(CPACK_PACKAGE_VENDOR "Victor Ramirez de la Corte")
+SET(CPACK_PACKAGE_CONTACT "Victor Ramirez virako.9@gmail.com")
+SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_HOME_DIRECTORY}/README.md")
+SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_HOME_DIRECTORY}/COPYING")
+SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CPack ${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}")
+#SET(CPACK_PACKAGE_EXECUTABLES "ofw";"Open Fantasy Wordl is a MMORPG where the player will live in community. ")
+
+IF(UNIX)
+    #DEB
+    SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Victor Ramirez")
+    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-dev (>= 1.46.1), doxygen (>= 1.8), g++ (>= 4.6), cmake (>= 2.8), libirrlicht-dev (>= 1.7)")
+    SET(CPACK_DEBIAN_PACKAGE_SECTION "games")
+    #SET(CPACK_DEBIAN_PACKAGE_ARCHITECTURE i386)
+    #SET(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+    #SET(CPACK_DEBIAN_PACKAGE_SUGGESTS "cmatrix (>= 1.0), sl (>= 3.0)")
+
+    #RPM
+    SET(CPACK_RPM_PACKAGE_REQUIRES "boost-devel >= 1.46-1, doxygen >= 1.8, gcc-c++ >= 4.6, cmake >= 2.8, irrlicht-devel >= 1.7")
+ENDIF(UNIX)
+
+Include(CPack)
+
 
 ENABLE_TESTING()
 add_subdirectory(src)
