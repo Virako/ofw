@@ -43,6 +43,7 @@ World with the following commands run in the top-level directory of ofw:
 
 For you generate documentation, type:
 
+    cmake -DBUILD_DOCUMENTATION=ON ..
     make Docs
 
 ### Generate package DEB and RPM

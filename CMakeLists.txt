@@ -23,8 +23,7 @@ cmake_minimum_required(VERSION 2.6)
 IF(CMAKE_COMPILER_IS_GNUCXX)
     MESSAGE(STATUS "G++ detected - Adding compiler flags")
     # TARGETS. # Add -Wextra warning: unused parameter in irrlicht. ↓
-    SET(CMAKE_CXX_FLAGS "-std=c++0x -pedantic -ggdb")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O0")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O0 -std=c++0x -pedantic -ggdb")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -Wextra -fno-inline")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
 ENDIF(CMAKE_COMPILER_IS_GNUCXX)
@@ -33,19 +32,18 @@ ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
 #-- Add an Option to toggle the generation of the API documentation
-option(BUILD_DOCUMENTATION "Use Doxygen to create the HTML based API documentation" ON)
+option(BUILD_DOCUMENTATION "Use Doxygen to create the HTML based API documentation" OFF)
 if(BUILD_DOCUMENTATION)
   FIND_PACKAGE(Doxygen)
   if (NOT DOXYGEN_FOUND)
-    message(FATAL_ERROR
-      "Doxygen is needed to build the documentation. Please install it correctly")
+    message(FATAL_ERROR "Doxygen is needed to build the documentation. Please install it correctly")
   endif()
   #-- Configure the Template Doxyfile for our specific project
   configure_file(ofw.in ${PROJECT_BINARY_DIR}/Doxyfile  @ONLY IMMEDIATE)
   #-- Add a custom target to run Doxygen when ever the project is built
   add_custom_target (Docs
-                            COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_BINARY_DIR}/Doxyfile
-                            SOURCES ${PROJECT_BINARY_DIR}/Doxyfile)
+                    COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_BINARY_DIR}/Doxyfile
+                    SOURCES ${PROJECT_BINARY_DIR}/Doxyfile)
   # IF you do NOT want the documentation to be generated EVERY time you build the project
   # then leave out the 'ALL' keyword from the above command.
 endif()
@@ -70,14 +68,14 @@ SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CPack ${CMake_VERSION_MAJOR}.${CMake_VERSIO
 IF(UNIX)
     #DEB
     SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Victor Ramirez")
-    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-dev (>= 1.46.1), doxygen (>= 1.8), g++ (>= 4.6), cmake (>= 2.8), libirrlicht-dev (>= 1.7)")
+    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-dev (>= 1.46.1), g++ (>= 4.6), cmake (>= 2.8), libirrlicht-dev (>= 1.7)")
     SET(CPACK_DEBIAN_PACKAGE_SECTION "games")
     #SET(CPACK_DEBIAN_PACKAGE_ARCHITECTURE i386)
     #SET(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
     #SET(CPACK_DEBIAN_PACKAGE_SUGGESTS "cmatrix (>= 1.0), sl (>= 3.0)")
 
     #RPM
-    SET(CPACK_RPM_PACKAGE_REQUIRES "boost-devel >= 1.46-1, doxygen >= 1.8, gcc-c++ >= 4.6, cmake >= 2.8, irrlicht-devel >= 1.7")
+    SET(CPACK_RPM_PACKAGE_REQUIRES "boost-devel >= 1.46-1, gcc-c++ >= 4.6, cmake >= 2.8, irrlicht-devel >= 1.7")
 ENDIF(UNIX)
 
 Include(CPack)
