@@ -83,12 +83,6 @@ __Error__: I get error when I run ofw:
 
 __Solve__: You need install irrlicht version 1.8. This problem happens in kernel 3.8.5
 
-__Error__: If I install the generate package(DEB or RPM), When I execute ofw, I get error: "Could
-not load mesh, because file could not be opened: : ../media/ninja.b3d"
-
-__Solve__: You can execute the program in the directory CMAKE\_PREFIX/media. This feature will be
-performance in the future ;)
-
 ## License
 
 Open Fantasy World is licensed under GPL v3.

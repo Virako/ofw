@@ -23,13 +23,21 @@ cmake_minimum_required(VERSION 2.6)
 IF(CMAKE_COMPILER_IS_GNUCXX)
     MESSAGE(STATUS "G++ detected - Adding compiler flags")
     # TARGETS. # Add -Wextra warning: unused parameter in irrlicht. ↓
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O0 -std=c++0x -pedantic -ggdb")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -Wextra -fno-inline")
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O0 -std=c++0x -pedantic -ggdb $ENV{CXXFLAGS}")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -Wextra -fno-inline $ENV{CXXFLAGS}")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2 $ENV{CXXFLAGS}")
 ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 
 # Use the own version of FindXXX.cmake scripts
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
+
+
+#Path options
+set(BINDIR "bin" CACHE STRING "Where to install binaries")
+set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
+
+add_definitions(-DLOCALEDIR="${LOCALEDIR}")
+add_definitions(-DDATAROOTDIR="${DATAROOTDIR}")
 
 #-- Add an Option to toggle the generation of the API documentation
 option(BUILD_DOCUMENTATION "Use Doxygen to create the HTML based API documentation" OFF)
