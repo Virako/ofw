@@ -17,4 +17,5 @@ notifications:
     on_failure: always
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install cmake libboost-all-dev libqt4-dev libqtcore4 libxxf86vm-dev unzip x11proto-xf86vidmode-dev
+  - sudo apt-get install cmake libboost-all-dev libqt4-dev libqtcore4 libxxf86vm-dev libirrlich-dev x11proto-xf86vidmode-dev
+
