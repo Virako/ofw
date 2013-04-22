@@ -6,7 +6,7 @@ Open Fantasy World is a MMORPG where the players will live in community.
 ## Requirements:
 
 * CMake, http://www.cmake.org/cmake/resources/software.html
-* Irrlicht 1.8, http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.zip
+* Irrlicht 1.7.3, http://downloads.sourceforge.net/irrlicht/irrlicht-1.7.3.zip
 * Boost 1.49, http://www.boost.org/users/download/
 * Doxygen 1.8, http://www.stack.nl/~dimitri/doxygen/download.html
 * Qt 4.8, http://qt-project.org/downloads

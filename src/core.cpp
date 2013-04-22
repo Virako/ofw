@@ -43,13 +43,13 @@ namespace core {
         params.AntiAlias = 0;
         params.Bits = 32;
         params.DeviceType = irr::EIDT_BEST;
-        params.DriverMultithreaded = true;
+        //params.DriverMultithreaded = true;
         params.DriverType = driver;
         params.EventReceiver = 0;
         params.Fullscreen = false;
         params.HighPrecisionFPU = false;
         params.IgnoreInput = false;
-        params.LoggingLevel = irr::ELL_DEBUG;
+        //params.LoggingLevel = irr::ELL_DEBUG;
         params.Stencilbuffer = true;
         params.Stereobuffer = false;
         params.Vsync = false;
