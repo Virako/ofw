@@ -28,7 +28,8 @@ SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::Se
     irr_widget.setParent(ui->centralWidget);
     irr_widget.setGeometry(0, 0, 800, 600);
     this->resize(800, 600);
-    //emit on_comboBox_currentIndexChanged(0);
+    player = NULL;
+    emit on_comboBox_currentIndexChanged(0);
 }
 
 SelectPlayer::~SelectPlayer() {
@@ -49,13 +50,15 @@ void SelectPlayer::on_b_create_clicked() {
 void SelectPlayer::on_slider_height_valueChanged(int value) {
     cout << "H: " << value << endl;
     height = value;
-    player->setScale(irr::core::vector3df(width/100.0, height/100.0, width/100.0));
+    if (player != NULL)
+        player->setScale(irr::core::vector3df(width/100.0, height/100.0, width/100.0));
 }
 
 void SelectPlayer::on_slider_width_valueChanged(int value) {
     cout << "W: " << value << endl;
     width = value;
-    player->setScale(irr::core::vector3df(width/100.0, height/100.0, width/100.0));
+    if (player != NULL)
+        player->setScale(irr::core::vector3df(width/100.0, height/100.0, width/100.0));
 }
 
 void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
