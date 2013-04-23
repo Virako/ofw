@@ -42,8 +42,8 @@ class SelectPlayer : public QMainWindow {
         int width;
         int type;
         std::string name;
-        irr::scene::IAnimatedMesh *mesh;
         irr::scene::IAnimatedMeshSceneNode *player;
+        irr::IrrlichtDevice *device;
 
     public:
         /**
@@ -65,7 +65,6 @@ class SelectPlayer : public QMainWindow {
          */
         QIrrlichtWidget* get_irr_widget();
 
-        void update_mesh_player(irr::scene::IAnimatedMesh *mesh);
         void update_scale_player(irr::scene::IAnimatedMeshSceneNode *player);
 
     private slots:
@@ -95,6 +94,11 @@ class SelectPlayer : public QMainWindow {
          */
         void on_comboBox_currentIndexChanged(int index);
 
+        /**
+         * @brief TextBox is changed
+         *
+         * @param text New text in the textBox
+         */
         void on_name_textEdited(QString text);
 };
 

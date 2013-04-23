@@ -105,10 +105,6 @@ void SelectPlayer::on_name_textEdited(QString text) {
     name = text.toStdString();
 }
 
-void SelectPlayer::update_mesh_player(irr::scene::IAnimatedMesh *mesh) {
-    this->mesh = mesh;
-}
-
 void SelectPlayer::update_scale_player(irr::scene::IAnimatedMeshSceneNode* player) {
     this->player = player;
 }

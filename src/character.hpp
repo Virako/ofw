@@ -19,108 +19,100 @@
 #ifndef __CHARACTER_H
 #define __CHARACTER_H
 
-#include <string>
-using namespace std;
 
-#include "cte.hpp"
-using namespace hw;
+namespace ofw {
 
-namespace ofw
-{
+    namespace scene {
 
-namespace scene
-{
+        class Character {
+            protected:
+                unsigned int height;
+                unsigned int width;
+                unsigned int life;
+                unsigned int total_life;
 
-class Character {
-    protected:
-        unsigned int height;
-        unsigned int width;
-        unsigned int life;
-        unsigned int total_life;
+            public:
+                /**
+                 * @brief Destructor default.
+                 */
+                virtual ~Character() = 0;
 
-    public:
-        /**
-         * @brief Destructor default.
-         */
-        virtual ~Character() = 0;
+                /**
+                 * @brief Get the current character's height.
+                 *
+                 * @return current character's height.
+                 */
+                virtual unsigned int get_height(void);
 
-        /**
-         * @brief Get the current character's height.
-         *
-         * @return current character's height.
-         */
-        virtual unsigned int get_height(void);
+                /**
+                 * @brief Get the current character's width.
+                 *
+                 * @return current character's width.
+                 */
+                virtual unsigned int get_width(void);
 
-        /**
-         * @brief Get the current character's width.
-         *
-         * @return current character's width.
-         */
-        virtual unsigned int get_width(void);
+                /**
+                 * @brief Set character's height checking if value is correct.
+                 *
+                 * @param height character's height
+                 */
+                virtual void set_height(unsigned int height);
 
-        /**
-         * @brief Set character's height checking if value is correct.
-         *
-         * @param height character's height
-         */
-        virtual void set_height(unsigned int height);
+                /**
+                 * @brief Set character's width checking if value is correct.
+                 *
+                 * @param width character's width
+                 */
+                virtual void set_width(unsigned int width);
 
-        /**
-         * @brief Set character's width checking if value is correct.
-         *
-         * @param width character's width
-         */
-        virtual void set_width(unsigned int width);
+                /**
+                 * @brief Get the current character's life.
+                 *
+                 * @return current character's life.
+                 */
+                virtual unsigned int get_life(void);
 
-        /**
-         * @brief Get the current character's life.
-         *
-         * @return current character's life.
-         */
-        virtual unsigned int get_life(void);
+                /**
+                 * @brief Get the current character's life.
+                 *
+                 * @return current character's life.
+                 */
+                virtual unsigned int get_total_life(void);
 
-        /**
-         * @brief Get the current character's life.
-         *
-         * @return current character's life.
-         */
-        virtual unsigned int get_total_life(void);
+                /**
+                 * @brief Set character's life checking if value is correct.
+                 *
+                 * @param life character's life
+                 */
+                virtual void set_life(unsigned int life);
 
-        /**
-         * @brief Set character's life checking if value is correct.
-         *
-         * @param life character's life
-         */
-        virtual void set_life(unsigned int life);
+                /**
+                 * @brief Set character's life checking if value is correct.
+                 *
+                 * @param rel_life character's relative life. If negative sub life and if
+                 * positive add life.
+                 */
+                virtual void set_rel_life(int rel_life);
 
-        /**
-         * @brief Set character's life checking if value is correct.
-         *
-         * @param rel_life character's relative life. If negative sub life and if
-         * positive add life.
-         */
-        virtual void set_rel_life(int rel_life);
+        };
 
-};
+        inline unsigned int Character::get_height(void) {
+            return this->height;
+        }
 
-inline unsigned int Character::get_height(void) {
-    return this->height;
-}
+        inline unsigned int Character::get_width(void) {
+            return this->width;
+        }
 
-inline unsigned int Character::get_width(void) {
-    return this->width;
-}
+        inline unsigned int Character::get_life() {
+            return this->life;
+        }
 
-inline unsigned int Character::get_life() {
-    return this->life;
-}
+        inline unsigned int Character::get_total_life() {
+            return this->total_life;
+        }
 
-inline unsigned int Character::get_total_life() {
-    return this->total_life;
-}
-
-}
-
+    }
 }
 
 #endif

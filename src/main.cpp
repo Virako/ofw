@@ -38,7 +38,6 @@ int main(int argc, char *argv[]) {
         irr::scene::ISceneManager* smgr = device->getSceneManager();
         irr::scene::IAnimatedMesh* player = smgr->getMesh(
                 (std::string(DATAROOTDIR) + std::string("/media/ninja.b3d")).c_str());
-        sp.update_mesh_player(player);
         if (!player) {
             device->drop();
             return 1;

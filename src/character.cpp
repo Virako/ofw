@@ -17,43 +17,44 @@
 */
 
 #include <stdexcept>
+#include <string>
 
 #include "character.hpp"
+#include "cte.hpp"
+using namespace hw;
 
-namespace ofw
-{
 
-namespace scene
-{
+namespace ofw {
 
-Character::~Character() {
-}
+    namespace scene {
 
-void Character::set_height(unsigned int height) {
-    if (height < HEIGHT_MIN || height > HEIGHT_MAX)
-        throw domain_error("");
-    else
-        this->height = height;
-}
+        Character::~Character() {
+        }
 
-void Character::set_width(unsigned int width) {
-    if (width < WIDTH_MIN || width > WIDTH_MAX)
-        throw domain_error("");
-    else
-        this->width = width;
-}
+        void Character::set_height(unsigned int height) {
+            if (height < HEIGHT_MIN || height > HEIGHT_MAX)
+                throw std::domain_error("");
+            else
+                this->height = height;
+        }
 
-void Character::set_life(unsigned int life) {
-    if (life > this->get_total_life())
-        throw domain_error("");
-    else
-        this->life = life;
-}
+        void Character::set_width(unsigned int width) {
+            if (width < WIDTH_MIN || width > WIDTH_MAX)
+                throw std::domain_error("");
+            else
+                this->width = width;
+        }
 
-void Character::set_rel_life(int rel_life) {
-    this->set_life(this->get_life() + rel_life);
-}
+        void Character::set_life(unsigned int life) {
+            if (life > this->get_total_life())
+                throw std::domain_error("");
+            else
+                this->life = life;
+        }
 
-}
+        void Character::set_rel_life(int rel_life) {
+            this->set_life(this->get_life() + rel_life);
+        }
 
+    }
 }

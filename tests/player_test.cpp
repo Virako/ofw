@@ -46,12 +46,12 @@ BOOST_AUTO_TEST_CASE (height_decrement) {
 
 BOOST_AUTO_TEST_CASE (height_increment_out_domain) {
     p->set_height(HEIGHT_MAX);
-    BOOST_CHECK_THROW( p->set_rel_height(1), domain_error );
+    BOOST_CHECK_THROW( p->set_rel_height(1), std::domain_error );
 }
 
 BOOST_AUTO_TEST_CASE (height_decrement_out_domain) {
     p->set_height(HEIGHT_MIN);
-    BOOST_CHECK_THROW( p->set_rel_height(-1), domain_error );
+    BOOST_CHECK_THROW( p->set_rel_height(-1), std::domain_error );
 }
 
 BOOST_AUTO_TEST_SUITE_END( )
@@ -72,12 +72,12 @@ BOOST_AUTO_TEST_CASE (width_decrement) {
 
 BOOST_AUTO_TEST_CASE (width_increment_out_domain) {
     p->set_width(WIDTH_MAX);
-    BOOST_CHECK_THROW( p->set_rel_width(1), domain_error );
+    BOOST_CHECK_THROW( p->set_rel_width(1), std::domain_error );
 }
 
 BOOST_AUTO_TEST_CASE (width_decrement_out_domain) {
     p->set_width(WIDTH_MIN);
-    BOOST_CHECK_THROW( p->set_rel_width(-1), domain_error );
+    BOOST_CHECK_THROW( p->set_rel_width(-1), std::domain_error );
 }
 
 BOOST_AUTO_TEST_SUITE_END( )
@@ -103,7 +103,7 @@ BOOST_AUTO_TEST_CASE (height_valid) {
 }
 
 BOOST_AUTO_TEST_CASE (height_set_out_domain) {
-    BOOST_CHECK_THROW( p->set_height(HEIGHT_MAX + 1), domain_error );
+    BOOST_CHECK_THROW( p->set_height(HEIGHT_MAX + 1), std::domain_error );
 }
 
 BOOST_AUTO_TEST_SUITE_END( )
@@ -127,7 +127,7 @@ BOOST_AUTO_TEST_CASE (width_valid) {
 }
 
 BOOST_AUTO_TEST_CASE (width_set_out_domain) {
-    BOOST_CHECK_THROW( p->set_width(WIDTH_MAX + 1), domain_error );
+    BOOST_CHECK_THROW( p->set_width(WIDTH_MAX + 1), std::domain_error );
 }
 
 BOOST_AUTO_TEST_SUITE_END( )
@@ -160,13 +160,13 @@ BOOST_AUTO_TEST_CASE (life_decrement) {
 
 BOOST_AUTO_TEST_CASE (life_increment_out_domain) {
     p->set_life(p->get_total_life());
-    BOOST_CHECK_THROW( p->set_rel_life(1), domain_error );
+    BOOST_CHECK_THROW( p->set_rel_life(1), std::domain_error );
 }
 
 BOOST_AUTO_TEST_CASE (life_decrement_out_domain) {
     unsigned int zero = 0;
     p->set_life(zero);
-    BOOST_CHECK_THROW( p->set_rel_life(-1), domain_error );
+    BOOST_CHECK_THROW( p->set_rel_life(-1), std::domain_error );
 }
 
 BOOST_AUTO_TEST_SUITE_END( )

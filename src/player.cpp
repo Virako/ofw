@@ -16,35 +16,29 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <stdexcept>
-
 #include "player.hpp"
-#include "cte.hpp"
-using namespace hw;
 
-namespace ofw
-{
 
-namespace scene
-{
+namespace ofw {
 
-Player::Player(unsigned int height, unsigned int width) {
-     this->height = height;
-     this->width = width;
-     this->total_life = 5;
-}
+    namespace scene {
 
-Player::~Player() {
-}
+        Player::Player(unsigned int height, unsigned int width) {
+             this->height = height;
+             this->width = width;
+             this->total_life = 5;
+        }
 
-void Player::set_rel_height(int rel_height) {
-    this->set_height(this->get_height() + rel_height);
-}
+        Player::~Player() {
+        }
 
-void Player::set_rel_width(int rel_width) {
-    this->set_width(this->get_width() + rel_width);
-}
+        void Player::set_rel_height(int rel_height) {
+            this->set_height(this->get_height() + rel_height);
+        }
 
-}
+        void Player::set_rel_width(int rel_width) {
+            this->set_width(this->get_width() + rel_width);
+        }
 
+    }
 }
