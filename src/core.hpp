@@ -22,31 +22,44 @@
 
 #include "irrlicht.h"
 
+
 namespace ofw {
 
-namespace core {
-    irr::video::E_DRIVER_TYPE init_driver(bool gui=false);
-    irr::IrrlichtDevice* init_device(
-            irr::core::dimension2d<irr::u32> window_size,
-            irr::video::E_DRIVER_TYPE driver=irr::video::EDT_NULL,
-            void* window_id=0);
+    namespace core {
 
-    class Core {
-        private:
-            irr::video::E_DRIVER_TYPE driver;
-            irr::IrrlichtDevice* device;
+        /**
+         * @brief Singleton class
+         */
+        class Core {
+            private:
+                irr::IrrlichtDevice* device;
 
-            Core(irr::video::E_DRIVER_TYPE driver, irr::IrrlichtDevice* device);
-            Core(const Core&);
-            void operator=(const Core&);
+                Core(irr::core::dimension2d<irr::u32> window_size, void* window_id=0);
+                Core(const Core&);
+                void operator=(const Core&);
 
-        public:
-            static Core& get_instance(irr::video::E_DRIVER_TYPE driver,
-                    irr::IrrlichtDevice* device);
-    };
+            public:
 
-}
+                /**
+                 * @brief Static method that get a instance of core.
+                 *
+                 * @param window_size windows size. (800x600)
+                 * @param window_id if 0, irrlicht execute in a separate windows, else, irrlicht
+                 * execute inside window.
+                 *
+                 * @return Core object
+                 */
+                static Core& get_instance(irr::core::dimension2d<irr::u32> window_size,
+                        void* window_id=0);
 
+                /**
+                 * @brief Get irrlicht device
+                 *
+                 * @return irrlicht device
+                 */
+                irr::IrrlichtDevice* get_device();
+        };
+    }
 }
 
 #endif

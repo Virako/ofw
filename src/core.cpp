@@ -25,51 +25,38 @@
 
 namespace ofw {
 
-namespace core {
+    namespace core {
 
-    irr::video::E_DRIVER_TYPE init_driver(bool gui) {
-        if (!gui) {
-            return irr::driverChoiceConsole();
+        Core::Core(irr::core::dimension2d<irr::u32> window_size, void* window_id) {
+            irr::SIrrlichtCreationParameters params;
+            params.AntiAlias = 0;
+            params.Bits = 32;
+            params.DeviceType = irr::EIDT_BEST;
+            //params.DriverMultithreaded = true;
+            params.DriverType = irr::driverChoiceConsole();
+            params.EventReceiver = 0;
+            params.Fullscreen = false;
+            params.HighPrecisionFPU = false;
+            params.IgnoreInput = false;
+            //params.LoggingLevel = irr::ELL_DEBUG;
+            params.Stencilbuffer = true;
+            params.Stereobuffer = false;
+            params.Vsync = false;
+            //params.WindowId = reinterpret_cast<void*>(this->winId());
+            params.WindowId = window_id;
+            params.WindowSize = window_size;
+            params.WithAlphaChannel = true;
+            this->device = irr::createDeviceEx(params);
         }
-        else {
-            std::cout << "Yet not implemented" << std::endl;
-            return irr::video::EDT_COUNT;
+
+        Core& Core::get_instance(irr::core::dimension2d<irr::u32> window_size, void* window_id) {
+            static Core core(window_size, window_id);
+            return core;
         }
+
+        irr::IrrlichtDevice* Core::get_device() {
+            return device;
+        }
+
     }
-
-    irr::IrrlichtDevice* init_device(irr::core::dimension2d<irr::u32> window_size,
-            irr::video::E_DRIVER_TYPE driver, void* window_id) {
-        irr::SIrrlichtCreationParameters params;
-        params.AntiAlias = 0;
-        params.Bits = 32;
-        params.DeviceType = irr::EIDT_BEST;
-        //params.DriverMultithreaded = true;
-        params.DriverType = driver;
-        params.EventReceiver = 0;
-        params.Fullscreen = false;
-        params.HighPrecisionFPU = false;
-        params.IgnoreInput = false;
-        //params.LoggingLevel = irr::ELL_DEBUG;
-        params.Stencilbuffer = true;
-        params.Stereobuffer = false;
-        params.Vsync = false;
-        //params.WindowId = reinterpret_cast<void*>(this->winId());
-        params.WindowId = window_id;
-        params.WindowSize = window_size;
-        params.WithAlphaChannel = true;
-        return irr::createDeviceEx(params);
-    }
-
-    Core::Core(irr::video::E_DRIVER_TYPE driver, irr::IrrlichtDevice* device) {
-        this->driver = driver;
-        this->device = device;
-    }
-
-    Core& Core::get_instance(irr::video::E_DRIVER_TYPE driver, irr::IrrlichtDevice* device) {
-        static Core core(driver, device);
-        return core;
-    }
-
-} //end namespace core
-
-} //end namespace ofw
+}

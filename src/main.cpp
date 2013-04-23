@@ -27,20 +27,20 @@
 #include "gui/select_player.hpp"
 
 
-
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     SelectPlayer sp;
     sp.show();
     sp.get_irr_widget()->init();
-    if (sp.get_irr_widget()->get_device()) {
-        irr::video::IVideoDriver* driver = sp.get_irr_widget()->get_device()->getVideoDriver();
-        irr::scene::ISceneManager* smgr = sp.get_irr_widget()->get_device()->getSceneManager();
+    irr::IrrlichtDevice *device = sp.get_irr_widget()->get_device();
+    if (device) {
+        irr::video::IVideoDriver* driver = device->getVideoDriver();
+        irr::scene::ISceneManager* smgr = device->getSceneManager();
         irr::scene::IAnimatedMesh* player = smgr->getMesh(
                 (std::string(DATAROOTDIR) + std::string("/media/ninja.b3d")).c_str());
         sp.update_mesh_player(player);
         if (!player) {
-            sp.get_irr_widget()->get_device()->drop();
+            device->drop();
             return 1;
         }
         irr::scene::IAnimatedMeshSceneNode *player_ani = smgr->addAnimatedMeshSceneNode(player);
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
             player_ani->setFrameLoop(0, 13);  // nº frame
             player_ani->setAnimationSpeed(10); // fps
             player_ani->setMaterialTexture(0, driver->getTexture(
-                (std::string(DATAROOTDIR) + std::string("/media/ninja.jpg")).c_str()));
+                    (std::string(DATAROOTDIR) + std::string("/media/ninja.jpg")).c_str()));
             player_ani->setScale(irr::core::vector3df(1,1,1));
             player_ani->setPosition(irr::core::vector3df(0,0,0));
             player_ani->setRotation(irr::core::vector3df(0,0,0));

@@ -35,6 +35,12 @@ class QIrrlichtWidget : public QWidget {
          * @brief Device
          */
         irr::IrrlichtDevice *device;
+
+        /**
+         * @brief irrlicht driver
+         */
+        irr::video::IVideoDriver *driver;
+
         /**
          * @brief Camera
          */
@@ -75,6 +81,7 @@ class QIrrlichtWidget : public QWidget {
         ~QIrrlichtWidget();
 
         irr::IrrlichtDevice* get_device();
+        irr::video::E_DRIVER_TYPE get_driver();
         void init();
 
     signals:

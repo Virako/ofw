@@ -29,6 +29,7 @@ SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::Se
     irr_widget.setGeometry(0, 0, 800, 600);
     this->resize(800, 600);
     player = NULL;
+    emit on_name_textEdited("nombre");
     emit on_comboBox_currentIndexChanged(0);
 }
 

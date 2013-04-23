@@ -42,12 +42,10 @@ void QIrrlichtWidget::init() {
     if (device != 0)
         return;
 
-    irr::video::E_DRIVER_TYPE driver = ofw::core::init_driver();
-    if (driver == irr::video::EDT_COUNT)
-        return;
-
-    device = ofw::core::init_device( irr::core::dimension2d<irr::u32>(height(), width()),
-            driver, (void*)((QWidget *)this)->winId() );
+    static ofw::core::Core &c = ofw::core::Core::get_instance(
+            irr::core::dimension2d<irr::u32>(height(), width()),
+            (void*)((QWidget *)this)->winId());
+    device = c.get_device();
     if(device) {
         camera = device->getSceneManager()->addCameraSceneNode(0,
                 irr::core::vector3df(0,15,20), irr::core::vector3df(0,5,0));
