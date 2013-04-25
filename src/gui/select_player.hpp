@@ -20,14 +20,21 @@
 #define __SELECT_PLAYER_HPP
 
 #include <QtGui/QMainWindow>
-#include <QtGui/QResizeEvent>
-#include <QtCore/QString>
-
-#include "irrlicht_widget.hpp"
 
 namespace Ui {
     class SelectPlayer;
 }
+
+namespace irr {
+    class IrrlichtDevice;
+    namespace scene {
+        class IAnimatedMeshSceneNode;
+    }
+}
+
+class QIrrlichtWidget;
+class QString;
+
 
 /**
  * @brief Handler SelectPlayer gui
@@ -37,7 +44,7 @@ class SelectPlayer : public QMainWindow {
 
     private:
         Ui::SelectPlayer *ui;
-        QIrrlichtWidget irr_widget;
+        QIrrlichtWidget *irr_widget;
         int height;
         int width;
         int type;

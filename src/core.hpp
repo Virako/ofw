@@ -20,7 +20,15 @@
 #ifndef __CORE_H
 #define __CORE_H
 
-#include "irrlicht.h"
+
+namespace irr {
+    class IrrlichtDevice;
+    typedef unsigned int u32;
+    namespace core {
+        template <class T>
+        class dimension2d;
+    }
+}
 
 
 namespace ofw {

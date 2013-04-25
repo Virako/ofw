@@ -17,6 +17,7 @@
  * * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+#include "irrlicht.h"
 #include "driverChoice.h"
 #include <iostream>
 

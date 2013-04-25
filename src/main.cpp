@@ -25,6 +25,7 @@
 #include <iostream>
 
 #include "gui/select_player.hpp"
+#include "gui/irrlicht_widget.hpp"
 
 
 int main(int argc, char *argv[]) {

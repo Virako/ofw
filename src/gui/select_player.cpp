@@ -16,17 +16,22 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "irrlicht.h"
 #include <iostream>
 using namespace std;
 #include <QtGui/QMessageBox>
+#include <QtCore/QString>
 
 #include "select_player.hpp"
 #include "ui_select_player.h"
+#include "irrlicht_widget.hpp"
+
 
 SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::SelectPlayer) {
+    irr_widget = new QIrrlichtWidget(parent);
     ui->setupUi(this);
-    irr_widget.setParent(ui->centralWidget);
-    irr_widget.setGeometry(0, 0, 800, 600);
+    irr_widget->setParent(ui->centralWidget);
+    irr_widget->setGeometry(0, 0, 800, 600);
     this->resize(800, 600);
     player = NULL;
     emit on_name_textEdited("nombre");
@@ -38,7 +43,7 @@ SelectPlayer::~SelectPlayer() {
 }
 
 QIrrlichtWidget* SelectPlayer::get_irr_widget() {
-    return &irr_widget;
+    return irr_widget;
 }
 
 void SelectPlayer::on_b_create_clicked() {

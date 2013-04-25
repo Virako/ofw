@@ -20,9 +20,17 @@
 #define IRRLICHT_WIDGET_HPP
 
 #include <QtGui/QWidget>
-#include <QtGui/QResizeEvent>
-#include <irrlicht.h>
 
+
+namespace irr {
+    class IrrlichtDevice;
+    namespace scene {
+        class ICameraSceneNode;
+    }
+    namespace video {
+        class IVideoDriver;
+    }
+}
 
 /**
  * @brief QWidget for integrate Irrlicht
@@ -81,7 +89,6 @@ class QIrrlichtWidget : public QWidget {
         ~QIrrlichtWidget();
 
         irr::IrrlichtDevice* get_device();
-        irr::video::E_DRIVER_TYPE get_driver();
         void init();
 
     signals:
