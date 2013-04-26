@@ -17,8 +17,16 @@
  * * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+#ifndef DATADIR
+    const char DATADIR [] = "";
+#endif
+#ifndef LOCALEDIR
+    const char LOCALEDIR [] = "";
+#endif
+
 #include "irrlicht.h"
 #include "driverChoice.h"
+#include <libintl.h>
 #include <iostream>
 
 #include "core.hpp"
@@ -27,6 +35,13 @@
 namespace ofw {
 
     namespace core {
+
+        void init_i18n() {
+            bind_textdomain_codeset("ofw", "UTF-8");
+            setlocale(LC_ALL, "");
+            bindtextdomain("ofw", (std::string(DATADIR) + std::string("/")+ std::string(LOCALEDIR)).c_str());
+            textdomain("ofw" );
+        }
 
         Core::Core(irr::core::dimension2d<irr::u32> window_size, void* window_id) {
             irr::SIrrlichtCreationParameters params;

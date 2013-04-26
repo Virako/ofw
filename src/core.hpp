@@ -36,6 +36,11 @@ namespace ofw {
     namespace core {
 
         /**
+         * @brief Init the i18n.
+         */
+        void init_i18n();
+
+        /**
          * @brief Singleton class
          */
         class Core {

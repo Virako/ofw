@@ -37,7 +37,8 @@ World with the following commands run in the top-level directory of ofw:
     mkdir build
     cd build
     cmake ..
-    make
+    sudo make all install
+    sudo make uninstall  # for uninstall
 
 ### Generate documentation
 
@@ -51,6 +52,10 @@ For you generate documentation, type:
 For you generate package DEB and RPM, you need execute:
 
     make package
+
+or
+
+    cpack
 
 ### Usage:
 
@@ -72,6 +77,26 @@ or
     ctest
 
 ..in the build directory.
+
+### Add language
+
+* You put in the string traducible inside \_("string")
+* Get all string from code:
+
+    xgettext -C -k\_ -s -d ofw --package-name=ofw --package-version=x.x -o ofw.pot files
+
+* Create files .po:
+
+    msginit -l es -o po/es.po -i ofw.pot
+
+* Translate files .po
+* Generate binary file:
+
+    msgfmt -c -v -o locale/es/LC_MESSAGES/nombreProyecto.mo po/es.po
+
+* If you need to add some string more later, you can use msmerge instead msginit:
+
+    msgmerge -s -U po/es.po ofw.pot
 
 ## FAQ
 

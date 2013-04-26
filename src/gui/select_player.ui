@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Open Fantasy World</string>
   </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
   <widget class="QWidget" name="widget">
    <widget class="QPushButton" name="b_quit">
     <property name="geometry">
@@ -22,6 +25,9 @@
       <width>75</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
     </property>
     <property name="text">
      <string>Quit</string>
@@ -38,6 +44,9 @@
       <width>99</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
     </property>
     <item>
      <property name="text">
@@ -82,11 +91,14 @@
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
     <property name="tickPosition">
-     <enum>QSlider::TicksBothSides</enum>
+     <enum>QSlider::NoTicks</enum>
     </property>
    </widget>
    <widget class="QLabel" name="l_height">
@@ -100,6 +112,9 @@
     </property>
     <property name="autoFillBackground">
      <bool>true</bool>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
     </property>
     <property name="text">
      <string>height</string>
@@ -117,6 +132,9 @@
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
     <property name="text">
      <string>other</string>
     </property>
@@ -133,11 +151,14 @@
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
     <property name="text">
      <string>width</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="name">
+   <widget class="QLineEdit" name="cb_name">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -146,11 +167,20 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
     <property name="inputMask">
      <string/>
     </property>
     <property name="text">
-     <string>nombre</string>
+     <string>name</string>
     </property>
     <property name="maxLength">
      <number>50</number>
@@ -171,6 +201,9 @@
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -183,6 +216,9 @@
       <width>211</width>
       <height>491</height>
      </rect>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -204,6 +240,9 @@ p, li { white-space: pre-wrap; }
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -219,6 +258,9 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
     </property>
     <property name="text">
      <string>Create</string>
@@ -239,6 +281,15 @@ p, li { white-space: pre-wrap; }
       <height>600</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
    </widget>
    <zorder>centralWidget</zorder>
    <zorder>b_quit</zorder>
@@ -247,7 +298,7 @@ p, li { white-space: pre-wrap; }
    <zorder>l_height</zorder>
    <zorder>l_other</zorder>
    <zorder>l_width</zorder>
-   <zorder>name</zorder>
+   <zorder>cb_name</zorder>
    <zorder>slider_other</zorder>
    <zorder>textBrowser</zorder>
    <zorder>slider_width</zorder>
@@ -256,13 +307,13 @@ p, li { white-space: pre-wrap; }
  </widget>
  <tabstops>
   <tabstop>comboBox</tabstop>
-  <tabstop>b_create</tabstop>
   <tabstop>slider_height</tabstop>
-  <tabstop>slider_other</tabstop>
-  <tabstop>b_quit</tabstop>
   <tabstop>slider_width</tabstop>
+  <tabstop>slider_other</tabstop>
+  <tabstop>cb_name</tabstop>
+  <tabstop>b_create</tabstop>
+  <tabstop>b_quit</tabstop>
   <tabstop>textBrowser</tabstop>
-  <tabstop>name</tabstop>
  </tabstops>
  <resources/>
  <connections>

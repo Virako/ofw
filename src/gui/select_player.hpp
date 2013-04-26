@@ -106,7 +106,7 @@ class SelectPlayer : public QMainWindow {
          *
          * @param text New text in the textBox
          */
-        void on_name_textEdited(QString text);
+        void on_cb_name_textEdited(QString text);
 };
 
 #endif

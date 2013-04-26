@@ -21,6 +21,8 @@
 using namespace std;
 #include <QtGui/QMessageBox>
 #include <QtCore/QString>
+#include <libintl.h>
+#define _(x) gettext(x)
 
 #include "select_player.hpp"
 #include "ui_select_player.h"
@@ -34,7 +36,7 @@ SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::Se
     irr_widget->setGeometry(0, 0, 800, 600);
     this->resize(800, 600);
     player = NULL;
-    emit on_name_textEdited("nombre");
+    emit on_cb_name_textEdited(_("name"));
     emit on_comboBox_currentIndexChanged(0);
 }
 
@@ -106,8 +108,9 @@ void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
     type = index;
 }
 
-void SelectPlayer::on_name_textEdited(QString text) {
+void SelectPlayer::on_cb_name_textEdited(QString text) {
     name = text.toStdString();
+    ui->cb_name->setPlaceholderText(text);
 }
 
 void SelectPlayer::update_scale_player(irr::scene::IAnimatedMeshSceneNode* player) {

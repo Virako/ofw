@@ -16,6 +16,10 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef DATADIR
+    const char DATADIR []= "";
+#endif
+
 #include <irrlicht.h>
 #ifdef _IRR_WINDOWS_
 #pragma comment(lib, "Irrlicht.lib")
@@ -23,12 +27,18 @@
 #endif
 #include <QtGui/QApplication>
 #include <iostream>
+#include <libintl.h>
+#define _(x) gettext(x)
 
+#include "core.hpp"
 #include "gui/select_player.hpp"
 #include "gui/irrlicht_widget.hpp"
 
 
 int main(int argc, char *argv[]) {
+    ofw::core::init_i18n();
+    std::cout << _("Welcome to ofw") << std::endl;
+
     QApplication app(argc, argv);
     SelectPlayer sp;
     sp.show();
@@ -38,7 +48,7 @@ int main(int argc, char *argv[]) {
         irr::video::IVideoDriver* driver = device->getVideoDriver();
         irr::scene::ISceneManager* smgr = device->getSceneManager();
         irr::scene::IAnimatedMesh* player = smgr->getMesh(
-                (std::string(DATAROOTDIR) + std::string("/media/ninja.b3d")).c_str());
+                (std::string(DATADIR) + std::string("/media/ninja.b3d")).c_str());
         if (!player) {
             device->drop();
             return 1;
@@ -49,7 +59,7 @@ int main(int argc, char *argv[]) {
             player_ani->setFrameLoop(0, 13);  // nº frame
             player_ani->setAnimationSpeed(10); // fps
             player_ani->setMaterialTexture(0, driver->getTexture(
-                    (std::string(DATAROOTDIR) + std::string("/media/ninja.jpg")).c_str()));
+                    (std::string(DATADIR) + std::string("/media/ninja.jpg")).c_str()));
             player_ani->setScale(irr::core::vector3df(1,1,1));
             player_ani->setPosition(irr::core::vector3df(0,0,0));
             player_ani->setRotation(irr::core::vector3df(0,0,0));

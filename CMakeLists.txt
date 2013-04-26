@@ -35,9 +35,14 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 #Path options
 set(BINDIR "bin" CACHE STRING "Where to install binaries")
 set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
+set(DATADIRNAME "ofw")
+set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
+set(LOCALEDIR "locale")
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_HOME_DIRECTORY}/bin)
 
+add_definitions(-DOFW_PATH="${DATADIR}")
 add_definitions(-DLOCALEDIR="${LOCALEDIR}")
-add_definitions(-DDATAROOTDIR="${DATAROOTDIR}")
+add_definitions(-DDATADIR="${DATADIR}")
 
 #-- Add an Option to toggle the generation of the API documentation
 option(BUILD_DOCUMENTATION "Use Doxygen to create the HTML based API documentation" OFF)
@@ -56,7 +61,14 @@ if(BUILD_DOCUMENTATION)
   # then leave out the 'ALL' keyword from the above command.
 endif()
 
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_HOME_DIRECTORY}/bin)
+# uninstall target
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+    IMMEDIATE @ONLY)
+
+add_custom_target(uninstall
+    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
 
 
 # CPack
@@ -92,3 +104,5 @@ Include(CPack)
 ENABLE_TESTING()
 add_subdirectory(src)
 add_subdirectory(tests)
+
+INSTALL(DIRECTORY media locale DESTINATION ${DATADIR})
