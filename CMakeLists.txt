@@ -88,14 +88,14 @@ SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CPack ${CMake_VERSION_MAJOR}.${CMake_VERSIO
 IF(UNIX)
     #DEB
     SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Victor Ramirez")
-    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "g++ (>= 4.6), cmake (>= 2.8), libirrlicht-dev (>= 1.7)")
+    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "g++ (>= 4.6), cmake (>= 2.8), libirrlicht1.7a (>= 1.7)")
     SET(CPACK_DEBIAN_PACKAGE_SECTION "games")
     #SET(CPACK_DEBIAN_PACKAGE_ARCHITECTURE i386)
     #SET(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
     #SET(CPACK_DEBIAN_PACKAGE_SUGGESTS "cmatrix (>= 1.0), sl (>= 3.0)")
 
     #RPM
-    SET(CPACK_RPM_PACKAGE_REQUIRES "gcc-c++ >= 4.6, cmake >= 2.8, irrlicht-devel >= 1.7")
+    SET(CPACK_RPM_PACKAGE_REQUIRES "gcc-c++ >= 4.6, cmake >= 2.8, irrlicht >= 1.7")
 ENDIF(UNIX)
 
 Include(CPack)
