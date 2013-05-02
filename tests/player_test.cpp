@@ -20,23 +20,22 @@
 #define BOOST_TEST_MODULE playertests
 #include <boost/test/included/unit_test.hpp>
 
-// #include "character.hpp"
-// #include "player.hpp"
-// #include "picacode.hpp"
-// #include "hacker.hpp"
-// #include "cracker.hpp"
-// #include "designer.hpp"
-// #include "hunterbug.hpp"
+#include "character.hpp"
+#include "player.hpp"
+#include "picacode.hpp"
+#include "hacker.hpp"
+#include "cracker.hpp"
+#include "designer.hpp"
+#include "hunterbug.hpp"
 
-// vim: syntastic errors
-#include "../src/character.hpp"
-#include "../src/picacode.hpp"
-#include "../src/hacker.hpp"
-#include "../src/cracker.hpp"
-#include "../src/designer.hpp"
-#include "../src/hunterbug.hpp"
-#include "../src/player.hpp"
-#include "../src/cte.hpp"
+// vim: avoid syntastic errors
+// #include "../src/character.hpp"
+// #include "../src/picacode.hpp"
+// #include "../src/hacker.hpp"
+// #include "../src/cracker.hpp"
+// #include "../src/designer.hpp"
+// #include "../src/hunterbug.hpp"
+// #include "../src/player.hpp"
 
 
 struct StructPicacode {
