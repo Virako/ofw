@@ -19,7 +19,6 @@
 #include <libintl.h>
 #define _(x) gettext(x)
 
-#include <iostream>
 #include "picacode.hpp"
 
 ofw::scene::Picacode::Picacode() {
@@ -31,6 +30,9 @@ ofw::scene::Picacode::Picacode() {
     this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN)/2;
     this->life = 100;
     this->total_life = 100;
+    this->character = NULL;
+    this->num_mesh = 0;
+    this->num_texture = 0;
     this->DESCRIPTION = new std::string(_("Description player"));
     this->MESHES.push_back(std::string("/media/picacode.obj"));
     this->mesh = this->MESHES.front();

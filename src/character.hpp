@@ -43,12 +43,12 @@ namespace ofw {
                 unsigned int width;
                 unsigned int life;
                 unsigned int total_life;
-                int num_mesh = 0;
-                int num_texture = 0;
+                int num_mesh;
+                int num_texture;
                 std::string name;
                 std::string mesh;
                 std::string texture;
-                irr::scene::IAnimatedMeshSceneNode *character = NULL;
+                irr::scene::IAnimatedMeshSceneNode *character;
                 std::string *DESCRIPTION;
                 std::vector<std::string> MESHES;
                 std::vector<std::string> TEXTURES;
