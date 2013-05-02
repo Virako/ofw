@@ -23,6 +23,29 @@ IF (BOOST_FOUND)
             ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 ENDIF (BOOST_FOUND)
 
+# Irrlicht
+find_package(Irrlicht REQUIRED)
+if (${IRRLICHT_VERSION} MATCHES "1.8")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DIRRLICHT_VERSION=18")
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DIRRLICHT_VERSION=18")
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DIRRLICHT_VERSION=18")
+elseif (${IRRLICHT_VERSION} MATCHES "1.7")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DIRRLICHT_VERSION=17")
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DIRRLICHT_VERSION=17")
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DIRRLICHT_VERSION=17")
+endif ()
+
+include_directories(${IRRLICHT_INCLUDE_DIRS})
+IF (WIN32)
+    # TODO: check
+    SET(IRR_LIB ${IRRLICHT_LIBRARIES})
+ENDIF (WIN32)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    # GL Xrand and X11 are required to compile in Linux
+    SET(IRR_LIB ${IRRLICHT_LIBRARIES} GL Xrandr X11 Xxf86vm)
+endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
+
 set(SRC_test_player
     player_test.cpp
     ../src/character.cpp
@@ -35,6 +58,6 @@ set(SRC_test_player
 
 add_executable(player_test ${SRC_test_player})
 
-target_link_libraries(player_test ${Boost_LIBRARIES})
+target_link_libraries(player_test ${Boost_LIBRARIES} ${IRR_LIB})
 
 ADD_TEST(player_test ${EXECUTABLE_OUTPUT_PATH}/player_test)

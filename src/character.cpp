@@ -19,7 +19,6 @@
 #include "irrlicht.h"
 #include <stdexcept>
 #include <iostream>
-#include <string>
 
 #include "character.hpp"
 #include "ofw_config.hpp"
