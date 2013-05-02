@@ -17,18 +17,12 @@
  * * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-#ifndef DATADIR
-    const char DATADIR [] = "";
-#endif
-#ifndef LOCALEDIR
-    const char LOCALEDIR [] = "";
-#endif
-
 #include "irrlicht.h"
 #include "driverChoice.h"
 #include <libintl.h>
 #include <iostream>
 
+#include "ofw_config.hpp"
 #include "core.hpp"
 
 
@@ -39,7 +33,8 @@ namespace ofw {
         void init_i18n() {
             bind_textdomain_codeset("ofw", "UTF-8");
             setlocale(LC_ALL, "");
-            bindtextdomain("ofw", (std::string(DATADIR) + std::string("/")+ std::string(LOCALEDIR)).c_str());
+            // TODO boost::filesystem
+            bindtextdomain("ofw", (ofw::datadir + "/"  + ofw::localedir).c_str());
             textdomain("ofw" );
         }
 

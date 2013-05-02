@@ -16,35 +16,27 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <irrlicht.h>
-#ifdef _IRR_WINDOWS_
-#pragma comment(lib, "Irrlicht.lib")
-#pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
-#endif
-#include <QtGui/QApplication>
-#include <iostream>
 #include <libintl.h>
 #define _(x) gettext(x)
 
-#include "core.hpp"
-#include "gui/select_player.hpp"
-#include "gui/irrlicht_widget.hpp"
+#include <iostream>
 #include "picacode.hpp"
-#include "ofw_config.hpp"
 
+ofw::scene::Picacode::Picacode() {
+    this->HEIGHT_MIN = 80;
+    this->HEIGHT_MAX = 120;
+    this->WIDTH_MIN = 90;
+    this->WIDTH_MAX = 110;
+    this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN)/2;
+    this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN)/2;
+    this->life = 100;
+    this->total_life = 100;
+    this->DESCRIPTION = new std::string(_("Description player"));
+    this->MESHES.push_back(std::string("/media/picacode.obj"));
+    this->mesh = this->MESHES.front();
+    this->TEXTURES.push_back(std::string("/media/picacode.jpg"));
+    this->texture = this->TEXTURES.front();
+}
 
-int main(int argc, char *argv[]) {
-    ofw::core::init_i18n();
-    std::cout << _("Welcome to ofw") << std::endl;
-
-    QApplication app(argc, argv);
-    SelectPlayer sp;
-    sp.show();
-    sp.get_irr_widget()->init();
-    irr::IrrlichtDevice *device = sp.get_irr_widget()->get_device();
-    sp.set_device(device);
-    sp.init_default();
-    if (device) {
-    }
-    return app.exec();
+ofw::scene::Picacode::~Picacode() {
 }

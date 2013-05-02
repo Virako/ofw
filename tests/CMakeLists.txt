@@ -26,7 +26,12 @@ ENDIF (BOOST_FOUND)
 set(SRC_test_player
     player_test.cpp
     ../src/character.cpp
-    ../src/player.cpp)
+    ../src/player.cpp
+    ../src/picacode.cpp
+    ../src/hacker.cpp
+    ../src/cracker.cpp
+    ../src/designer.cpp
+    ../src/hunterbug.cpp)
 
 add_executable(player_test ${SRC_test_player})
 

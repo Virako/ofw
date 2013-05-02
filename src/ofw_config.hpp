@@ -16,35 +16,21 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <irrlicht.h>
-#ifdef _IRR_WINDOWS_
-#pragma comment(lib, "Irrlicht.lib")
-#pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
-#endif
-#include <QtGui/QApplication>
-#include <iostream>
-#include <libintl.h>
-#define _(x) gettext(x)
+#ifndef __CONFIG_OFW_HPP
+#define __CONFIG_OFW_HPP
 
-#include "core.hpp"
-#include "gui/select_player.hpp"
-#include "gui/irrlicht_widget.hpp"
-#include "picacode.hpp"
-#include "ofw_config.hpp"
+#include <string>
 
+namespace ofw {
+    #ifndef DATADIR
+        char DATADIR[] = "";
+    #endif
+    #ifndef LOCALEDIR
+        char LOCALEDIR[] = "";
+    #endif
 
-int main(int argc, char *argv[]) {
-    ofw::core::init_i18n();
-    std::cout << _("Welcome to ofw") << std::endl;
-
-    QApplication app(argc, argv);
-    SelectPlayer sp;
-    sp.show();
-    sp.get_irr_widget()->init();
-    irr::IrrlichtDevice *device = sp.get_irr_widget()->get_device();
-    sp.set_device(device);
-    sp.init_default();
-    if (device) {
-    }
-    return app.exec();
+    const std::string datadir = DATADIR;
+    const std::string localedir = LOCALEDIR;
 }
+
+#endif

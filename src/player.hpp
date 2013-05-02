@@ -20,43 +20,19 @@
 #define __PLAYER_H
 
 #include "character.hpp"
-#include "cte.hpp"
-using namespace hw;
 
 
 namespace ofw {
-
     namespace scene {
+
+        enum { PICACODE = 0, HACKER, CRACKER, DESIGNER, HUNTERBUG };
 
         class Player : public Character {
             public:
                 /**
-                 * @brief Default constructor creating player with height and
-                 * width per default.
-                 */
-                Player(unsigned int height=HEIGHT_DEFAULT, unsigned int width=WIDTH_DEFAULT);
-
-                /**
                  * @brief Destructor default.
                  */
-                ~Player();
-
-                /**
-                 * @brief Set player's relative height.
-                 *
-                 * @param rel_height player's relative height. If negative sub height
-                 * and if positive add height.
-                 */
-                void set_rel_height(int rel_height);
-
-                /**
-                 * @brief Set player's relative width.
-                 *
-                 * @param rel_width player's relative width. If negative sub width
-                 * and if positive add width.
-                 */
-                void set_rel_width(int rel_width);
-
+                virtual ~Player();
         };
 
     }

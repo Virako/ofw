@@ -60,10 +60,15 @@ endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 
 SET(HWQ_SRC
+    ofw_config.hpp
     main.cpp
     character.cpp
     player.cpp
-    cte.hpp
+    picacode.cpp
+    hacker.cpp
+    cracker.cpp
+    designer.cpp
+    hunterbug.cpp
     core.cpp
     gui/select_player.cpp
     gui/irrlicht_widget.cpp

@@ -27,8 +27,11 @@ namespace Ui {
 
 namespace irr {
     class IrrlichtDevice;
+}
+
+namespace ofw {
     namespace scene {
-        class IAnimatedMeshSceneNode;
+        class Player;
     }
 }
 
@@ -45,11 +48,8 @@ class SelectPlayer : public QMainWindow {
     private:
         Ui::SelectPlayer *ui;
         QIrrlichtWidget *irr_widget;
-        int height;
-        int width;
-        int type;
         std::string name;
-        irr::scene::IAnimatedMeshSceneNode *player;
+        ofw::scene::Player *player;
         irr::IrrlichtDevice *device;
 
     public:
@@ -72,7 +72,16 @@ class SelectPlayer : public QMainWindow {
          */
         QIrrlichtWidget* get_irr_widget();
 
-        void update_scale_player(irr::scene::IAnimatedMeshSceneNode *player);
+        void set_device(irr::IrrlichtDevice *device);
+
+        /**
+         * @brief Changes values of sliders from player's values.
+         *
+         * @param p Player
+         */
+        void change_sliders_values();
+
+        void init_default();
 
     private slots:
         /**
@@ -108,5 +117,9 @@ class SelectPlayer : public QMainWindow {
          */
         void on_cb_name_textEdited(QString text);
 };
+
+inline void SelectPlayer::set_device(irr::IrrlichtDevice *device) {
+    this->device = device;
+}
 
 #endif

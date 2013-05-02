@@ -18,7 +18,7 @@
 
 #include "irrlicht.h"
 #include <iostream>
-using namespace std;
+#include <stdexcept>
 #include <QtGui/QMessageBox>
 #include <QtCore/QString>
 #include <libintl.h>
@@ -27,6 +27,11 @@ using namespace std;
 #include "select_player.hpp"
 #include "ui_select_player.h"
 #include "irrlicht_widget.hpp"
+#include "../picacode.hpp"
+#include "../hacker.hpp"
+#include "../cracker.hpp"
+#include "../designer.hpp"
+#include "../hunterbug.hpp"
 
 
 SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::SelectPlayer) {
@@ -35,84 +40,83 @@ SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::Se
     irr_widget->setParent(ui->centralWidget);
     irr_widget->setGeometry(0, 0, 800, 600);
     this->resize(800, 600);
+}
+
+SelectPlayer::~SelectPlayer() {
+    delete ui;
+    delete player;
+}
+
+void SelectPlayer::init_default() {
     player = NULL;
     emit on_cb_name_textEdited(_("name"));
     emit on_comboBox_currentIndexChanged(0);
 }
 
-SelectPlayer::~SelectPlayer() {
-    delete ui;
-}
 
 QIrrlichtWidget* SelectPlayer::get_irr_widget() {
     return irr_widget;
 }
 
 void SelectPlayer::on_b_create_clicked() {
-    cout << "H: " << height << " W:" << width << " type: " << type << " Name: " << name << endl;
+    std::cout << "H: " << this->player->get_height() << " W:" << this->player->get_width()
+            << " Name: " << this->player->get_name() << std::endl;
     QMessageBox messageBox;
     messageBox.critical(0,"Error","Not Yet implemented!");
     messageBox.setFixedSize(500,200);
 }
 
 void SelectPlayer::on_slider_height_valueChanged(int value) {
-    cout << "H: " << value << endl;
-    height = value;
-    if (player != NULL)
-        player->setScale(irr::core::vector3df(width/100.0, height/100.0, width/100.0));
+    if (player != NULL) {
+        this->player->set_height(value);
+        this->player->refresh_character();
+    }
 }
 
 void SelectPlayer::on_slider_width_valueChanged(int value) {
-    cout << "W: " << value << endl;
-    width = value;
-    if (player != NULL)
-        player->setScale(irr::core::vector3df(width/100.0, height/100.0, width/100.0));
+    if (player != NULL) {
+        this->player->set_width(value);
+        this->player->refresh_character();
+    }
+}
+
+void SelectPlayer::change_sliders_values() {
+        ui->slider_height->setMinimum(this->player->get_height_min());
+        ui->slider_height->setMaximum(this->player->get_height_max());
+        ui->slider_width->setMinimum (this->player->get_width_min());
+        ui->slider_width->setMaximum (this->player->get_width_max());
+        //TODO put sliders in h and w per default
 }
 
 void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
-    cout << "index = " << index << endl;
+    if (this->player != NULL) {
+        delete this->player;
+    }
     if (index == 0) {
-        ui->slider_height->setMinimum(80);
-        ui->slider_height->setMaximum(150);
-        ui->slider_width->setMinimum(80);
-        ui->slider_width->setMaximum(110);
-        //TODO cambiar mesh
+        this->player = new ofw::scene::Picacode();
     }
     else if (index == 1) {
-        ui->slider_height->setMinimum(90);
-        ui->slider_height->setMaximum(120);
-        ui->slider_width->setMinimum(90);
-        ui->slider_width->setMaximum(110);
+        this->player = new ofw::scene::Hacker();
     }
     else if (index == 2) {
-        ui->slider_height->setMinimum(80);
-        ui->slider_height->setMaximum(120);
-        ui->slider_width->setMinimum(90);
-        ui->slider_width->setMaximum(110);
+        this->player = new ofw::scene::Cracker();
     }
     else if (index == 3) {
-        ui->slider_height->setMinimum(80);
-        ui->slider_height->setMaximum(120);
-        ui->slider_width->setMinimum(90);
-        ui->slider_width->setMaximum(110);
+        this->player = new ofw::scene::Designer();
     }
     else if (index == 4) {
-        ui->slider_height->setMinimum(80);
-        ui->slider_height->setMaximum(120);
-        ui->slider_width->setMinimum(90);
-        ui->slider_width->setMaximum(110);
+        this->player = new ofw::scene::Hunterbug();
     }
     else {
-        cout << "Indice en: " << index << endl;
+        throw std::domain_error("");
     }
-    type = index;
+    change_sliders_values();
+    this->player->render(this->device);
 }
 
 void SelectPlayer::on_cb_name_textEdited(QString text) {
-    name = text.toStdString();
+    if (player != NULL) {
+        this->player->set_name(text.toStdString());
+    }
     ui->cb_name->setPlaceholderText(text);
-}
-
-void SelectPlayer::update_scale_player(irr::scene::IAnimatedMeshSceneNode* player) {
-    this->player = player;
 }
