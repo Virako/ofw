@@ -16,7 +16,7 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <irrlicht.h>
+#include "irrlicht.h"
 #ifdef _IRR_WINDOWS_
 #pragma comment(lib, "Irrlicht.lib")
 #pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")

@@ -16,7 +16,7 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <irrlicht.h>
+#include "irrlicht.h"
 #include <QtCore/QDebug>
 #include <QtGui/QMessageBox>
 #include <QtGui/QResizeEvent>
