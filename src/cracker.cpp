@@ -33,7 +33,7 @@ ofw::scene::Cracker::Cracker() {
     this->character = NULL;
     this->num_mesh = 0;
     this->num_texture = 0;
-    this->DESCRIPTION = new std::string(_("Description player"));
+    this->DESCRIPTION = new std::string(_("Cracker: rogue. "));
     this->MESHES.push_back(std::string("/media/Gliptodont.b3d"));
     this->mesh = this->MESHES.front();
     this->TEXTURES.push_back(std::string("/media/Gliptodont_color.jpg"));

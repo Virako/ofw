@@ -79,7 +79,7 @@ class SelectPlayer : public QMainWindow {
          *
          * @param p Player
          */
-        void change_sliders_values();
+        void change_players_values();
 
         void init_default();
 

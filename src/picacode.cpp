@@ -33,7 +33,7 @@ ofw::scene::Picacode::Picacode() {
     this->character = NULL;
     this->num_mesh = 0;
     this->num_texture = 0;
-    this->DESCRIPTION = new std::string(_("Description player"));
+    this->DESCRIPTION = new std::string(_("Picacode: stronger player. "));
     this->MESHES.push_back(std::string("/media/picacode.obj"));
     this->mesh = this->MESHES.front();
     this->TEXTURES.push_back(std::string("/media/picacode.jpg"));

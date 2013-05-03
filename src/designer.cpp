@@ -33,7 +33,7 @@ ofw::scene::Designer::Designer() {
     this->character = NULL;
     this->num_mesh = 0;
     this->num_texture = 0;
-    this->DESCRIPTION = new std::string(_("Description player"));
+    this->DESCRIPTION = new std::string(_("Designer: wizard. "));
     this->MESHES.push_back(std::string("/media/sydney.md2"));
     this->mesh = this->MESHES.front();
     this->TEXTURES.push_back(std::string("/media/sydney.png"));

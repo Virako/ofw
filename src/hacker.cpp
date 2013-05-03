@@ -33,7 +33,7 @@ ofw::scene::Hacker::Hacker() {
     this->character = NULL;
     this->num_mesh = 0;
     this->num_texture = 0;
-    this->DESCRIPTION = new std::string(_("Description player"));
+    this->DESCRIPTION = new std::string(_("Hacker: "));
     this->MESHES.push_back(std::string("/media/ninja.b3d"));
     this->mesh = this->MESHES.front();
     this->TEXTURES.push_back(std::string("/media/ninja.jpg"));

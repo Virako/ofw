@@ -26,6 +26,7 @@
 
 #include "select_player.hpp"
 #include "ui_select_player.h"
+
 #include "irrlicht_widget.hpp"
 #include "../picacode.hpp"
 #include "../hacker.hpp"
@@ -49,6 +50,16 @@ SelectPlayer::~SelectPlayer() {
 
 void SelectPlayer::init_default() {
     player = NULL;
+    QString l_h = QString(_("height"));
+    QString l_w = QString(_("width"));
+    QString l_t = QString(_("texture"));
+    QString b_c = QString(_("CREATE"));
+    QString b_q = QString(_("Quit"));
+    ui->l_height->setText(l_h);
+    ui->l_width->setText(l_w);
+    ui->l_texture->setText(l_t);
+    ui->b_create->setText(b_c);
+    ui->b_quit->setText(b_q);
     emit on_cb_name_textEdited(_("name"));
     emit on_comboBox_currentIndexChanged(0);
 }
@@ -80,12 +91,14 @@ void SelectPlayer::on_slider_width_valueChanged(int value) {
     }
 }
 
-void SelectPlayer::change_sliders_values() {
+void SelectPlayer::change_players_values() {
         ui->slider_height->setMinimum(this->player->get_height_min());
         ui->slider_height->setMaximum(this->player->get_height_max());
         ui->slider_width->setMinimum (this->player->get_width_min());
         ui->slider_width->setMaximum (this->player->get_width_max());
         //TODO put sliders in h and w per default
+        QString descr = QString(this->player->get_description()->c_str());
+        ui->text_description->setPlainText(descr);
 }
 
 void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
@@ -110,7 +123,7 @@ void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
     else {
         throw std::domain_error("");
     }
-    change_sliders_values();
+    change_players_values();
     this->player->render(this->device);
 }
 
