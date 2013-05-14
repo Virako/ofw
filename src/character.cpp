@@ -25,7 +25,7 @@
 
 
 ofw::scene::Character::~Character() {
-    delete this->character;
+    this->character->remove();
     delete this->DESCRIPTION;
 }
 
