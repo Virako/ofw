@@ -25,7 +25,8 @@
 
 
 ofw::scene::Character::~Character() {
-    this->character->remove();
+    if (this->character != NULL)
+        this->character->remove();
     delete this->DESCRIPTION;
 }
 
