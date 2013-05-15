@@ -34,7 +34,7 @@ namespace ofw {
             this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN)/2;
             this->life = 100;
             this->total_life = 100;
-            this->character = NULL;
+            this->scene_node = NULL;
             this->num_mesh = 0;
             this->num_texture = 0;
             this->DESCRIPTION = new std::string(_("Picacode: stronger player. "));

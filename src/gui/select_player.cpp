@@ -78,14 +78,12 @@ void SelectPlayer::on_b_create_clicked() {
 void SelectPlayer::on_slider_height_valueChanged(int value) {
     if (player != NULL) {
         this->player->set_height(value);
-        this->player->refresh_character();
     }
 }
 
 void SelectPlayer::on_slider_width_valueChanged(int value) {
     if (player != NULL) {
         this->player->set_width(value);
-        this->player->refresh_character();
     }
 }
 

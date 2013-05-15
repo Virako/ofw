@@ -48,10 +48,10 @@ namespace ofw {
                 std::string name;
                 std::string mesh;
                 std::string texture;
-                irr::scene::IAnimatedMeshSceneNode *character;
                 std::string *DESCRIPTION;
                 std::vector<std::string> MESHES;
                 std::vector<std::string> TEXTURES;
+                irr::scene::IAnimatedMeshSceneNode *scene_node;
 
             public:
                 /**
@@ -184,7 +184,7 @@ namespace ofw {
                 virtual irr::scene::IAnimatedMeshSceneNode* render(irr::IrrlichtDevice *device);
                 virtual void set_animation(unsigned int init_frame, unsigned int end_frame,
                         unsigned int speed);
-                virtual void refresh_character();
+                virtual void scale();
                 virtual void change_mesh(bool sig=true);
                 virtual void change_texture(bool sig=true);
         };

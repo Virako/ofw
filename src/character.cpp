@@ -28,8 +28,8 @@ namespace ofw {
     namespace scene {
 
         Character::~Character() {
-            if (this->character != NULL)
-                this->character->remove();
+            if (this->scene_node != NULL)
+                this->scene_node->remove();
             delete this->DESCRIPTION;
         }
 
@@ -40,6 +40,7 @@ namespace ofw {
             else {
                 throw std::domain_error("");
             }
+            this->scale();
         }
 
         void Character::set_width(unsigned int width) {
@@ -49,6 +50,7 @@ namespace ofw {
             else {
                 throw std::domain_error("");
             }
+            this->scale();
         }
 
         void Character::set_life(unsigned int life) {
@@ -96,29 +98,30 @@ namespace ofw {
                     (ofw::datadir + "/" + this->mesh).c_str());
             if (!player)
                 throw "Exit";
-            this->character = smgr->addAnimatedMeshSceneNode(player);
-            if (!this->character)
+            this->scene_node = smgr->addAnimatedMeshSceneNode(player);
+            if (!this->scene_node)
                 throw "Exit";
-            this->character->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-            this->character->setMaterialTexture(0, driver->getTexture((ofw::datadir +
+            this->scene_node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+            this->scene_node->setMaterialTexture(0, driver->getTexture((ofw::datadir +
                     "/" + this->texture).c_str()));
             float percent = 100;
-            character->setScale(irr::core::vector3df(width/percent, height/percent, width/percent));
-            return character;
+            this->scene_node->setScale(irr::core::vector3df(
+                    width/percent, height/percent, width/percent));
+            return this->scene_node;
         }
 
-        void Character::refresh_character() {
-            float percent = 100;
-            if (!this->character)
-                return;
-            this->character->setScale(irr::core::vector3df(
-                    this->width/percent, this->height/percent, this->width/percent));
+        void Character::scale() {
+            if (this->scene_node != NULL) {
+                float percent = 100;
+                this->scene_node->setScale(irr::core::vector3df(
+                        this->width/percent, this->height/percent, this->width/percent));
+            }
         }
 
         void Character::set_animation(unsigned int init_frame, unsigned int end_frame,
                 unsigned int speed) {
-            character->setFrameLoop(0, 13);  // nº frame
-            character->setAnimationSpeed(10); // fps
+            this->scene_node->setFrameLoop(0, 13);  // nº frame
+            this->scene_node->setAnimationSpeed(10); // fps
         }
 
         void Character::change_mesh(bool sig) {
