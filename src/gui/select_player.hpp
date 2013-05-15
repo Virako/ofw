@@ -102,6 +102,13 @@ class SelectPlayer : public QMainWindow {
          */
         void on_slider_width_valueChanged(int value);
 
+         /**
+          * @brief Value of QSlider slider_texture has changed
+          *
+          * @param value value of texture
+          */
+         void on_slider_texture_valueChanged(int value);
+
         /**
          * @brief Value ofcomboBox has changed
          *

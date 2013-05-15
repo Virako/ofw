@@ -92,21 +92,16 @@ namespace ofw {
         }
 
         irr::scene::IAnimatedMeshSceneNode* Character::render(irr::IrrlichtDevice *device) {
-            irr::video::IVideoDriver* driver = device->getVideoDriver();
-            irr::scene::ISceneManager* smgr = device->getSceneManager();
+            this->device = device;
+            irr::scene::ISceneManager* smgr = this->device->getSceneManager();
             irr::scene::IAnimatedMesh *player = smgr->getMesh(
                     (ofw::datadir + "/" + this->mesh).c_str());
             if (!player)
                 throw "Exit";
             this->scene_node = smgr->addAnimatedMeshSceneNode(player);
-            if (!this->scene_node)
-                throw "Exit";
             this->scene_node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-            this->scene_node->setMaterialTexture(0, driver->getTexture((ofw::datadir +
-                    "/" + this->texture).c_str()));
-            float percent = 100;
-            this->scene_node->setScale(irr::core::vector3df(
-                    width/percent, height/percent, width/percent));
+            this->set_texture();
+            this->scale();
             return this->scene_node;
         }
 
@@ -124,22 +119,14 @@ namespace ofw {
             this->scene_node->setAnimationSpeed(10); // fps
         }
 
-        void Character::change_mesh(bool sig) {
-            int tam = MESHES.size();
-            if (sig)
-                num_mesh = (num_mesh + 1) % tam;
-            else
-                num_mesh = (num_mesh - 1) % tam;
-            this->mesh = MESHES.at(num_mesh);
-        }
-
-        void Character::change_texture(bool sig) {
-            int tam = TEXTURES.size();
-            if (sig)
-                num_texture = (num_texture + 1) % tam;
-            else
-                num_texture = (num_texture - 1) % tam;
-            this->texture = TEXTURES.at(num_texture);
+        void Character::set_texture(int index) {
+            if (0 <= index && index < this->TEXTURES.size()) {
+                this->texture = TEXTURES.at(index);
+            }
+            if (this->scene_node != NULL) {
+                this->scene_node->setMaterialTexture(0, this->device->getVideoDriver()->getTexture(
+                        (ofw::datadir + "/" + this->texture).c_str()));
+            }
         }
 
     }

@@ -36,9 +36,10 @@ namespace ofw {
             this->total_life = 100;
             this->scene_node = NULL;
             this->DESCRIPTION = new std::string(_("Hacker: the smart, alchemist and cook"));
-            this->MESHES.push_back(std::string("/media/ninja.b3d"));
+            this->MESHES.push_back(std::string("media/ninja.b3d"));
             this->mesh = this->MESHES.front();
-            this->TEXTURES.push_back(std::string("/media/ninja.jpg"));
+            this->TEXTURES.push_back(std::string("media/nskinbl.jpg"));
+            this->TEXTURES.push_back(std::string("media/nskinrd.jpg"));
             this->texture = this->TEXTURES.front();
         }
 

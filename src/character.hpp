@@ -74,8 +74,6 @@ namespace ofw {
                  * @brief Current maximum life
                  */
                 unsigned int total_life;
-                int num_mesh;
-                int num_texture;
 
                 /**
                  * @brief Character's name.
@@ -268,8 +266,20 @@ namespace ofw {
                  * @brief Scale character
                  */
                 virtual void scale();
-                virtual void change_mesh(bool sig=true);
-                virtual void change_texture(bool sig=true);
+
+                /**
+                 * @brief Get the lenght texture
+                 *
+                 * @return unsigned int with lenght texture
+                 */
+                virtual unsigned int get_texture_lenght();
+
+                /**
+                 * @brief Change texture
+                 *
+                 * @param index index vector TEXTURES. Default -1: current value texture
+                 */
+                virtual void set_texture(int index=-1);
         };
 
         inline unsigned int Character::get_height(void) {
@@ -314,6 +324,10 @@ namespace ofw {
 
         inline void Character::set_name(std::string name) { //TODO check size
             this->name = name;
+        }
+
+        inline unsigned int Character::get_texture_lenght() {
+            return this->TEXTURES.size();
         }
 
     }

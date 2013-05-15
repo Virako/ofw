@@ -36,9 +36,9 @@ namespace ofw {
             this->total_life = 100;
             this->scene_node = NULL;
             this->DESCRIPTION = new std::string(_("Designer: the wizard, trainer and healer. "));
-            this->MESHES.push_back(std::string("/media/sydney.md2"));
+            this->MESHES.push_back(std::string("media/sydney.md2"));
             this->mesh = this->MESHES.front();
-            this->TEXTURES.push_back(std::string("/media/sydney.png"));
+            this->TEXTURES.push_back(std::string("media/sydney.png"));
             this->texture = this->TEXTURES.front();
         }
 

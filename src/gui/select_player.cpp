@@ -87,11 +87,18 @@ void SelectPlayer::on_slider_width_valueChanged(int value) {
     }
 }
 
+void SelectPlayer::on_slider_texture_valueChanged(int value) {
+    if (player != NULL) {
+        this->player->set_texture(value);
+    }
+}
+
 void SelectPlayer::change_players_values() {
         ui->slider_height->setMinimum(this->player->get_height_min());
         ui->slider_height->setMaximum(this->player->get_height_max());
         ui->slider_width->setMinimum (this->player->get_width_min());
         ui->slider_width->setMaximum (this->player->get_width_max());
+        ui->slider_texture->setMaximum(this->player->get_texture_lenght() - 1);
         //TODO put sliders in h and w per default
         QString descr = QString(this->player->get_description()->c_str());
         ui->text_description->setPlainText(descr);

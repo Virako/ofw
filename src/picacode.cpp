@@ -36,9 +36,10 @@ namespace ofw {
             this->total_life = 100;
             this->scene_node = NULL;
             this->DESCRIPTION = new std::string(_("Picacode: strong and builder. "));
-            this->MESHES.push_back(std::string("/media/picacode.obj"));
+            this->MESHES.push_back(std::string("media/picacode.obj"));
             this->mesh = this->MESHES.front();
-            this->TEXTURES.push_back(std::string("/media/picacode.jpg"));
+            this->TEXTURES.push_back(std::string("media/picacode.jpg"));
+            this->TEXTURES.push_back(std::string("media/picacode_2.jpg"));
             this->texture = this->TEXTURES.front();
         }
 

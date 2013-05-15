@@ -36,9 +36,9 @@ namespace ofw {
             this->total_life = 100;
             this->scene_node = NULL;
             this->DESCRIPTION = new std::string(_("Cracker: the rogue, cheat and thief. "));
-            this->MESHES.push_back(std::string("/media/Gliptodont.b3d"));
+            this->MESHES.push_back(std::string("media/Gliptodont.b3d"));
             this->mesh = this->MESHES.front();
-            this->TEXTURES.push_back(std::string("/media/Gliptodont_color.jpg"));
+            this->TEXTURES.push_back(std::string("media/Gliptodont_color.jpg"));
             this->texture = this->TEXTURES.front();
         }
 
