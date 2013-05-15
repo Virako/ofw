@@ -30,14 +30,12 @@ namespace ofw {
             this->HEIGHT_MAX = 120;
             this->WIDTH_MIN = 90;
             this->WIDTH_MAX = 110;
-            this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN)/2;
-            this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN)/2;
+            this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN) / 2;
+            this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN) / 2;
             this->life = 100;
             this->total_life = 100;
             this->scene_node = NULL;
-            this->num_mesh = 0;
-            this->num_texture = 0;
-            this->DESCRIPTION = new std::string(_("Hunterbug: "));
+            this->DESCRIPTION = new std::string(_("Hunterbug: the hunter, skilled and tailor. "));
             this->MESHES.push_back(std::string("/media/sydney.md2"));
             this->mesh = this->MESHES.front();
             this->TEXTURES.push_back(std::string("/media/sydney.png"));
