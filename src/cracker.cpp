@@ -21,24 +21,31 @@
 
 #include "cracker.hpp"
 
-ofw::scene::Cracker::Cracker() {
-    this->HEIGHT_MIN = 80;
-    this->HEIGHT_MAX = 120;
-    this->WIDTH_MIN = 90;
-    this->WIDTH_MAX = 110;
-    this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN)/2;
-    this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN)/2;
-    this->life = 100;
-    this->total_life = 100;
-    this->character = NULL;
-    this->num_mesh = 0;
-    this->num_texture = 0;
-    this->DESCRIPTION = new std::string(_("Cracker: rogue. "));
-    this->MESHES.push_back(std::string("/media/Gliptodont.b3d"));
-    this->mesh = this->MESHES.front();
-    this->TEXTURES.push_back(std::string("/media/Gliptodont_color.jpg"));
-    this->texture = this->TEXTURES.front();
-}
 
-ofw::scene::Cracker::~Cracker() {
+namespace ofw {
+    namespace scene {
+
+        Cracker::Cracker() {
+            this->HEIGHT_MIN = 80;
+            this->HEIGHT_MAX = 120;
+            this->WIDTH_MIN = 90;
+            this->WIDTH_MAX = 110;
+            this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN)/2;
+            this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN)/2;
+            this->life = 100;
+            this->total_life = 100;
+            this->character = NULL;
+            this->num_mesh = 0;
+            this->num_texture = 0;
+            this->DESCRIPTION = new std::string(_("Cracker: rogue. "));
+            this->MESHES.push_back(std::string("/media/Gliptodont.b3d"));
+            this->mesh = this->MESHES.front();
+            this->TEXTURES.push_back(std::string("/media/Gliptodont_color.jpg"));
+            this->texture = this->TEXTURES.front();
+        }
+
+        Cracker::~Cracker() {
+        }
+
+    }
 }

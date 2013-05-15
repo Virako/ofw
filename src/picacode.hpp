@@ -16,7 +16,6 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #ifndef __PICACODE_HPP
 #define __PICACODE_HPP
 
@@ -28,14 +27,11 @@ namespace ofw {
     namespace scene {
 
         class Picacode : public Player {
-
             public:
                 Picacode();
-
                 ~Picacode();
         };
 
     }
 }
-
 #endif

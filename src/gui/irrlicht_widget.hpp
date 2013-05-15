@@ -21,7 +21,6 @@
 
 #include <QtGui/QWidget>
 
-
 namespace irr {
     class IrrlichtDevice;
     namespace scene {
@@ -31,6 +30,7 @@ namespace irr {
         class IVideoDriver;
     }
 }
+
 
 /**
  * @brief QWidget for integrate Irrlicht
@@ -96,7 +96,6 @@ class QIrrlichtWidget : public QWidget {
 
     public slots:
         void update_irrlicht(irr::IrrlichtDevice* device);
-
 };
 
 #endif

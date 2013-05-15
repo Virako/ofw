@@ -16,7 +16,6 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #ifndef __DESIGNER_HPP
 #define __DESIGNER_HPP
 
@@ -28,14 +27,11 @@ namespace ofw {
     namespace scene {
 
         class Designer : public Player {
-
             public:
                 Designer();
-
                 ~Designer();
         };
 
     }
 }
-
 #endif

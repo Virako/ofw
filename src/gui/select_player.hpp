@@ -72,8 +72,6 @@ class SelectPlayer : public QMainWindow {
          */
         QIrrlichtWidget* get_irr_widget();
 
-        void set_device(irr::IrrlichtDevice *device);
-
         /**
          * @brief Changes values of sliders from player's values.
          *
@@ -81,6 +79,7 @@ class SelectPlayer : public QMainWindow {
          */
         void change_players_values();
 
+        void set_device(irr::IrrlichtDevice *device);
         void init_default();
 
     private slots:

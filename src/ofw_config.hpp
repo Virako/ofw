@@ -21,7 +21,9 @@
 
 #include <string>
 
+
 namespace ofw {
+
     #ifndef DATADIR
         char DATADIR[] = "";
     #endif
@@ -31,6 +33,6 @@ namespace ofw {
 
     const std::string datadir = DATADIR;
     const std::string localedir = LOCALEDIR;
-}
 
+}
 #endif

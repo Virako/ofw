@@ -1,25 +1,24 @@
 /*************************************************************************
- * * Open Fantasy World is a MMORPG where the players will live in community.
- * * Copyright (C) 2012-2013 Javier Jaramago Fernández
- * * <jaramago.fernandez.javier@gmail.com>
- * *
- * * This program is free software: you can redistribute it and/or modify
- * * it under the terms of the GNU General Public License as published by
- * * the Free Software Foundation, either version 3 of the License, or
- * * (at your option) any later version.
- * *
- * * Foobar is distributed in the hope that it will be useful,
- * * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * * GNU General Public License for more details.
- * *
- * * You should have received a copy of the GNU General Public License
- * * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
- * */
+* Open Fantasy World is a MMORPG where the players will live in community.
+* Copyright (C) 2012-2013 Javier Jaramago Fernández
+* <jaramago.fernandez.javier@gmail.com>
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Foobar is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 #ifndef __CORE_H
 #define __CORE_H
-
 
 namespace irr {
     class IrrlichtDevice;
@@ -32,7 +31,6 @@ namespace irr {
 
 
 namespace ofw {
-
     namespace core {
 
         /**
@@ -46,13 +44,11 @@ namespace ofw {
         class Core {
             private:
                 irr::IrrlichtDevice* device;
-
                 Core(irr::core::dimension2d<irr::u32> window_size, void* window_id=0);
                 Core(const Core&);
                 void operator=(const Core&);
 
             public:
-
                 /**
                  * @brief Static method that get a instance of core.
                  *
@@ -72,7 +68,7 @@ namespace ofw {
                  */
                 irr::IrrlichtDevice* get_device();
         };
+
     }
 }
-
 #endif

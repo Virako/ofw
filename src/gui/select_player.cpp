@@ -26,7 +26,6 @@
 
 #include "select_player.hpp"
 #include "ui_select_player.h"
-
 #include "irrlicht_widget.hpp"
 #include "../picacode.hpp"
 #include "../hacker.hpp"
@@ -63,7 +62,6 @@ void SelectPlayer::init_default() {
     emit on_cb_name_textEdited(_("name"));
     emit on_comboBox_currentIndexChanged(0);
 }
-
 
 QIrrlichtWidget* SelectPlayer::get_irr_widget() {
     return irr_widget;

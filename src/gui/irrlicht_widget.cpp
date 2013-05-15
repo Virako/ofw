@@ -43,7 +43,6 @@ QIrrlichtWidget::~QIrrlichtWidget() {
 void QIrrlichtWidget::init() {
     if (device != 0)
         return;
-
     static ofw::core::Core &c = ofw::core::Core::get_instance(
             irr::core::dimension2d<irr::u32>(height(), width()),
             (void*)((QWidget *)this)->winId());

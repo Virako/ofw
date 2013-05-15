@@ -16,7 +16,6 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #ifndef __CRACKER_HPP
 #define __CRACKER_HPP
 
@@ -28,14 +27,11 @@ namespace ofw {
     namespace scene {
 
         class Cracker : public Player {
-
             public:
                 Cracker();
-
                 ~Cracker();
         };
 
     }
 }
-
 #endif

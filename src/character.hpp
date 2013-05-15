@@ -59,7 +59,6 @@ namespace ofw {
                  */
                 virtual ~Character();
 
-
                 /**
                  * @brief Set character's height.
                  *
@@ -183,17 +182,11 @@ namespace ofw {
                 virtual std::string* get_description();
 
                 virtual irr::scene::IAnimatedMeshSceneNode* render(irr::IrrlichtDevice *device);
-
                 virtual void set_animation(unsigned int init_frame, unsigned int end_frame,
                         unsigned int speed);
-
                 virtual void refresh_character();
-
                 virtual void change_mesh(bool sig=true);
-
                 virtual void change_texture(bool sig=true);
-
-
         };
 
         inline unsigned int Character::get_height(void) {
@@ -242,5 +235,4 @@ namespace ofw {
 
     }
 }
-
 #endif

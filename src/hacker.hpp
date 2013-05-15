@@ -16,7 +16,6 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #ifndef __HACKER_HPP
 #define __HACKER_HPP
 
@@ -28,14 +27,11 @@ namespace ofw {
     namespace scene {
 
         class Hacker : public Player {
-
             public:
                 Hacker();
-
                 ~Hacker();
         };
 
     }
 }
-
 #endif

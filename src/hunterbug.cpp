@@ -21,24 +21,31 @@
 
 #include "hunterbug.hpp"
 
-ofw::scene::Hunterbug::Hunterbug() {
-    this->HEIGHT_MIN = 80;
-    this->HEIGHT_MAX = 120;
-    this->WIDTH_MIN = 90;
-    this->WIDTH_MAX = 110;
-    this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN)/2;
-    this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN)/2;
-    this->life = 100;
-    this->total_life = 100;
-    this->character = NULL;
-    this->num_mesh = 0;
-    this->num_texture = 0;
-    this->DESCRIPTION = new std::string(_("Hunterbug: "));
-    this->MESHES.push_back(std::string("/media/sydney.md2"));
-    this->mesh = this->MESHES.front();
-    this->TEXTURES.push_back(std::string("/media/sydney.png"));
-    this->texture = this->TEXTURES.front();
-}
 
-ofw::scene::Hunterbug::~Hunterbug() {
+namespace ofw {
+    namespace scene {
+
+        Hunterbug::Hunterbug() {
+            this->HEIGHT_MIN = 80;
+            this->HEIGHT_MAX = 120;
+            this->WIDTH_MIN = 90;
+            this->WIDTH_MAX = 110;
+            this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN)/2;
+            this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN)/2;
+            this->life = 100;
+            this->total_life = 100;
+            this->character = NULL;
+            this->num_mesh = 0;
+            this->num_texture = 0;
+            this->DESCRIPTION = new std::string(_("Hunterbug: "));
+            this->MESHES.push_back(std::string("/media/sydney.md2"));
+            this->mesh = this->MESHES.front();
+            this->TEXTURES.push_back(std::string("/media/sydney.png"));
+            this->texture = this->TEXTURES.front();
+        }
+
+        Hunterbug::~Hunterbug() {
+        }
+
+    }
 }

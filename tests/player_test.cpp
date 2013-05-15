@@ -16,7 +16,6 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #define BOOST_TEST_MODULE playertests
 #include <boost/test/included/unit_test.hpp>
 
@@ -68,88 +67,81 @@ struct StructHunterbug {
     ~StructHunterbug() { delete player; }  // tearDown
 };
 
-
-//    Scene:
-//        add_player
-//        add_bug
-//        add_npc(npc, pos)
-//    Player:
-//        Player(file or struct)
-
-
 BOOST_FIXTURE_TEST_SUITE (picacode, StructPicacode)
 
     BOOST_AUTO_TEST_CASE (default_values_check) {
-        BOOST_CHECK( player->get_height() >= player->get_height_min() );
-        BOOST_CHECK_MESSAGE( player->get_height() <= player->get_height_max(), player->get_height() );
-        BOOST_CHECK( player->get_width() >= player->get_width_min() );
-        BOOST_CHECK( player->get_width() <= player->get_width_max() );
+        BOOST_CHECK(player->get_height() >= player->get_height_min());
+        BOOST_CHECK(player->get_height() <= player->get_height_max());
+        BOOST_CHECK(player->get_width() >= player->get_width_min());
+        BOOST_CHECK(player->get_width() <= player->get_width_max());
     }
 
     BOOST_AUTO_TEST_CASE(height_default) {
-        unsigned int h = player->get_height_min() + (player->get_height_max() - player->get_height_min())/2;
-        BOOST_CHECK( player->get_height() == h);
+        unsigned int h = player->get_height_min() + (player->get_height_max() -
+                player->get_height_min()) / 2;
+        BOOST_CHECK(player->get_height() == h);
     }
 
     BOOST_AUTO_TEST_CASE(width_default) {
-        unsigned int w = player->get_width_min() + (player->get_width_max() - player->get_width_min())/2;
-        BOOST_CHECK( player->get_width() == w );
+        unsigned int w = player->get_width_min() + (player->get_width_max() -
+                player->get_width_min()) / 2;
+        BOOST_CHECK(player->get_width() == w);
     }
 
     BOOST_AUTO_TEST_CASE (height_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_height(player->get_height_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_height(player->get_height_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_width(player->get_width_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_width(player->get_width_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(1);
-        BOOST_CHECK( player->get_height() == h_default + 1 );
+        BOOST_CHECK(player->get_height() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(-1);
-        BOOST_CHECK( player->get_height() == h_default - 1 );
+        BOOST_CHECK(player->get_height() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment_out_domain) {
         player->set_height(player->get_height_max());
-        BOOST_CHECK_THROW( player->set_rel_height(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement_out_domain) {
         player->set_height(player->get_height_min());
-        BOOST_CHECK_THROW( player->set_rel_height(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(-1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(1);
-        BOOST_CHECK( player->get_width() == h_default + 1 );
+        BOOST_CHECK(player->get_width() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(-1);
-        BOOST_CHECK( player->get_width() == h_default - 1 );
+        BOOST_CHECK(player->get_width() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment_out_domain) {
         player->set_width(player->get_width_max());
-        BOOST_CHECK_THROW( player->set_rel_width(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement_out_domain) {
         player->set_width(player->get_width_min());
-        BOOST_CHECK_THROW( player->set_rel_width(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(-1), std::domain_error);
     }
 
     // Life
@@ -160,9 +152,9 @@ BOOST_FIXTURE_TEST_SUITE (picacode, StructPicacode)
     BOOST_AUTO_TEST_CASE (valid_life) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
-        player->set_life( player->get_total_life() );
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
+        player->set_life(player->get_total_life());
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
     }
 
     BOOST_AUTO_TEST_CASE (life_increment) {
@@ -170,104 +162,106 @@ BOOST_FIXTURE_TEST_SUITE (picacode, StructPicacode)
         unsigned int zero = 0;
         player->set_life(zero);
         player->set_rel_life(increment);
-        BOOST_CHECK( player->get_life() == zero + increment );
+        BOOST_CHECK(player->get_life() == zero + increment);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement) {
         int decrement = 1;
         player->set_life(player->get_total_life());
         player->set_rel_life(-decrement);
-        BOOST_CHECK( player->get_life() == player->get_total_life() - decrement );
+        BOOST_CHECK(player->get_life() == player->get_total_life() - decrement);
     }
 
     BOOST_AUTO_TEST_CASE (life_increment_out_domain) {
         player->set_life(player->get_total_life());
-        BOOST_CHECK_THROW( player->set_rel_life(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement_out_domain) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_CHECK_THROW( player->set_rel_life(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(-1), std::domain_error);
     }
 
-BOOST_AUTO_TEST_SUITE_END( )
+BOOST_AUTO_TEST_SUITE_END()
 
 
 
 BOOST_FIXTURE_TEST_SUITE (hacker, StructHacker)
 
     BOOST_AUTO_TEST_CASE (default_values_check) {
-        BOOST_CHECK( player->get_height() >= player->get_height_min() );
-        BOOST_CHECK_MESSAGE( player->get_height() <= player->get_height_max(), player->get_height() );
-        BOOST_CHECK( player->get_width() >= player->get_width_min() );
-        BOOST_CHECK( player->get_width() <= player->get_width_max() );
+        BOOST_CHECK(player->get_height() >= player->get_height_min());
+        BOOST_CHECK(player->get_height() <= player->get_height_max());
+        BOOST_CHECK(player->get_width() >= player->get_width_min());
+        BOOST_CHECK(player->get_width() <= player->get_width_max());
     }
 
     BOOST_AUTO_TEST_CASE(height_default) {
-        unsigned int h = player->get_height_min() + (player->get_height_max() - player->get_height_min())/2;
-        BOOST_CHECK( player->get_height() == h);
+        unsigned int h = player->get_height_min() + (player->get_height_max() -
+                player->get_height_min()) / 2;
+        BOOST_CHECK(player->get_height() == h);
     }
 
     BOOST_AUTO_TEST_CASE(width_default) {
-        unsigned int w = player->get_width_min() + (player->get_width_max() - player->get_width_min())/2;
-        BOOST_CHECK( player->get_width() == w );
+        unsigned int w = player->get_width_min() + (player->get_width_max() -
+                player->get_width_min()) / 2;
+        BOOST_CHECK(player->get_width() == w);
     }
 
     BOOST_AUTO_TEST_CASE (height_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_height(player->get_height_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_height(player->get_height_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_width(player->get_width_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_width(player->get_width_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(1);
-        BOOST_CHECK( player->get_height() == h_default + 1 );
+        BOOST_CHECK(player->get_height() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(-1);
-        BOOST_CHECK( player->get_height() == h_default - 1 );
+        BOOST_CHECK(player->get_height() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment_out_domain) {
         player->set_height(player->get_height_max());
-        BOOST_CHECK_THROW( player->set_rel_height(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement_out_domain) {
         player->set_height(player->get_height_min());
-        BOOST_CHECK_THROW( player->set_rel_height(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(-1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(1);
-        BOOST_CHECK( player->get_width() == h_default + 1 );
+        BOOST_CHECK(player->get_width() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(-1);
-        BOOST_CHECK( player->get_width() == h_default - 1 );
+        BOOST_CHECK(player->get_width() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment_out_domain) {
         player->set_width(player->get_width_max());
-        BOOST_CHECK_THROW( player->set_rel_width(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement_out_domain) {
         player->set_width(player->get_width_min());
-        BOOST_CHECK_THROW( player->set_rel_width(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(-1), std::domain_error);
     }
 
     // Life
@@ -278,9 +272,9 @@ BOOST_FIXTURE_TEST_SUITE (hacker, StructHacker)
     BOOST_AUTO_TEST_CASE (valid_life) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
-        player->set_life( player->get_total_life() );
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
+        player->set_life(player->get_total_life());
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
     }
 
     BOOST_AUTO_TEST_CASE (life_increment) {
@@ -288,104 +282,106 @@ BOOST_FIXTURE_TEST_SUITE (hacker, StructHacker)
         unsigned int zero = 0;
         player->set_life(zero);
         player->set_rel_life(increment);
-        BOOST_CHECK( player->get_life() == zero + increment );
+        BOOST_CHECK(player->get_life() == zero + increment);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement) {
         int decrement = 1;
         player->set_life(player->get_total_life());
         player->set_rel_life(-decrement);
-        BOOST_CHECK( player->get_life() == player->get_total_life() - decrement );
+        BOOST_CHECK(player->get_life() == player->get_total_life() - decrement);
     }
 
     BOOST_AUTO_TEST_CASE (life_increment_out_domain) {
         player->set_life(player->get_total_life());
-        BOOST_CHECK_THROW( player->set_rel_life(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement_out_domain) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_CHECK_THROW( player->set_rel_life(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(-1), std::domain_error);
     }
 
-BOOST_AUTO_TEST_SUITE_END( )
+BOOST_AUTO_TEST_SUITE_END()
 
 
 
 BOOST_FIXTURE_TEST_SUITE (cracker, StructCracker)
 
     BOOST_AUTO_TEST_CASE (default_values_check) {
-        BOOST_CHECK( player->get_height() >= player->get_height_min() );
-        BOOST_CHECK_MESSAGE( player->get_height() <= player->get_height_max(), player->get_height() );
-        BOOST_CHECK( player->get_width() >= player->get_width_min() );
-        BOOST_CHECK( player->get_width() <= player->get_width_max() );
+        BOOST_CHECK(player->get_height() >= player->get_height_min());
+        BOOST_CHECK(player->get_height() <= player->get_height_max());
+        BOOST_CHECK(player->get_width() >= player->get_width_min());
+        BOOST_CHECK(player->get_width() <= player->get_width_max());
     }
 
     BOOST_AUTO_TEST_CASE(height_default) {
-        unsigned int h = player->get_height_min() + (player->get_height_max() - player->get_height_min())/2;
-        BOOST_CHECK( player->get_height() == h);
+        unsigned int h = player->get_height_min() + (player->get_height_max() -
+                player->get_height_min()) / 2;
+        BOOST_CHECK(player->get_height() == h);
     }
 
     BOOST_AUTO_TEST_CASE(width_default) {
-        unsigned int w = player->get_width_min() + (player->get_width_max() - player->get_width_min())/2;
-        BOOST_CHECK( player->get_width() == w );
+        unsigned int w = player->get_width_min() + (player->get_width_max() -
+                player->get_width_min()) / 2;
+        BOOST_CHECK(player->get_width() == w);
     }
 
     BOOST_AUTO_TEST_CASE (height_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_height(player->get_height_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_height(player->get_height_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_width(player->get_width_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_width(player->get_width_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(1);
-        BOOST_CHECK( player->get_height() == h_default + 1 );
+        BOOST_CHECK(player->get_height() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(-1);
-        BOOST_CHECK( player->get_height() == h_default - 1 );
+        BOOST_CHECK(player->get_height() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment_out_domain) {
         player->set_height(player->get_height_max());
-        BOOST_CHECK_THROW( player->set_rel_height(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement_out_domain) {
         player->set_height(player->get_height_min());
-        BOOST_CHECK_THROW( player->set_rel_height(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(-1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(1);
-        BOOST_CHECK( player->get_width() == h_default + 1 );
+        BOOST_CHECK(player->get_width() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(-1);
-        BOOST_CHECK( player->get_width() == h_default - 1 );
+        BOOST_CHECK(player->get_width() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment_out_domain) {
         player->set_width(player->get_width_max());
-        BOOST_CHECK_THROW( player->set_rel_width(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement_out_domain) {
         player->set_width(player->get_width_min());
-        BOOST_CHECK_THROW( player->set_rel_width(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(-1), std::domain_error);
     }
 
     // Life
@@ -396,9 +392,9 @@ BOOST_FIXTURE_TEST_SUITE (cracker, StructCracker)
     BOOST_AUTO_TEST_CASE (valid_life) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
-        player->set_life( player->get_total_life() );
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
+        player->set_life(player->get_total_life());
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
     }
 
     BOOST_AUTO_TEST_CASE (life_increment) {
@@ -406,104 +402,106 @@ BOOST_FIXTURE_TEST_SUITE (cracker, StructCracker)
         unsigned int zero = 0;
         player->set_life(zero);
         player->set_rel_life(increment);
-        BOOST_CHECK( player->get_life() == zero + increment );
+        BOOST_CHECK(player->get_life() == zero + increment);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement) {
         int decrement = 1;
         player->set_life(player->get_total_life());
         player->set_rel_life(-decrement);
-        BOOST_CHECK( player->get_life() == player->get_total_life() - decrement );
+        BOOST_CHECK(player->get_life() == player->get_total_life() - decrement);
     }
 
     BOOST_AUTO_TEST_CASE (life_increment_out_domain) {
         player->set_life(player->get_total_life());
-        BOOST_CHECK_THROW( player->set_rel_life(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement_out_domain) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_CHECK_THROW( player->set_rel_life(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(-1), std::domain_error);
     }
 
-BOOST_AUTO_TEST_SUITE_END( )
+BOOST_AUTO_TEST_SUITE_END()
 
 
 
 BOOST_FIXTURE_TEST_SUITE (designer, StructDesigner)
 
     BOOST_AUTO_TEST_CASE (default_values_check) {
-        BOOST_CHECK( player->get_height() >= player->get_height_min() );
-        BOOST_CHECK_MESSAGE( player->get_height() <= player->get_height_max(), player->get_height() );
-        BOOST_CHECK( player->get_width() >= player->get_width_min() );
-        BOOST_CHECK( player->get_width() <= player->get_width_max() );
+        BOOST_CHECK(player->get_height() >= player->get_height_min());
+        BOOST_CHECK(player->get_height() <= player->get_height_max());
+        BOOST_CHECK(player->get_width() >= player->get_width_min());
+        BOOST_CHECK(player->get_width() <= player->get_width_max());
     }
 
     BOOST_AUTO_TEST_CASE(height_default) {
-        unsigned int h = player->get_height_min() + (player->get_height_max() - player->get_height_min())/2;
-        BOOST_CHECK( player->get_height() == h);
+        unsigned int h = player->get_height_min() + (player->get_height_max() -
+                player->get_height_min()) / 2;
+        BOOST_CHECK(player->get_height() == h);
     }
 
     BOOST_AUTO_TEST_CASE(width_default) {
-        unsigned int w = player->get_width_min() + (player->get_width_max() - player->get_width_min())/2;
-        BOOST_CHECK( player->get_width() == w );
+        unsigned int w = player->get_width_min() + (player->get_width_max() -
+                player->get_width_min()) / 2;
+        BOOST_CHECK(player->get_width() == w);
     }
 
     BOOST_AUTO_TEST_CASE (height_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_height(player->get_height_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_height(player->get_height_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_width(player->get_width_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_width(player->get_width_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(1);
-        BOOST_CHECK( player->get_height() == h_default + 1 );
+        BOOST_CHECK(player->get_height() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(-1);
-        BOOST_CHECK( player->get_height() == h_default - 1 );
+        BOOST_CHECK(player->get_height() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment_out_domain) {
         player->set_height(player->get_height_max());
-        BOOST_CHECK_THROW( player->set_rel_height(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement_out_domain) {
         player->set_height(player->get_height_min());
-        BOOST_CHECK_THROW( player->set_rel_height(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(-1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(1);
-        BOOST_CHECK( player->get_width() == h_default + 1 );
+        BOOST_CHECK(player->get_width() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(-1);
-        BOOST_CHECK( player->get_width() == h_default - 1 );
+        BOOST_CHECK(player->get_width() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment_out_domain) {
         player->set_width(player->get_width_max());
-        BOOST_CHECK_THROW( player->set_rel_width(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement_out_domain) {
         player->set_width(player->get_width_min());
-        BOOST_CHECK_THROW( player->set_rel_width(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(-1), std::domain_error);
     }
 
     // Life
@@ -514,9 +512,9 @@ BOOST_FIXTURE_TEST_SUITE (designer, StructDesigner)
     BOOST_AUTO_TEST_CASE (valid_life) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
-        player->set_life( player->get_total_life() );
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
+        player->set_life(player->get_total_life());
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
     }
 
     BOOST_AUTO_TEST_CASE (life_increment) {
@@ -524,104 +522,106 @@ BOOST_FIXTURE_TEST_SUITE (designer, StructDesigner)
         unsigned int zero = 0;
         player->set_life(zero);
         player->set_rel_life(increment);
-        BOOST_CHECK( player->get_life() == zero + increment );
+        BOOST_CHECK(player->get_life() == zero + increment);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement) {
         int decrement = 1;
         player->set_life(player->get_total_life());
         player->set_rel_life(-decrement);
-        BOOST_CHECK( player->get_life() == player->get_total_life() - decrement );
+        BOOST_CHECK(player->get_life() == player->get_total_life() - decrement);
     }
 
     BOOST_AUTO_TEST_CASE (life_increment_out_domain) {
         player->set_life(player->get_total_life());
-        BOOST_CHECK_THROW( player->set_rel_life(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement_out_domain) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_CHECK_THROW( player->set_rel_life(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(-1), std::domain_error);
     }
 
-BOOST_AUTO_TEST_SUITE_END( )
+BOOST_AUTO_TEST_SUITE_END()
 
 
 
 BOOST_FIXTURE_TEST_SUITE (hunterbug, StructHunterbug)
 
     BOOST_AUTO_TEST_CASE (default_values_check) {
-        BOOST_CHECK( player->get_height() >= player->get_height_min() );
-        BOOST_CHECK_MESSAGE( player->get_height() <= player->get_height_max(), player->get_height() );
-        BOOST_CHECK( player->get_width() >= player->get_width_min() );
-        BOOST_CHECK( player->get_width() <= player->get_width_max() );
+        BOOST_CHECK(player->get_height() >= player->get_height_min());
+        BOOST_CHECK(player->get_height() <= player->get_height_max());
+        BOOST_CHECK(player->get_width() >= player->get_width_min());
+        BOOST_CHECK(player->get_width() <= player->get_width_max());
     }
 
     BOOST_AUTO_TEST_CASE(height_default) {
-        unsigned int h = player->get_height_min() + (player->get_height_max() - player->get_height_min())/2;
-        BOOST_CHECK( player->get_height() == h);
+        unsigned int h = player->get_height_min() + (player->get_height_max() -
+                player->get_height_min()) / 2;
+        BOOST_CHECK(player->get_height() == h);
     }
 
     BOOST_AUTO_TEST_CASE(width_default) {
-        unsigned int w = player->get_width_min() + (player->get_width_max() - player->get_width_min())/2;
-        BOOST_CHECK( player->get_width() == w );
+        unsigned int w = player->get_width_min() + (player->get_width_max() -
+                player->get_width_min()) / 2;
+        BOOST_CHECK(player->get_width() == w);
     }
 
     BOOST_AUTO_TEST_CASE (height_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_height(player->get_height_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_height(player->get_height_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_set_out_domain) {
-        BOOST_CHECK_THROW( player->set_width(player->get_width_max() + 1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_width(player->get_width_max() + 1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(1);
-        BOOST_CHECK( player->get_height() == h_default + 1 );
+        BOOST_CHECK(player->get_height() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement) {
         unsigned int h_default = player->get_height_min() +
-                (player->get_height_max() - player->get_height_min())/2;
+                (player->get_height_max() - player->get_height_min()) / 2;
         player->set_rel_height(-1);
-        BOOST_CHECK( player->get_height() == h_default - 1 );
+        BOOST_CHECK(player->get_height() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (height_increment_out_domain) {
         player->set_height(player->get_height_max());
-        BOOST_CHECK_THROW( player->set_rel_height(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (height_decrement_out_domain) {
         player->set_height(player->get_height_min());
-        BOOST_CHECK_THROW( player->set_rel_height(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_height(-1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(1);
-        BOOST_CHECK( player->get_width() == h_default + 1 );
+        BOOST_CHECK(player->get_width() == h_default + 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement) {
         unsigned int h_default = player->get_width_min() +
-                (player->get_width_max() - player->get_width_min())/2;
+                (player->get_width_max() - player->get_width_min()) / 2;
         player->set_rel_width(-1);
-        BOOST_CHECK( player->get_width() == h_default - 1 );
+        BOOST_CHECK(player->get_width() == h_default - 1);
     }
 
     BOOST_AUTO_TEST_CASE (width_increment_out_domain) {
         player->set_width(player->get_width_max());
-        BOOST_CHECK_THROW( player->set_rel_width(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (width_decrement_out_domain) {
         player->set_width(player->get_width_min());
-        BOOST_CHECK_THROW( player->set_rel_width(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_width(-1), std::domain_error);
     }
 
     // Life
@@ -632,9 +632,9 @@ BOOST_FIXTURE_TEST_SUITE (hunterbug, StructHunterbug)
     BOOST_AUTO_TEST_CASE (valid_life) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
-        player->set_life( player->get_total_life() );
-        BOOST_REQUIRE( player->get_life() <= player->get_total_life() );
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
+        player->set_life(player->get_total_life());
+        BOOST_REQUIRE(player->get_life() <= player->get_total_life());
     }
 
     BOOST_AUTO_TEST_CASE (life_increment) {
@@ -642,25 +642,25 @@ BOOST_FIXTURE_TEST_SUITE (hunterbug, StructHunterbug)
         unsigned int zero = 0;
         player->set_life(zero);
         player->set_rel_life(increment);
-        BOOST_CHECK( player->get_life() == zero + increment );
+        BOOST_CHECK(player->get_life() == zero + increment);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement) {
         int decrement = 1;
         player->set_life(player->get_total_life());
         player->set_rel_life(-decrement);
-        BOOST_CHECK( player->get_life() == player->get_total_life() - decrement );
+        BOOST_CHECK(player->get_life() == player->get_total_life() - decrement);
     }
 
     BOOST_AUTO_TEST_CASE (life_increment_out_domain) {
         player->set_life(player->get_total_life());
-        BOOST_CHECK_THROW( player->set_rel_life(1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(1), std::domain_error);
     }
 
     BOOST_AUTO_TEST_CASE (life_decrement_out_domain) {
         unsigned int zero = 0;
         player->set_life(zero);
-        BOOST_CHECK_THROW( player->set_rel_life(-1), std::domain_error );
+        BOOST_CHECK_THROW(player->set_rel_life(-1), std::domain_error);
     }
 
-BOOST_AUTO_TEST_SUITE_END( )
+BOOST_AUTO_TEST_SUITE_END()

@@ -16,7 +16,6 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #ifndef __HUNTERBUG_HPP
 #define __HUNTERBUG_HPP
 
@@ -28,14 +27,11 @@ namespace ofw {
     namespace scene {
 
         class Hunterbug : public Player {
-
             public:
                 Hunterbug();
-
                 ~Hunterbug();
         };
 
     }
 }
-
 #endif
