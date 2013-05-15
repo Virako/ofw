@@ -28,7 +28,14 @@ namespace ofw {
 
         class Hunterbug : public Player {
             public:
+                /**
+                 * @brief Contructor
+                 */
                 Hunterbug();
+
+                /**
+                 * @brief Destructor
+                 */
                 ~Hunterbug();
         };
 

@@ -28,7 +28,14 @@ namespace ofw {
 
         class Picacode : public Player {
             public:
+                /**
+                 * @brief Contructor
+                 */
                 Picacode();
+
+                /**
+                 * @brief Destructor
+                 */
                 ~Picacode();
         };
 

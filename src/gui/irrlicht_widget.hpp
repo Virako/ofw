@@ -88,7 +88,16 @@ class QIrrlichtWidget : public QWidget {
          */
         ~QIrrlichtWidget();
 
+        /**
+         * @brief Get IrrlichtDevice
+         *
+         * @return IrrlichtDevice
+         */
         irr::IrrlichtDevice* get_device();
+
+        /**
+         * @brief Init the core
+         */
         void init();
 
     signals:

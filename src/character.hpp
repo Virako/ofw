@@ -35,23 +35,87 @@ namespace ofw {
 
         class Character {
             protected:
+                /**
+                 * @brief Minimum height allowed.
+                 */
                 unsigned int HEIGHT_MIN;
+
+                /**
+                 * @brief Maximum height allowed.
+                 */
                 unsigned int HEIGHT_MAX;
+
+                /**
+                 * @brief Minimum width allowed.
+                 */
                 unsigned int WIDTH_MIN;
+
+                /**
+                 * @brief Maximum width allowed.
+                 */
                 unsigned int WIDTH_MAX;
+
+                /**
+                 * @brief Current height.
+                 */
                 unsigned int height;
+
+                /**
+                 * @brief Current width.
+                 */
                 unsigned int width;
+
+                /**
+                 * @brief Current life.
+                 */
                 unsigned int life;
+
+                /**
+                 * @brief Current maximum life
+                 */
                 unsigned int total_life;
                 int num_mesh;
                 int num_texture;
+
+                /**
+                 * @brief Character's name.
+                 */
                 std::string name;
+
+                /**
+                 * @brief Character's mesh.
+                 */
                 std::string mesh;
+
+                /**
+                 * @brief Character's texture.
+                 */
                 std::string texture;
+
+                /**
+                 * @brief Character's description.
+                 */
                 std::string *DESCRIPTION;
+
+                /**
+                 * @brief Vector of string with relative path to meshes.
+                 */
                 std::vector<std::string> MESHES;
+
+                /**
+                 * @brief Vector of string with relative path to meshes.
+                 */
                 std::vector<std::string> TEXTURES;
+
+                /**
+                 * @brief renderer player
+                 */
                 irr::scene::IAnimatedMeshSceneNode *scene_node;
+
+                /**
+                 * @brief IrrlichtDevice
+                 */
+                irr::IrrlichtDevice *device;
 
             public:
                 /**
@@ -181,9 +245,28 @@ namespace ofw {
                  */
                 virtual std::string* get_description();
 
+                /**
+                 * @brief Render the player to show in screen.
+                 *
+                 * @param device IrrlichtDevice
+                 *
+                 * @return IAnimatedMeshSceneNode to show the character in screen.
+                 */
                 virtual irr::scene::IAnimatedMeshSceneNode* render(irr::IrrlichtDevice *device);
+
+                /**
+                 * @brief Select animation to character
+                 *
+                 * @param init_frame where init the frame
+                 * @param end_frame where end the frame
+                 * @param speed speed to show each frame
+                 */
                 virtual void set_animation(unsigned int init_frame, unsigned int end_frame,
                         unsigned int speed);
+
+                /**
+                 * @brief Scale character
+                 */
                 virtual void scale();
                 virtual void change_mesh(bool sig=true);
                 virtual void change_texture(bool sig=true);

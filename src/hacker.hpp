@@ -28,7 +28,14 @@ namespace ofw {
 
         class Hacker : public Player {
             public:
+                /**
+                 * @brief Contructor
+                 */
                 Hacker();
+
+                /**
+                 * @brief Destructor
+                 */
                 ~Hacker();
         };
 

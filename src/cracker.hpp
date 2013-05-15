@@ -28,7 +28,14 @@ namespace ofw {
 
         class Cracker : public Player {
             public:
+                /**
+                 * @brief Contructor
+                 */
                 Cracker();
+
+                /**
+                 * @brief Destructor
+                 */
                 ~Cracker();
         };
 

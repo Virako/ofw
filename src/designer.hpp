@@ -28,7 +28,14 @@ namespace ofw {
 
         class Designer : public Player {
             public:
+                /**
+                 * @brief Contructor
+                 */
                 Designer();
+
+                /**
+                 * @brief Destructor
+                 */
                 ~Designer();
         };
 
