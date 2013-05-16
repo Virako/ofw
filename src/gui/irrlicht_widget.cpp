@@ -43,6 +43,10 @@ QIrrlichtWidget::~QIrrlichtWidget() {
 void QIrrlichtWidget::init() {
     if (device != 0)
         return;
+
+    //Ask QT to leave this widget unitialized, with no default filled background
+    setAttribute( Qt::WA_OpaquePaintEvent );
+
     static ofw::core::Core &c = ofw::core::Core::get_instance(
             irr::core::dimension2d<irr::u32>(height(), width()),
             (void*)((QWidget *)this)->winId());
