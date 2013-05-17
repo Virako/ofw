@@ -17,8 +17,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __M__MAP_H
-#define __M__MAP_H
+#ifndef __MAP_HPP
+#define __MAP_HPP
 
 #include <string>
 #include "mapobserver.hpp"

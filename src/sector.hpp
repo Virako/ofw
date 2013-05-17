@@ -17,8 +17,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __SECTOR_H
-#define __SECTOR_H
+#ifndef __SECTOR_HPP
+#define __SECTOR_HPP
 
 #include <utility>
 #include "sectorobserver.hpp"

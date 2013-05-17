@@ -17,8 +17,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __OFWObserver_H
-#define __OFWObserver_H
+#ifndef __OFWOBSERVER_HPP
+#define __OFWOBSERVER_HPP
 
 
 namespace ofw {

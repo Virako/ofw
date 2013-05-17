@@ -17,8 +17,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __OBJECTOBSERVER_H
-#define __OBJECTOBSERVER_H
+#ifndef __OBJECTOBSERVER_HPP
+#define __OBJECTOBSERVER_HPP
 
 #include "ofwobserver.hpp"
 

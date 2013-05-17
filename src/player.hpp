@@ -16,8 +16,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __PLAYER_H
-#define __PLAYER_H
+#ifndef __PLAYER_HPP
+#define __PLAYER_HPP
 
 #include "character.hpp"
 

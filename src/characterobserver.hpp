@@ -17,8 +17,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __CHARACTEROBSERVER_H
-#define __CHARACTEROBSERVER_H
+#ifndef __CHARACTEROBSERVER_HPP
+#define __CHARACTEROBSERVER_HPP
 
 #include "ofwobserver.hpp"
 

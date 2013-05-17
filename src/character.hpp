@@ -16,8 +16,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __CHARACTER_H
-#define __CHARACTER_H
+#ifndef __CHARACTER_HPP
+#define __CHARACTER_HPP
 
 #include <vector>
 #include <string>

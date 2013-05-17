@@ -17,8 +17,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __CORE_H
-#define __CORE_H
+#ifndef __CORE_HPP
+#define __CORE_HPP
 
 namespace irr {
     class IrrlichtDevice;

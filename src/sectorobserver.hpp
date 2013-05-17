@@ -17,8 +17,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __SectorObserver_H
-#define __SectorObserver_H
+#ifndef __SECTOROBSERVER_HPP
+#define __SECTOROBSERVER_HPP
 
 //External libraries.
 #include <list>

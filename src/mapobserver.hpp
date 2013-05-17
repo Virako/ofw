@@ -17,8 +17,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MAPOBSERVER_H
-#define __MAPOBSERVER_H
+#ifndef __MAPOBSERVER_HPP
+#define __MAPOBSERVER_HPP
 
 //OFW dependences.
 #include "sectorobserver.hpp"
