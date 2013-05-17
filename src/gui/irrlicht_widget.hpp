@@ -101,9 +101,19 @@ class QIrrlichtWidget : public QWidget {
         void init();
 
     signals:
+        /**
+         * @brief Emit the signal that connects with the slot update_irrlicth.
+         *
+         * @param device IrrlichtDevice
+         */
         void update_irrlicht_query(irr::IrrlichtDevice* device);
 
     public slots:
+        /**
+         * @brief Refresh the irrlicht widget.
+         *
+         * @param device IrrlichtDevice
+         */
         void update_irrlicht(irr::IrrlichtDevice* device);
 };
 

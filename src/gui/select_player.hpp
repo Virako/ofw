@@ -46,15 +46,46 @@ class SelectPlayer : public QMainWindow {
     Q_OBJECT
 
     private:
+        /**
+         * @brief User interface
+         */
         Ui::SelectPlayer *ui;
+
+        /**
+         * @brief Irrlicht widget integrated in window.
+         */
         QIrrlichtWidget *irr_widget;
-        std::string name;
+
+        /**
+         * @brief Player created inside Irrlicht widget
+         */
         ofw::scene::Player *player;
+
+        /**
+         * @brief IrrlichtDevice
+         */
         irr::IrrlichtDevice *device;
 
     protected:
+        /**
+         * @brief Capture emited event when window is resize.
+         *
+         * @param event Contains event parameter for resizeEvent
+         */
         void resizeEvent(QResizeEvent* event);
+
+        /**
+         * @brief Capture emited event when window is focused.
+         *
+         * @param event Contains event parameter for focusInEvent
+         */
         void focusInEvent(QFocusEvent* event);
+
+        /**
+         * @brief Capture emited event when window is unfocused.
+         *
+         * @param event Contains event parameter for focusOutEvent
+         */
         void focusOutEvent(QFocusEvent* event);
 
     private slots:
@@ -125,7 +156,16 @@ class SelectPlayer : public QMainWindow {
          */
         void change_players_values();
 
+        /**
+         * @brief Set IrrlichtDevice
+         *
+         * @param device IrrlichtDevice
+         */
         void set_device(irr::IrrlichtDevice *device);
+
+        /**
+         * @brief Init window with default values.
+         */
         void init_default();
 
 };
