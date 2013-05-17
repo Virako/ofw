@@ -52,35 +52,10 @@ class SelectPlayer : public QMainWindow {
         ofw::scene::Player *player;
         irr::IrrlichtDevice *device;
 
-    public:
-        /**
-         * @brief Create default values in the gui.
-         *
-         * @param parent
-         */
-        SelectPlayer(QWidget *parent=0);
-
-        /**
-         * @brief Desctructor
-         */
-        ~SelectPlayer();
-
-        /**
-         * @brief Get irr_widget
-         *
-         * @return irr_widget
-         */
-        QIrrlichtWidget* get_irr_widget();
-
-        /**
-         * @brief Changes values of sliders from player's values.
-         *
-         * @param p Player
-         */
-        void change_players_values();
-
-        void set_device(irr::IrrlichtDevice *device);
-        void init_default();
+    protected:
+        void resizeEvent(QResizeEvent* event);
+        void focusInEvent(QFocusEvent* event);
+        void focusOutEvent(QFocusEvent* event);
 
     private slots:
         /**
@@ -122,6 +97,37 @@ class SelectPlayer : public QMainWindow {
          * @param text New text in the textBox
          */
         void on_cb_name_textEdited(QString text);
+
+    public:
+        /**
+         * @brief Create default values in the gui.
+         *
+         * @param parent
+         */
+        SelectPlayer(QWidget *parent=0);
+
+        /**
+         * @brief Desctructor
+         */
+        ~SelectPlayer();
+
+        /**
+         * @brief Get irr_widget
+         *
+         * @return irr_widget
+         */
+        QIrrlichtWidget* get_irr_widget();
+
+        /**
+         * @brief Changes values of sliders from player's values.
+         *
+         * @param p Player
+         */
+        void change_players_values();
+
+        void set_device(irr::IrrlichtDevice *device);
+        void init_default();
+
 };
 
 inline void SelectPlayer::set_device(irr::IrrlichtDevice *device) {

@@ -136,3 +136,47 @@ void SelectPlayer::on_cb_name_textEdited(QString text) {
     }
     ui->cb_name->setPlaceholderText(text);
 }
+
+void SelectPlayer::resizeEvent(QResizeEvent* event) {
+    this->ui->centralWidget->resize(this->width(), this->height());
+    irr_widget->resize(this->width(), this->height());
+
+    this->ui->b_quit->resize(this->width()/10, this->height()/20);
+    this->ui->b_quit->move(60, this->height()*0.88);
+
+    this->ui->b_create->resize(this->width()/10, this->height()/20);
+    this->ui->b_create->move(this->width()*0.83, this->height()*0.88);
+
+    this->ui->cb_name->resize(this->width()/3, this->height()/20);
+    this->ui->cb_name->move(this->width()*0.37, this->height()*0.88);
+
+    this->ui->l_height->resize(this->width()/10, this->height()/30);
+    this->ui->l_height->move(this->width()*0.83, this->height()*0.26);
+
+    this->ui->l_width->resize(this->width()/10, this->height()/30);
+    this->ui->l_width->move(this->width()*0.83, this->height()*0.40);
+
+    this->ui->l_texture->resize(this->width()/10, this->height()/30);
+    this->ui->l_texture->move(this->width()*0.83, this->height()*0.54);
+
+    this->ui->slider_height->resize(this->width()/10, this->height()/20);
+    this->ui->slider_height->move(this->width()*0.83, this->height()*0.33);
+
+    this->ui->slider_width->resize(this->width()/10, this->height()/20);
+    this->ui->slider_width->move(this->width()*0.83, this->height()*0.47);
+
+    this->ui->slider_texture->resize(this->width()/10, this->height()/20);
+    this->ui->slider_texture->move(this->width()*0.83, this->height()*0.61);
+
+    this->ui->comboBox->resize(this->width()/3, this->height()/20);
+    this->ui->comboBox->move(this->width()*0.37, this->height()*0.03);
+
+    this->ui->text_description->resize(this->width()*0.265, this->height()*0.82);
+    this->ui->text_description->move(this->width()*0.03, this->height()*0.03);
+}
+
+void SelectPlayer::focusInEvent(QFocusEvent* event) {
+}
+
+void SelectPlayer::focusOutEvent(QFocusEvent* event) {
+}
