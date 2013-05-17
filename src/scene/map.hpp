@@ -23,7 +23,7 @@
 #include <string>
 #include "mapobserver.hpp"
 #include "sector.hpp"
-#include "core.hpp"
+#include "../core/core.hpp"
 
 namespace irr {
     namespace scene {

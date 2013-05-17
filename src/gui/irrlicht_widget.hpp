@@ -32,89 +32,94 @@ namespace irr {
 }
 
 
-/**
- * @brief QWidget for integrate Irrlicht
- */
-class QIrrlichtWidget : public QWidget {
-    Q_OBJECT
-
-    protected:
-        /**
-         * @brief Device
-         */
-        irr::IrrlichtDevice *device;
+namespace ofw {
+    namespace gui {
 
         /**
-         * @brief irrlicht driver
+         * @brief QWidget for integrate Irrlicht
          */
-        irr::video::IVideoDriver *driver;
+        class QIrrlichtWidget : public QWidget {
+            Q_OBJECT
 
-        /**
-         * @brief Camera
-         */
-        irr::scene::ICameraSceneNode* camera;
+            protected:
+                /**
+                 * @brief Device
+                 */
+                irr::IrrlichtDevice *device;
 
-        /**
-         * @brief Update the QIrrlichtWidget
-         *
-         * @param event
-         */
-        virtual void paintEvent(QPaintEvent* event);
+                /**
+                 * @brief irrlicht driver
+                 */
+                irr::video::IVideoDriver *driver;
 
-        /**
-         * @brief Update the QIrrlichtWidget
-         *
-         * @param event
-         */
-        virtual void timerEvent(QTimerEvent* event);
+                /**
+                 * @brief Camera
+                 */
+                irr::scene::ICameraSceneNode* camera;
 
-        /**
-         * @brief Resize the widget with the window
-         *
-         * @param event
-         */
-        virtual void resizeEvent(QResizeEvent* event);
+                /**
+                 * @brief Update the QIrrlichtWidget
+                 *
+                 * @param event
+                 */
+                virtual void paintEvent(QPaintEvent* event);
 
-    public:
-        /**
-         * @brief Constructor QIrrlichtWidget. Select way of painting.
-         *
-         * @param parent
-         */
-        QIrrlichtWidget(QWidget *parent = 0);
+                /**
+                 * @brief Update the QIrrlichtWidget
+                 *
+                 * @param event
+                 */
+                virtual void timerEvent(QTimerEvent* event);
 
-        /**
-         * @brief Destructor
-         */
-        ~QIrrlichtWidget();
+                /**
+                 * @brief Resize the widget with the window
+                 *
+                 * @param event
+                 */
+                virtual void resizeEvent(QResizeEvent* event);
 
-        /**
-         * @brief Get IrrlichtDevice
-         *
-         * @return IrrlichtDevice
-         */
-        irr::IrrlichtDevice* get_device();
+            public:
+                /**
+                 * @brief Constructor QIrrlichtWidget. Select way of painting.
+                 *
+                 * @param parent
+                 */
+                QIrrlichtWidget(QWidget *parent = 0);
 
-        /**
-         * @brief Init the core
-         */
-        void init();
+                /**
+                 * @brief Destructor
+                 */
+                ~QIrrlichtWidget();
 
-    signals:
-        /**
-         * @brief Emit the signal that connects with the slot update_irrlicth.
-         *
-         * @param device IrrlichtDevice
-         */
-        void update_irrlicht_query(irr::IrrlichtDevice* device);
+                /**
+                 * @brief Get IrrlichtDevice
+                 *
+                 * @return IrrlichtDevice
+                 */
+                irr::IrrlichtDevice* get_device();
 
-    public slots:
-        /**
-         * @brief Refresh the irrlicht widget.
-         *
-         * @param device IrrlichtDevice
-         */
-        void update_irrlicht(irr::IrrlichtDevice* device);
-};
+                /**
+                 * @brief Init the core
+                 */
+                void init();
 
+            signals:
+                /**
+                 * @brief Emit the signal that connects with the slot update_irrlicth.
+                 *
+                 * @param device IrrlichtDevice
+                 */
+                void update_irrlicht_query(irr::IrrlichtDevice* device);
+
+            public slots:
+                /**
+                 * @brief Refresh the irrlicht widget.
+                 *
+                 * @param device IrrlichtDevice
+                 */
+                void update_irrlicht(irr::IrrlichtDevice* device);
+        };
+
+    }
+}
 #endif

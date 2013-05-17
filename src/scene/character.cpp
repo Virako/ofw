@@ -21,7 +21,7 @@
 #include <iostream>
 
 #include "character.hpp"
-#include "ofw_config.hpp"
+#include "../ofw_config.hpp"
 
 
 namespace ofw {

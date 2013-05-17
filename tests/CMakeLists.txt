@@ -48,13 +48,13 @@ endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 set(SRC_test_player
     player_test.cpp
-    ../src/character.cpp
-    ../src/player.cpp
-    ../src/picacode.cpp
-    ../src/hacker.cpp
-    ../src/cracker.cpp
-    ../src/designer.cpp
-    ../src/hunterbug.cpp)
+    ../src/scene/character.cpp
+    ../src/scene/player.cpp
+    ../src/scene/picacode.cpp
+    ../src/scene/hacker.cpp
+    ../src/scene/cracker.cpp
+    ../src/scene/designer.cpp
+    ../src/scene/hunterbug.cpp)
 
 add_executable(player_test ${SRC_test_player})
 

@@ -62,14 +62,14 @@ endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 SET(HWQ_SRC
     ofw_config.hpp
     main.cpp
-    character.cpp
-    player.cpp
-    picacode.cpp
-    hacker.cpp
-    cracker.cpp
-    designer.cpp
-    hunterbug.cpp
-    core.cpp
+    scene/character.cpp
+    scene/player.cpp
+    scene/picacode.cpp
+    scene/hacker.cpp
+    scene/cracker.cpp
+    scene/designer.cpp
+    scene/hunterbug.cpp
+    core/core.cpp
     gui/select_player.cpp
     gui/irrlicht_widget.cpp
     ${HWQ_MOC_CPP}

@@ -26,11 +26,11 @@
 #include <libintl.h>
 #define _(x) gettext(x)
 
-#include "core.hpp"
+#include "ofw_config.hpp"
+#include "core/core.hpp"
 #include "gui/select_player.hpp"
 #include "gui/irrlicht_widget.hpp"
-#include "picacode.hpp"
-#include "ofw_config.hpp"
+#include "scene/picacode.hpp"
 
 
 int main(int argc, char *argv[]) {
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     std::cout << _("Welcome to ofw") << std::endl;
 
     QApplication app(argc, argv);
-    SelectPlayer sp;
+    ofw::gui::SelectPlayer sp;
     sp.show();
     sp.get_irr_widget()->init();
     irr::IrrlichtDevice *device = sp.get_irr_widget()->get_device();

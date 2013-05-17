@@ -33,145 +33,152 @@ namespace ofw {
     namespace scene {
         class Player;
     }
+    namespace gui {
+        class QIrrlichtWidget;
+    }
 }
 
-class QIrrlichtWidget;
 class QString;
 
 
-/**
- * @brief Handler SelectPlayer gui
- */
-class SelectPlayer : public QMainWindow {
-    Q_OBJECT
-
-    private:
-        /**
-         * @brief User interface
-         */
-        Ui::SelectPlayer *ui;
+namespace ofw {
+    namespace gui {
 
         /**
-         * @brief Irrlicht widget integrated in window.
+         * @brief Handler SelectPlayer gui
          */
-        QIrrlichtWidget *irr_widget;
+        class SelectPlayer : public QMainWindow {
+            Q_OBJECT
 
-        /**
-         * @brief Player created inside Irrlicht widget
-         */
-        ofw::scene::Player *player;
+            private:
+                /**
+                 * @brief User interface
+                 */
+                Ui::SelectPlayer *ui;
 
-        /**
-         * @brief IrrlichtDevice
-         */
-        irr::IrrlichtDevice *device;
+                /**
+                 * @brief Irrlicht widget integrated in window.
+                 */
+                QIrrlichtWidget *irr_widget;
 
-    protected:
-        /**
-         * @brief Capture emited event when window is resize.
-         *
-         * @param event Contains event parameter for resizeEvent
-         */
-        void resizeEvent(QResizeEvent* event);
+                /**
+                 * @brief Player created inside Irrlicht widget
+                 */
+                ofw::scene::Player *player;
 
-        /**
-         * @brief Capture emited event when window is focused.
-         *
-         * @param event Contains event parameter for focusInEvent
-         */
-        void focusInEvent(QFocusEvent* event);
+                /**
+                 * @brief IrrlichtDevice
+                 */
+                irr::IrrlichtDevice *device;
 
-        /**
-         * @brief Capture emited event when window is unfocused.
-         *
-         * @param event Contains event parameter for focusOutEvent
-         */
-        void focusOutEvent(QFocusEvent* event);
+            protected:
+                /**
+                 * @brief Capture emited event when window is resize.
+                 *
+                 * @param event Contains event parameter for resizeEvent
+                 */
+                void resizeEvent(QResizeEvent* event);
 
-    private slots:
-        /**
-         * @brief Button b_create is pressed
-         */
-        void on_b_create_clicked();
+                /**
+                 * @brief Capture emited event when window is focused.
+                 *
+                 * @param event Contains event parameter for focusInEvent
+                 */
+                void focusInEvent(QFocusEvent* event);
 
-        /**
-         * @brief Value of QSlider slider_height has changed
-         *
-         * @param value value of height
-         */
-        void on_slider_height_valueChanged(int value);
+                /**
+                 * @brief Capture emited event when window is unfocused.
+                 *
+                 * @param event Contains event parameter for focusOutEvent
+                 */
+                void focusOutEvent(QFocusEvent* event);
 
-        /**
-         * @brief Value of QSlider slider_width has changed
-         *
-         * @param value value of width
-         */
-        void on_slider_width_valueChanged(int value);
+            private slots:
+                /**
+                 * @brief Button b_create is pressed
+                 */
+                void on_b_create_clicked();
 
-         /**
-          * @brief Value of QSlider slider_texture has changed
-          *
-          * @param value value of texture
-          */
-         void on_slider_texture_valueChanged(int value);
+                /**
+                 * @brief Value of QSlider slider_height has changed
+                 *
+                 * @param value value of height
+                 */
+                void on_slider_height_valueChanged(int value);
 
-        /**
-         * @brief Value ofcomboBox has changed
-         *
-         * @param index index of combobox
-         */
-        void on_comboBox_currentIndexChanged(int index);
+                /**
+                 * @brief Value of QSlider slider_width has changed
+                 *
+                 * @param value value of width
+                 */
+                void on_slider_width_valueChanged(int value);
 
-        /**
-         * @brief TextBox is changed
-         *
-         * @param text New text in the textBox
-         */
-        void on_cb_name_textEdited(QString text);
+                 /**
+                  * @brief Value of QSlider slider_texture has changed
+                  *
+                  * @param value value of texture
+                  */
+                 void on_slider_texture_valueChanged(int value);
 
-    public:
-        /**
-         * @brief Create default values in the gui.
-         *
-         * @param parent
-         */
-        SelectPlayer(QWidget *parent=0);
+                /**
+                 * @brief Value ofcomboBox has changed
+                 *
+                 * @param index index of combobox
+                 */
+                void on_comboBox_currentIndexChanged(int index);
 
-        /**
-         * @brief Desctructor
-         */
-        ~SelectPlayer();
+                /**
+                 * @brief TextBox is changed
+                 *
+                 * @param text New text in the textBox
+                 */
+                void on_cb_name_textEdited(QString text);
 
-        /**
-         * @brief Get irr_widget
-         *
-         * @return irr_widget
-         */
-        QIrrlichtWidget* get_irr_widget();
+            public:
+                /**
+                 * @brief Create default values in the gui.
+                 *
+                 * @param parent
+                 */
+                SelectPlayer(QWidget *parent=0);
 
-        /**
-         * @brief Changes values of sliders from player's values.
-         *
-         * @param p Player
-         */
-        void change_players_values();
+                /**
+                 * @brief Desctructor
+                 */
+                ~SelectPlayer();
 
-        /**
-         * @brief Set IrrlichtDevice
-         *
-         * @param device IrrlichtDevice
-         */
-        void set_device(irr::IrrlichtDevice *device);
+                /**
+                 * @brief Get irr_widget
+                 *
+                 * @return irr_widget
+                 */
+                QIrrlichtWidget* get_irr_widget();
 
-        /**
-         * @brief Init window with default values.
-         */
-        void init_default();
+                /**
+                 * @brief Changes values of sliders from player's values.
+                 *
+                 * @param p Player
+                 */
+                void change_players_values();
 
-};
+                /**
+                 * @brief Set IrrlichtDevice
+                 *
+                 * @param device IrrlichtDevice
+                 */
+                void set_device(irr::IrrlichtDevice *device);
 
-inline void SelectPlayer::set_device(irr::IrrlichtDevice *device) {
-    this->device = device;
+                /**
+                 * @brief Init window with default values.
+                 */
+                void init_default();
+
+        };
+
+        inline void SelectPlayer::set_device(irr::IrrlichtDevice *device) {
+            this->device = device;
+        }
+
+    }
 }
-
 #endif

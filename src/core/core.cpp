@@ -22,7 +22,7 @@
 #include <libintl.h>
 #include <iostream>
 
-#include "ofw_config.hpp"
+#include "../ofw_config.hpp"
 #include "core.hpp"
 
 
