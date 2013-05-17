@@ -26,10 +26,10 @@ namespace ofw {
     namespace scene {
 
         Cracker::Cracker() {
-            this->HEIGHT_MIN = 80;
-            this->HEIGHT_MAX = 120;
-            this->WIDTH_MIN = 90;
-            this->WIDTH_MAX = 110;
+            this->HEIGHT_MIN = 140;
+            this->HEIGHT_MAX = 250;
+            this->WIDTH_MIN = 140;
+            this->WIDTH_MAX = 250;
             this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN) / 2;
             this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN) / 2;
             this->life = 100;

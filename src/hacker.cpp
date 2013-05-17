@@ -26,10 +26,10 @@ namespace ofw {
     namespace scene {
 
         Hacker::Hacker() {
-            this->HEIGHT_MIN = 80;
-            this->HEIGHT_MAX = 120;
+            this->HEIGHT_MIN = 155;
+            this->HEIGHT_MAX = 190;
             this->WIDTH_MIN = 90;
-            this->WIDTH_MAX = 110;
+            this->WIDTH_MAX = 200;
             this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN) / 2;
             this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN) / 2;
             this->life = 100;

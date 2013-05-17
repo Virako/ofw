@@ -26,10 +26,10 @@ namespace ofw {
     namespace scene {
 
         Designer::Designer() {
-            this->HEIGHT_MIN = 80;
-            this->HEIGHT_MAX = 120;
-            this->WIDTH_MIN = 90;
-            this->WIDTH_MAX = 110;
+            this->HEIGHT_MIN = 30;
+            this->HEIGHT_MAX = 50;
+            this->WIDTH_MIN = 50;
+            this->WIDTH_MAX = 65;
             this->height = HEIGHT_MIN + (HEIGHT_MAX - HEIGHT_MIN) / 2;
             this->width = WIDTH_MIN + (WIDTH_MAX - WIDTH_MIN) / 2;
             this->life = 100;
