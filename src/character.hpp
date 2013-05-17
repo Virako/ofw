@@ -25,6 +25,7 @@
 namespace irr {
     class IrrlichtDevice;
     namespace scene {
+        class IAnimatedMesh;
         class IAnimatedMeshSceneNode;
     }
 }
@@ -106,7 +107,7 @@ namespace ofw {
                 std::vector<std::string> TEXTURES;
 
                 /**
-                 * @brief renderer player
+                 * @brief Animated scene node.
                  */
                 irr::scene::IAnimatedMeshSceneNode *scene_node;
 
@@ -244,15 +245,6 @@ namespace ofw {
                 virtual std::string* get_description();
 
                 /**
-                 * @brief Render the player to show in screen.
-                 *
-                 * @param device IrrlichtDevice
-                 *
-                 * @return IAnimatedMeshSceneNode to show the character in screen.
-                 */
-                virtual irr::scene::IAnimatedMeshSceneNode* render(irr::IrrlichtDevice *device);
-
-                /**
                  * @brief Select animation to character
                  *
                  * @param init_frame where init the frame
@@ -280,6 +272,27 @@ namespace ofw {
                  * @param index index vector TEXTURES. Default -1: current value texture
                  */
                 virtual void set_texture(int index=-1);
+
+                /**
+                 * @brief Change model of character
+                 *
+                 * @return IAnimatedMesh
+                 */
+                virtual irr::scene::IAnimatedMesh* set_mesh();
+
+                /**
+                 * @brief Set scene node, where also change the mesh.
+                 *
+                 * @param device IrrlichtDevice
+                 */
+                virtual void create_scene_node(irr::IrrlichtDevice *device);
+
+                /**
+                 * @brief Set device
+                 *
+                 * @param device IrrlichtDevice
+                 */
+                virtual void set_device(irr::IrrlichtDevice *device);
         };
 
         inline unsigned int Character::get_height(void) {
@@ -328,6 +341,10 @@ namespace ofw {
 
         inline unsigned int Character::get_texture_lenght() {
             return this->TEXTURES.size();
+        }
+
+        inline void Character::set_device(irr::IrrlichtDevice *device) {
+            this->device = device;
         }
 
     }

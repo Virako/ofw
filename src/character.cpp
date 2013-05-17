@@ -91,20 +91,6 @@ namespace ofw {
             }
         }
 
-        irr::scene::IAnimatedMeshSceneNode* Character::render(irr::IrrlichtDevice *device) {
-            this->device = device;
-            irr::scene::ISceneManager* smgr = this->device->getSceneManager();
-            irr::scene::IAnimatedMesh *player = smgr->getMesh(
-                    (ofw::datadir + "/" + this->mesh).c_str());
-            if (!player)
-                throw "Exit";
-            this->scene_node = smgr->addAnimatedMeshSceneNode(player);
-            this->scene_node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-            this->set_texture();
-            this->scale();
-            return this->scene_node;
-        }
-
         void Character::scale() {
             if (this->scene_node != NULL) {
                 float percent = 100;
@@ -126,6 +112,23 @@ namespace ofw {
             if (this->scene_node != NULL) {
                 this->scene_node->setMaterialTexture(0, this->device->getVideoDriver()->getTexture(
                         (ofw::datadir + "/" + this->texture).c_str()));
+            }
+        }
+
+        irr::scene::IAnimatedMesh* Character::set_mesh() {
+            return this->device->getSceneManager()->getMesh(
+                    (ofw::datadir + "/" + this->mesh).c_str());
+        }
+
+        void Character::create_scene_node(irr::IrrlichtDevice *device) {
+            this->set_device(device);
+            irr::scene::IAnimatedMesh* mesh = this->set_mesh();
+            if (!mesh)
+                throw "Exit";
+            this->scene_node = this->device->getSceneManager()->addAnimatedMeshSceneNode(mesh);
+            // TODO Temporal. It is neccesary to see the textures. Isolate it.
+            if (this->scene_node != NULL) {
+                this->scene_node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
             }
         }
 

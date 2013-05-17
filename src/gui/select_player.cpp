@@ -44,11 +44,11 @@ SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::Se
 
 SelectPlayer::~SelectPlayer() {
     delete ui;
-    delete player;
+    delete this->player;
 }
 
 void SelectPlayer::init_default() {
-    player = NULL;
+    this->player = NULL;
     QString l_h = QString(_("height"));
     QString l_w = QString(_("width"));
     QString l_t = QString(_("texture"));
@@ -76,32 +76,33 @@ void SelectPlayer::on_b_create_clicked() {
 }
 
 void SelectPlayer::on_slider_height_valueChanged(int value) {
-    if (player != NULL) {
+    if (this->player != NULL) {
         this->player->set_height(value);
     }
 }
 
 void SelectPlayer::on_slider_width_valueChanged(int value) {
-    if (player != NULL) {
+    if (this->player != NULL) {
         this->player->set_width(value);
     }
 }
 
 void SelectPlayer::on_slider_texture_valueChanged(int value) {
-    if (player != NULL) {
+    if (this->player != NULL) {
         this->player->set_texture(value);
     }
 }
 
 void SelectPlayer::change_players_values() {
-        ui->slider_height->setMinimum(this->player->get_height_min());
-        ui->slider_height->setMaximum(this->player->get_height_max());
-        ui->slider_width->setMinimum (this->player->get_width_min());
-        ui->slider_width->setMaximum (this->player->get_width_max());
-        ui->slider_texture->setMaximum(this->player->get_texture_lenght() - 1);
-        //TODO put sliders in h and w per default
-        QString descr = QString(this->player->get_description()->c_str());
-        ui->text_description->setPlainText(descr);
+    ui->slider_height->setRange(this->player->get_height_min(), this->player->get_height_max());
+    ui->slider_height->setValue(this->player->get_height());
+    ui->slider_width->setRange(this->player->get_width_min(), this->player->get_width_max());
+    ui->slider_width->setValue(this->player->get_width());
+    ui->slider_texture->setRange(0, this->player->get_texture_lenght() - 1);
+    ui->slider_texture->setValue(0);
+    emit on_slider_texture_valueChanged(0);
+    QString descr = QString(this->player->get_description()->c_str());
+    ui->text_description->setPlainText(descr);
 }
 
 void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
@@ -126,12 +127,12 @@ void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
     else {
         throw std::domain_error("");
     }
+    this->player->create_scene_node(this->device);
     change_players_values();
-    this->player->render(this->device);
 }
 
 void SelectPlayer::on_cb_name_textEdited(QString text) {
-    if (player != NULL) {
+    if (this->player != NULL) {
         this->player->set_name(text.toStdString());
     }
     ui->cb_name->setPlaceholderText(text);
