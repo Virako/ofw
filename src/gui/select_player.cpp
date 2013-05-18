@@ -27,6 +27,7 @@
 #include "select_player.hpp"
 #include "ui_select_player.h"
 #include "irrlicht_widget.hpp"
+#include "../ofw_config.hpp"
 #include "../scene/picacode.hpp"
 #include "../scene/hacker.hpp"
 #include "../scene/cracker.hpp"
@@ -52,6 +53,7 @@ namespace ofw {
 
         void SelectPlayer::init_default() {
             this->player = NULL;
+            this->put_logo();
             QString l_h = QString(_("height"));
             QString l_w = QString(_("width"));
             QString l_t = QString(_("texture"));
@@ -139,6 +141,15 @@ namespace ofw {
                 this->player->set_name(text.toStdString());
             }
             ui->cb_name->setPlaceholderText(text);
+        }
+
+        void SelectPlayer::put_logo() {
+            irr::gui::IGUIImage *img = this->device->getGUIEnvironment()->addImage(
+                    this->device->getVideoDriver()->getTexture(
+                    (ofw::datadir + "/" + "media/logo.png").c_str()),
+                    irr::core::position2d<irr::s32>(this->height() - 10, 10));
+            img->setAlignment(irr::gui::EGUIA_LOWERRIGHT, irr::gui::EGUIA_LOWERRIGHT,
+                    irr::gui::EGUIA_UPPERLEFT, irr::gui::EGUIA_UPPERLEFT);
         }
 
         void SelectPlayer::resizeEvent(QResizeEvent* event) {

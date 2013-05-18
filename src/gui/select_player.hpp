@@ -173,6 +173,10 @@ namespace ofw {
                  */
                 void init_default();
 
+                /**
+                 * @brief Put logo in the upper right corner.
+                 */
+                void put_logo();
         };
 
         inline void SelectPlayer::set_device(irr::IrrlichtDevice *device) {
