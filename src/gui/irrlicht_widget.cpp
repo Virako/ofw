@@ -24,7 +24,7 @@
 
 #include "irrlicht_widget.hpp"
 #include "../core/core.hpp"
-
+#include "irr_event_sender.hpp"
 
 namespace ofw {
     namespace gui {
@@ -58,8 +58,6 @@ namespace ofw {
                 camera = device->getSceneManager()->addCameraSceneNode(0,
                         irr::core::vector3df(0,15,20), irr::core::vector3df(0,5,0));
             }
-            connect(this, SIGNAL(update_irrlicht_query(irr::IrrlichtDevice*)), this,
-                    SLOT(update_irrlicht(irr::IrrlichtDevice*)));
             startTimer(0);
         }
 
@@ -67,43 +65,14 @@ namespace ofw {
             return device;
         }
 
-        void QIrrlichtWidget::paintEvent(QPaintEvent* event) {
+        bool QIrrlichtWidget::event(QEvent* event) {
             if(device != 0) {
-                emit update_irrlicht_query(device);
+               irrEventSender irrES(device);
+               irrES.sendEvent(event);
+               event->ignore();
             }
+            QWidget::event(event);
+            return true;
         }
-
-        void QIrrlichtWidget::timerEvent(QTimerEvent* event) {
-            if (device != 0) {
-                emit update_irrlicht_query(device);
-            }
-            event->accept();
-        }
-
-        void QIrrlichtWidget::resizeEvent(QResizeEvent* event) {
-            if(device != 0) {
-                irr::core::dimension2d<irr::u32> widgetSize;
-                widgetSize.Width = event->size().width();
-                widgetSize.Height = event->size().height();
-                device->getVideoDriver()->OnResize(widgetSize);
-                irr::scene::ICameraSceneNode *cam = device->getSceneManager()->getActiveCamera();
-                if (cam != 0) {
-                    cam->setAspectRatio((irr::f32)widgetSize.Height / (irr::f32)widgetSize.Width);
-                }
-            }
-            QWidget::resizeEvent(event);
-        }
-
-        void QIrrlichtWidget::update_irrlicht( irr::IrrlichtDevice* device ) {
-            if(device != 0) {
-                device->getTimer()->tick();
-                irr::video::SColor color (255,128,128,128);
-                device->getVideoDriver()->beginScene(true, true, color);
-                device->getSceneManager()->drawAll();
-                device->getGUIEnvironment()->drawAll();
-                device->getVideoDriver()->endScene();
-            }
-        }
-
     }
 }

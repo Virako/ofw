@@ -72,6 +72,7 @@ SET(HWQ_SRC
     core/core.cpp
     gui/select_player.cpp
     gui/irrlicht_widget.cpp
+    gui/irr_event_sender.cpp
     ${HWQ_MOC_CPP}
     ${HWQ_UI_CPP}
     ${HWQ_RES_H})

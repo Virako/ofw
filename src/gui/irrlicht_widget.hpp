@@ -58,25 +58,15 @@ namespace ofw {
                 irr::scene::ICameraSceneNode* camera;
 
                 /**
-                 * @brief Update the QIrrlichtWidget
+                 * @brief General event handler, catchs all the QEvents related
+                 * with the widgets, and pass it to the irrEventHandler.
                  *
-                 * @param event
-                 */
-                virtual void paintEvent(QPaintEvent* event);
-
-                /**
-                 * @brief Update the QIrrlichtWidget
+                 * @param event QEvent that has just ocurred.
                  *
-                 * @param event
+                 * @return True if the event has been recognized, false in other
+                 * case.
                  */
-                virtual void timerEvent(QTimerEvent* event);
-
-                /**
-                 * @brief Resize the widget with the window
-                 *
-                 * @param event
-                 */
-                virtual void resizeEvent(QResizeEvent* event);
+                bool event(QEvent* event);
 
             public:
                 /**
@@ -103,21 +93,6 @@ namespace ofw {
                  */
                 void init();
 
-            signals:
-                /**
-                 * @brief Emit the signal that connects with the slot update_irrlicth.
-                 *
-                 * @param device IrrlichtDevice
-                 */
-                void update_irrlicht_query(irr::IrrlichtDevice* device);
-
-            public slots:
-                /**
-                 * @brief Refresh the irrlicht widget.
-                 *
-                 * @param device IrrlichtDevice
-                 */
-                void update_irrlicht(irr::IrrlichtDevice* device);
         };
 
     }
