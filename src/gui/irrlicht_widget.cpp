@@ -100,6 +100,7 @@ namespace ofw {
                 irr::video::SColor color (255,128,128,128);
                 device->getVideoDriver()->beginScene(true, true, color);
                 device->getSceneManager()->drawAll();
+                device->getGUIEnvironment()->drawAll();
                 device->getVideoDriver()->endScene();
             }
         }
