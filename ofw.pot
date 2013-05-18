@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ofw 1.0\n"
+"Project-Id-Version: ofw 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-26 05:05+0200\n"
+"POT-Creation-Date: 2013-05-18 18:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,50 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.cpp:40
+#: src/gui/select_player.cpp:60
+msgid "CREATE"
+msgstr ""
+
+#: src/scene/cracker.cpp:38
+msgid "Cracker: the rogue, cheat and thief. "
+msgstr ""
+
+#: src/scene/designer.cpp:38
+msgid "Designer: the wizard, trainer and healer. "
+msgstr ""
+
+#: src/scene/hacker.cpp:38
+msgid "Hacker: the smart, alchemist and cook"
+msgstr ""
+
+#: src/scene/hunterbug.cpp:38
+msgid "Hunterbug: the hunter, skilled and tailor. "
+msgstr ""
+
+#: src/scene/picacode.cpp:38
+msgid "Picacode: strong and builder. "
+msgstr ""
+
+#: src/gui/select_player.cpp:61
+msgid "Quit"
+msgstr ""
+
+#: src/main.cpp:38
 msgid "Welcome to ofw"
 msgstr ""
 
-#: src/gui/select_player.cpp:39
+#: src/gui/select_player.cpp:57
+msgid "height"
+msgstr ""
+
+#: src/gui/select_player.cpp:67
 msgid "name"
+msgstr ""
+
+#: src/gui/select_player.cpp:59
+msgid "texture"
+msgstr ""
+
+#: src/gui/select_player.cpp:58
+msgid "width"
 msgstr ""
