@@ -67,10 +67,14 @@ namespace ofw {
 
             irrEvent.EventType = irr::EET_MOUSE_INPUT_EVENT;
 
-            if (event->button() == Qt::LeftButton) {
-                irrEvent.MouseInput.Event = irr::EMIE_LMOUSE_PRESSED_DOWN;
-            }else {
-                irrEvent.MouseInput.Event = irr::EMIE_RMOUSE_PRESSED_DOWN;
+            if (event->type() == QEvent::MouseButtonPress) {
+                if (event->button() == Qt::LeftButton) {
+                    irrEvent.MouseInput.Event = irr::EMIE_LMOUSE_PRESSED_DOWN;
+                }else if (event->button() == Qt::RightButton) {
+                    irrEvent.MouseInput.Event = irr::EMIE_RMOUSE_PRESSED_DOWN;
+                }
+            }else if (event->type() == QEvent::MouseMove) {
+                irrEvent.MouseInput.Event = irr::EMIE_MOUSE_MOVED;
             }
 
             irrEvent.MouseInput.X = event->x();

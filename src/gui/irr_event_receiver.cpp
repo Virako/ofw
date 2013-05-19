@@ -19,6 +19,7 @@
 
 #include "irrlicht.h"
 #include "irr_event_receiver.hpp"
+#include <iostream>
 
 namespace ofw {
     namespace gui {
@@ -45,7 +46,6 @@ namespace ofw {
                     case irr::EMIE_MOUSE_MOVED:
                         MouseState.Position.X = event.MouseInput.X;
                         MouseState.Position.Y = event.MouseInput.Y;
-                        break;
 
                     default:
                         break;
