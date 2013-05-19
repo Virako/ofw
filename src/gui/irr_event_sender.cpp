@@ -60,11 +60,18 @@ namespace ofw {
         }
 
         void irrEventSender::sendMouseEvent(QMouseEvent* event) {
+            if(event->type() == QEvent::Type::MouseButtonRelease)
+                return;
+
             irr::SEvent irrEvent;
 
             irrEvent.EventType = irr::EET_MOUSE_INPUT_EVENT;
 
-            irrEvent.MouseInput.Event = irr::EMIE_MOUSE_MOVED;
+            if (event->button() == Qt::LeftButton) {
+                irrEvent.MouseInput.Event = irr::EMIE_LMOUSE_PRESSED_DOWN;
+            }else {
+                irrEvent.MouseInput.Event = irr::EMIE_RMOUSE_PRESSED_DOWN;
+            }
 
             irrEvent.MouseInput.X = event->x();
             irrEvent.MouseInput.Y = event->y();

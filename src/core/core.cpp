@@ -24,7 +24,7 @@
 
 #include "../ofw_config.hpp"
 #include "core.hpp"
-
+#include "../gui/irr_event_receiver.hpp"
 
 namespace ofw {
     namespace core {
@@ -44,7 +44,7 @@ namespace ofw {
             params.DeviceType = irr::EIDT_BEST;
             //params.DriverMultithreaded = true;
             params.DriverType = irr::driverChoiceConsole();
-            params.EventReceiver = 0;
+            params.EventReceiver = new ofw::gui::irrEventReceiver();
             params.Fullscreen = false;
             params.HighPrecisionFPU = false;
             params.IgnoreInput = false;
