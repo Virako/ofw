@@ -30,10 +30,8 @@ namespace ofw {
             SMouseState() : LeftButtonDown(false) { }
         } MouseState;
 
-        bool irrEventReceiver::OnEvent(const irr::SEvent& event)
-        {
-            if (event.EventType == irr::EET_MOUSE_INPUT_EVENT)
-            {
+        bool irrEventReceiver::OnEvent(const irr::SEvent& event) {
+            if (event.EventType == irr::EET_MOUSE_INPUT_EVENT) {
                 switch(event.MouseInput.Event)
                 {
                     case irr::EMIE_LMOUSE_PRESSED_DOWN:
@@ -54,28 +52,23 @@ namespace ofw {
                 }
             }
 
-            if (event.EventType == irr::EET_JOYSTICK_INPUT_EVENT
-                && event.JoystickEvent.Joystick == 0)
-            {
+            if (event.EventType == irr::EET_JOYSTICK_INPUT_EVENT && event.JoystickEvent.Joystick == 0) {
                 JoystickState = event.JoystickEvent;
             }
 
             return false;
         }
 
-        const irr::SEvent::SJoystickEvent& irrEventReceiver::GetJoystickState(void) const
-        {
+        const irr::SEvent::SJoystickEvent& irrEventReceiver::GetJoystickState(void) const {
             return JoystickState;
         }
 
-        const SMouseState& irrEventReceiver::GetMouseState(void) const
-        {
+        const SMouseState& irrEventReceiver::GetMouseState(void) const {
             return MouseState;
         }
 
 
-        irrEventReceiver::irrEventReceiver()
-        {
+        irrEventReceiver::irrEventReceiver() {
         }
     }
 }

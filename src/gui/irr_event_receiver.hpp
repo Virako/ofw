@@ -34,6 +34,7 @@ namespace ofw {
         class irrEventReceiver : public irr::IEventReceiver {
             private:
                 irr::SEvent::SJoystickEvent JoystickState;
+
             public:
                 /**
                  * @brief Default constructor.
