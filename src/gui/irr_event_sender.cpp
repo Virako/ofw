@@ -59,7 +59,7 @@ namespace ofw {
             return event_taked;
         }
 
-        void irrEventSender::sendMouseEvent(QMouseEvent* event) {
+        void IrrEventSender::sendMouseEvent(QMouseEvent* event) {
             if(event->type() == QEvent::Type::MouseButtonRelease)
                 return;
 
@@ -98,8 +98,8 @@ namespace ofw {
             irr::core::dimension2d<irr::u32> widgetSize;
             widgetSize.Width = event->size().width();
             widgetSize.Height = event->size().height();
-            device->getVideoDriver()->OnResize(widgetSize);
-            irr::scene::ICameraSceneNode *cam = device->getSceneManager()->getActiveCamera();
+            this->device->getVideoDriver()->OnResize(widgetSize);
+            irr::scene::ICameraSceneNode *cam = this->device->getSceneManager()->getActiveCamera();
             if (cam != 0) {
                 cam->setAspectRatio((irr::f32)widgetSize.Height / (irr::f32)widgetSize.Width);
             }
