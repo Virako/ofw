@@ -25,7 +25,7 @@ SET(HWQ_Qt4_UI
     gui/select_player.ui)
 SET(HWQ_Qt4_SRC
     gui/select_player.hpp
-    gui/irrlicht_widget.hpp)
+    gui/irr_widget.hpp)
 SET(HWQ_Qt4_RES)
 SET(HWQ_LIB ${QT_LIBRARIES})
 
@@ -71,7 +71,7 @@ SET(HWQ_SRC
     scene/hunterbug.cpp
     core/core.cpp
     gui/select_player.cpp
-    gui/irrlicht_widget.cpp
+    gui/irr_widget.cpp
     gui/irr_event_sender.cpp
     gui/irr_event_receiver.cpp
     ${HWQ_MOC_CPP}

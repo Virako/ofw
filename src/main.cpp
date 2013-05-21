@@ -29,7 +29,7 @@
 #include "ofw_config.hpp"
 #include "core/core.hpp"
 #include "gui/select_player.hpp"
-#include "gui/irrlicht_widget.hpp"
+#include "gui/irr_widget.hpp"
 #include "scene/picacode.hpp"
 
 

@@ -20,11 +20,11 @@
 #include <QtCore/QDebug>
 #include <QtGui/QMessageBox>
 #include <QtGui/QResizeEvent>
-#include <iostream>
 
-#include "irrlicht_widget.hpp"
-#include "../core/core.hpp"
+#include "irr_widget.hpp"
 #include "irr_event_sender.hpp"
+#include "../core/core.hpp"
+
 
 namespace ofw {
     namespace gui {
@@ -32,28 +32,27 @@ namespace ofw {
         QIrrlichtWidget::QIrrlichtWidget(QWidget *parent) : QWidget(parent) {
             this->setFocusPolicy(Qt::StrongFocus);
             this->setAttribute(Qt::WA_PaintOnScreen, true);
+            //Ask QT to leave this widget unitialized, with no default filled background
+            setAttribute( Qt::WA_OpaquePaintEvent );
             //this->setAttribute(Qt::WA_TranslucentBackground, true);
-            device = 0;
+            this->device = 0;
         }
 
         QIrrlichtWidget::~QIrrlichtWidget() {
-            if (device != 0) {
-                device->closeDevice();
-                device->drop();
+            if (this->device != 0) {
+                this->device->closeDevice();
+                this->device->drop();
             }
         }
 
         void QIrrlichtWidget::init() {
-            if (device != 0)
+            if (this->device != 0)
                 return;
-
-            //Ask QT to leave this widget unitialized, with no default filled background
-            setAttribute( Qt::WA_OpaquePaintEvent );
-
             static ofw::core::Core &c = ofw::core::Core::get_instance(
                     irr::core::dimension2d<irr::u32>(height(), width()),
                     (void*)((QWidget *)this)->winId());
-            device = c.get_device();
+            this->device = c.get_device();
+            // Temporal
             if(device) {
                 camera = device->getSceneManager()->addCameraSceneNode(0,
                         irr::core::vector3df(0,15,20), irr::core::vector3df(0,5,0));
@@ -62,12 +61,12 @@ namespace ofw {
         }
 
         irr::IrrlichtDevice* QIrrlichtWidget::get_device() {
-            return device;
+            return this->device;
         }
 
         bool QIrrlichtWidget::event(QEvent* event) {
-            if(device != 0) {
-               irrEventSender irrES(device);
+            if(this->device != 0) {
+               IrrEventSender irrES(this->device);
                irrES.sendEvent(event);
                event->ignore();
             }

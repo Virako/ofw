@@ -29,10 +29,11 @@ namespace irr {
     class IrrlichtDevice;
 }
 
+
 namespace ofw {
     namespace gui {
 
-        class irrEventSender {
+        class IrrEventSender {
 
             private:
                 irr::IrrlichtDevice* device;
@@ -42,24 +43,28 @@ namespace ofw {
                  * @param event Event to be sended to Irrlicht.
                  */
                 void sendMouseEvent(QMouseEvent* event);
+
                 /**
                  * @brief Handles the QTimerEvent.
                  *
                  * @param event QTimerEvent.
                  */
                 void sendTimeEvent(QTimerEvent* event);
+
                 /**
                  * @brief Handles the QPaintEvent.
                  *
                  * @param event QPaintEvent.
                  */
                 void sendPaintEvent(QPaintEvent* event);
+
                 /**
                  * @brief Handles the QResizeEvent.
                  *
                  * @param event QResizeEvent.
                  */
                 void sendResizeEvent(QResizeEvent* event);
+
                 /**
                  * @brief Updates the irrlicht widget.
                  *
@@ -74,7 +79,8 @@ namespace ofw {
                  * @param device Device that handle the window that is going to
                  * recieve the event.
                  */
-                irrEventSender(irr::IrrlichtDevice* device);
+                IrrEventSender(irr::IrrlichtDevice* device);
+
                 /**
                  * @brief General sender, that handle the event, and calls the
                  * specific sender.
@@ -83,6 +89,7 @@ namespace ofw {
                  */
                 bool sendEvent(QEvent* event);
         };
+
     }
 }
 

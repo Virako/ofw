@@ -26,7 +26,7 @@
 
 #include "select_player.hpp"
 #include "ui_select_player.h"
-#include "irrlicht_widget.hpp"
+#include "irr_widget.hpp"
 #include "../ofw_config.hpp"
 #include "../scene/picacode.hpp"
 #include "../scene/hacker.hpp"
@@ -38,16 +38,17 @@
 namespace ofw {
     namespace gui {
 
-        SelectPlayer::SelectPlayer(QWidget *parent) : QMainWindow(parent), ui(new Ui::SelectPlayer) {
-            irr_widget = new ofw::gui::QIrrlichtWidget(parent);
-            ui->setupUi(this);
-            irr_widget->setParent(ui->centralWidget);
-            irr_widget->setGeometry(0, 0, 800, 600);
+        SelectPlayer::SelectPlayer(QWidget *parent) :
+                QMainWindow(parent), ui(new Ui::SelectPlayer) {
+            this->irr_widget = new ofw::gui::QIrrlichtWidget(parent);
+            this->ui->setupUi(this);
+            this->irr_widget->setParent(this->ui->centralWidget);
+            this->irr_widget->setGeometry(0, 0, 800, 600);
             this->resize(800, 600);
         }
 
         SelectPlayer::~SelectPlayer() {
-            delete ui;
+            delete this->ui;
             delete this->player;
         }
 
@@ -59,9 +60,9 @@ namespace ofw {
             QString l_t = QString(_("texture"));
             QString b_c = QString(_("CREATE"));
             QString b_q = QString(_("Quit"));
-            ui->l_height->setText(l_h);
-            ui->l_width->setText(l_w);
-            ui->l_texture->setText(l_t);
+            this->ui->l_height->setText(l_h);
+            this->ui->l_width->setText(l_w);
+            this->ui->l_texture->setText(l_t);
             ui->b_create->setText(b_c);
             ui->b_quit->setText(b_q);
             emit on_cb_name_textEdited(_("name"));
@@ -69,7 +70,7 @@ namespace ofw {
         }
 
         ofw::gui::QIrrlichtWidget* SelectPlayer::get_irr_widget() {
-            return irr_widget;
+            return this->irr_widget;
         }
 
         void SelectPlayer::on_b_create_clicked() {
@@ -99,15 +100,17 @@ namespace ofw {
         }
 
         void SelectPlayer::change_players_values() {
-            ui->slider_height->setRange(this->player->get_height_min(), this->player->get_height_max());
-            ui->slider_height->setValue(this->player->get_height());
-            ui->slider_width->setRange(this->player->get_width_min(), this->player->get_width_max());
-            ui->slider_width->setValue(this->player->get_width());
-            ui->slider_texture->setRange(0, this->player->get_texture_lenght() - 1);
-            ui->slider_texture->setValue(0);
+            this->ui->slider_height->setRange(this->player->get_height_min(),
+                    this->player->get_height_max());
+            this->ui->slider_height->setValue(this->player->get_height());
+            this->ui->slider_width->setRange(this->player->get_width_min(),
+                    this->player->get_width_max());
+            this->ui->slider_width->setValue(this->player->get_width());
+            this->ui->slider_texture->setRange(0, this->player->get_texture_lenght() - 1);
+            this->ui->slider_texture->setValue(0);
             emit on_slider_texture_valueChanged(0);
             QString descr = QString(this->player->get_description()->c_str());
-            ui->text_description->setPlainText(descr);
+            this->ui->text_description->setPlainText(descr);
         }
 
         void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
@@ -154,7 +157,7 @@ namespace ofw {
 
         void SelectPlayer::resizeEvent(QResizeEvent* event) {
             this->ui->centralWidget->resize(this->width(), this->height());
-            irr_widget->resize(this->width(), this->height());
+            this->irr_widget->resize(this->width(), this->height());
 
             this->ui->b_quit->resize(this->width()/10, this->height()/20);
             this->ui->b_quit->move(60, this->height()*0.88);

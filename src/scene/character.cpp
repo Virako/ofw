@@ -65,7 +65,7 @@ namespace ofw {
         void Character::set_rel_height(int rel_height) {
             if (get_height_min() <= (get_height() + rel_height) &&
                     (get_height() + rel_height) <= get_height_max()) {
-                this->height = height + rel_height;
+                this->height += rel_height;
             }
             else {
                 throw std::domain_error("");
@@ -75,7 +75,7 @@ namespace ofw {
         void Character::set_rel_width(int rel_width) {
             if (get_width_min() <= (get_width() + rel_width) &&
                     (get_width() + rel_width) <= get_width_max()) {
-                this->width = width + rel_width;
+                this->width += rel_width;
             }
             else {
                 throw std::domain_error("");

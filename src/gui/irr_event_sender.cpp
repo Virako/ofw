@@ -17,24 +17,24 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "irr_event_sender.hpp"
 #include "irrlicht.h"
 #include <QtGui/QMouseEvent>
 #include <QtGui/QResizeEvent>
 #include <QtGui/QPaintEvent>
 #include <QtCore/QTimerEvent>
+#include "irr_event_sender.hpp"
+
 
 namespace ofw {
     namespace gui {
 
-        irrEventSender::irrEventSender(irr::IrrlichtDevice* device) {
+        IrrEventSender::IrrEventSender(irr::IrrlichtDevice* device) {
             this->device = device;
         }
 
-        bool irrEventSender::sendEvent(QEvent* event) {
+        bool IrrEventSender::sendEvent(QEvent* event) {
             bool event_taked = false;
             if (event != NULL) {
-
                 QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
                 if(mouseEvent != NULL && event_taked != true) {
                     sendMouseEvent(mouseEvent);
@@ -65,35 +65,36 @@ namespace ofw {
 
             irr::SEvent irrEvent;
 
-            irrEvent.EventType = irr::EET_MOUSE_INPUT_EVENT;
 
             if (event->type() == QEvent::MouseButtonPress) {
                 if (event->button() == Qt::LeftButton) {
                     irrEvent.MouseInput.Event = irr::EMIE_LMOUSE_PRESSED_DOWN;
-                }else if (event->button() == Qt::RightButton) {
+                }
+                else if (event->button() == Qt::RightButton) {
                     irrEvent.MouseInput.Event = irr::EMIE_RMOUSE_PRESSED_DOWN;
                 }
-            }else if (event->type() == QEvent::MouseMove) {
+            }
+            else if (event->type() == QEvent::MouseMove) {
                 irrEvent.MouseInput.Event = irr::EMIE_MOUSE_MOVED;
             }
 
+            irrEvent.EventType = irr::EET_MOUSE_INPUT_EVENT;
             irrEvent.MouseInput.X = event->x();
             irrEvent.MouseInput.Y = event->y();
             irrEvent.MouseInput.Wheel = 0.0f;
-
             this->device->postEventFromUser(irrEvent);
         }
 
-        void irrEventSender::sendPaintEvent(QPaintEvent* event) {
+        void IrrEventSender::sendPaintEvent(QPaintEvent* event) {
             update_irrlicht(device);
         }
 
-        void irrEventSender::sendTimeEvent(QTimerEvent* event) {
+        void IrrEventSender::sendTimeEvent(QTimerEvent* event) {
             update_irrlicht(device);
             event->accept();
         }
 
-        void irrEventSender::sendResizeEvent(QResizeEvent* event) {
+        void IrrEventSender::sendResizeEvent(QResizeEvent* event) {
             irr::core::dimension2d<irr::u32> widgetSize;
             widgetSize.Width = event->size().width();
             widgetSize.Height = event->size().height();
@@ -104,7 +105,7 @@ namespace ofw {
             }
         }
 
-        void irrEventSender::update_irrlicht(irr::IrrlichtDevice* device) {
+        void IrrEventSender::update_irrlicht(irr::IrrlichtDevice* device) {
             if(device != 0) {
                 device->getTimer()->tick();
                 irr::video::SColor color (255,128,128,128);
@@ -114,5 +115,6 @@ namespace ofw {
                 device->getVideoDriver()->endScene();
             }
         }
+
     }
 }

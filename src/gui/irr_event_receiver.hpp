@@ -28,10 +28,11 @@ namespace ofw {
     }
 }
 
+
 namespace ofw {
     namespace gui {
 
-        class irrEventReceiver : public irr::IEventReceiver {
+        class IrrEventReceiver : public irr::IEventReceiver {
             private:
                 irr::SEvent::SJoystickEvent JoystickState;
 
@@ -39,7 +40,8 @@ namespace ofw {
                 /**
                  * @brief Default constructor.
                  */
-                irrEventReceiver();
+                IrrEventReceiver();
+
                 /**
                  * @brief Handles the events that Irrlicth recieves from the
                  * windows system.
@@ -50,19 +52,15 @@ namespace ofw {
                  * handled, if not return false.
                  */
                 virtual bool OnEvent(const irr::SEvent& event);
+
                 /**
                  * @brief Get the actual joystick state.
                  *
                  * @return Joystick state.
                  */
                 const irr::SEvent::SJoystickEvent& GetJoystickState(void) const;
-                /**
-                 * @brief Get the actual mouse state.
-                 *
-                 * @return Mouse state.
-                 */
-                const SMouseState& GetMouseState(void) const;
         };
+
     }
 }
 

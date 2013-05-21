@@ -19,56 +19,25 @@
 
 #include "irrlicht.h"
 #include "irr_event_receiver.hpp"
-#include <iostream>
+
 
 namespace ofw {
     namespace gui {
 
-        struct SMouseState
-        {
-            irr::core::position2di Position;
-            bool LeftButtonDown;
-            SMouseState() : LeftButtonDown(false) { }
-        } MouseState;
-
-        bool irrEventReceiver::OnEvent(const irr::SEvent& event) {
-            if (event.EventType == irr::EET_MOUSE_INPUT_EVENT) {
-                switch(event.MouseInput.Event)
-                {
-                    case irr::EMIE_LMOUSE_PRESSED_DOWN:
-                        MouseState.LeftButtonDown = true;
-                        break;
-
-                    case irr::EMIE_LMOUSE_LEFT_UP:
-                        MouseState.LeftButtonDown = false;
-                        break;
-
-                    case irr::EMIE_MOUSE_MOVED:
-                        MouseState.Position.X = event.MouseInput.X;
-                        MouseState.Position.Y = event.MouseInput.Y;
-
-                    default:
-                        break;
-                }
-            }
-
-            if (event.EventType == irr::EET_JOYSTICK_INPUT_EVENT && event.JoystickEvent.Joystick == 0) {
+        bool IrrEventReceiver::OnEvent(const irr::SEvent& event) {
+            if (event.EventType == irr::EET_JOYSTICK_INPUT_EVENT &&
+                    event.JoystickEvent.Joystick == 0) {
                 JoystickState = event.JoystickEvent;
             }
-
             return false;
         }
 
-        const irr::SEvent::SJoystickEvent& irrEventReceiver::GetJoystickState(void) const {
+        const irr::SEvent::SJoystickEvent& IrrEventReceiver::GetJoystickState(void) const {
             return JoystickState;
         }
 
-        const SMouseState& irrEventReceiver::GetMouseState(void) const {
-            return MouseState;
+        IrrEventReceiver::IrrEventReceiver() {
         }
 
-
-        irrEventReceiver::irrEventReceiver() {
-        }
     }
 }
