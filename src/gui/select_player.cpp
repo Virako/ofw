@@ -109,6 +109,7 @@ namespace ofw {
             emit on_slider_texture_valueChanged(0);
             QString descr = QString(this->player->get_description()->c_str());
             this->ui->text_description->setPlainText(descr);
+            emit on_cb_name_textEdited(this->ui->cb_name->text());
         }
 
         void SelectPlayer::on_comboBox_currentIndexChanged(int index) {
@@ -141,7 +142,7 @@ namespace ofw {
             if (this->player != NULL) {
                 this->player->set_name(text.toStdString());
             }
-            ui->cb_name->setPlaceholderText(text);
+            ui->cb_name->setText(text);
         }
 
         void SelectPlayer::put_logo() {
