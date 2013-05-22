@@ -17,7 +17,6 @@
 */
 
 #include "irrlicht.h"
-#include <iostream>
 #include <stdexcept>
 #include <QtGui/QMessageBox>
 #include <QtCore/QString>
@@ -33,6 +32,7 @@
 #include "../scene/cracker.hpp"
 #include "../scene/designer.hpp"
 #include "../scene/hunterbug.hpp"
+#include "../client/client.hpp"
 
 
 namespace ofw {
@@ -74,11 +74,9 @@ namespace ofw {
         }
 
         void SelectPlayer::on_b_create_clicked() {
-            std::cout << "H: " << this->player->get_height() << " W:" << this->player->get_width()
-                    << " Name: " << this->player->get_name() << std::endl;
-            QMessageBox messageBox;
-            messageBox.critical(0,"Error","Not Yet implemented!");
-            messageBox.setFixedSize(500,200);
+            ofw::client::Client *cli = new ofw::client::Client();
+            cli->send_player(this->player, this->ui->slider_texture->value(),
+                    this->ui->comboBox->currentIndex());
         }
 
         void SelectPlayer::on_slider_height_valueChanged(int value) {

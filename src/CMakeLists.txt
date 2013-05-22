@@ -59,6 +59,16 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 
+# Enet and protobuf
+find_package(ENet REQUIRED)
+find_package(Protobuf REQUIRED)
+
+include_directories(${PROTOBUF_INCLUDE_DIRS})
+
+file(GLOB ProtoFiles "${CMAKE_CURRENT_SOURCE_DIR}/client/*.proto")
+PROTOBUF_GENERATE_CPP(ProtoSources ProtoHeaders ${ProtoFiles})
+
+
 SET(HWQ_SRC
     ofw_config.hpp
     main.cpp
@@ -74,12 +84,14 @@ SET(HWQ_SRC
     gui/irr_widget.cpp
     gui/irr_event_sender.cpp
     gui/irr_event_receiver.cpp
+    client/client.cpp
     ${HWQ_MOC_CPP}
     ${HWQ_UI_CPP}
-    ${HWQ_RES_H})
+    ${HWQ_RES_H}
+    ${ProtoSources})
 
 ADD_EXECUTABLE (ofw ${HWQ_SRC})
-TARGET_LINK_LIBRARIES(ofw ${HWQ_LIB} ${IRR_LIB})
+TARGET_LINK_LIBRARIES(ofw ${HWQ_LIB} ${IRR_LIB} ${ENet_LIBRARIES} ${PROTOBUF_LIBRARIES})
 
 IF(UNIX AND NOT APPLE)
     INSTALL(TARGETS ofw DESTINATION ${BINDIR})

@@ -1,0 +1,20 @@
+enum PlayerType {
+    PICACODE = 1;
+    HACKER = 2;
+    CRACKER = 3;
+    DESIGNER = 4;
+    HUNTERBUG = 5;
+}
+
+message player_msg {
+    required string name = 1;
+    required sint32 pos_x = 2;
+    required sint32 pos_y = 3;
+    required sint32 pos_z = 4;
+    optional sint32 height = 5;
+    optional sint32 width = 6;
+    optional sint32 mesh = 7;
+    optional sint32 texture = 8;
+    optional sint32 life = 9;
+    optional PlayerType type = 10 [default = PICACODE];
+}
