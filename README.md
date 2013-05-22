@@ -10,10 +10,12 @@ Open Fantasy World is a MMORPG where the players will live in community.
 * Boost 1.49, http://www.boost.org/users/download/
 * Doxygen 1.8, http://www.stack.nl/~dimitri/doxygen/download.html
 * Qt 4.8, http://qt-project.org/downloads
+* Enet, http://enet.bespin.org/Installation.html
+* Protobuf 2.4.1, https://code.google.com/p/protobuf/
 
 For install this requirements in Debian or distributions based on Debian, type:
 
-    sudo apt-get install cmake libirrlicht-dev libboost-all-dev doxygen libqt4-dev libqtcore4 libxxf86vm-dev
+    sudo apt-get install cmake libirrlicht-dev libboost-all-dev doxygen libqt4-dev libqtcore4 libxxf86vm-dev libenet-dev libprotobuf-dev
 
 
 ## Download:
