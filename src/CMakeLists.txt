@@ -65,6 +65,10 @@ find_package(Protobuf REQUIRED)
 
 include_directories(${PROTOBUF_INCLUDE_DIRS})
 
+# Threads library
+set(CMAKE_THREAD_PREFER_PTHREAD ON)
+find_package(Threads REQUIRED)
+
 file(GLOB ProtoFiles "${CMAKE_CURRENT_SOURCE_DIR}/client/*.proto")
 PROTOBUF_GENERATE_CPP(ProtoSources ProtoHeaders ${ProtoFiles})
 
@@ -91,7 +95,7 @@ SET(HWQ_SRC
     ${ProtoSources})
 
 ADD_EXECUTABLE (ofw ${HWQ_SRC})
-TARGET_LINK_LIBRARIES(ofw ${HWQ_LIB} ${IRR_LIB} ${ENet_LIBRARIES} ${PROTOBUF_LIBRARIES})
+TARGET_LINK_LIBRARIES(ofw ${HWQ_LIB} ${IRR_LIB} ${ENet_LIBRARIES} ${PROTOBUF_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
 IF(UNIX AND NOT APPLE)
     INSTALL(TARGETS ofw DESTINATION ${BINDIR})
